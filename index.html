@@ -201,26 +201,6 @@
             100% { opacity: 0.3; transform: scale(0.95); }
         }
 
-        /* STORY ANIMATIONS */
-        .story-step {
-            opacity: 0.3;
-            transition: all 0.5s ease;
-            transform: translateX(-20px);
-        }
-        .story-step.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .visual-box {
-            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        .visual-box.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         /* Loader */
         #loader {
             position: fixed;
@@ -240,14 +220,59 @@
             transition: width 1s ease-in-out;
         }
 
+        /* NEW: Icon Drawing Animation */
+        .dash-draw {
+            stroke-dasharray: 120;
+            stroke-dashoffset: 120;
+            animation: draw-icon 2s ease-out forwards;
+        }
+        
+        @keyframes draw-icon {
+            to { stroke-dashoffset: 0; }
+        }
+
     </style>
 </head>
 <body class="selection:bg-orange-900 selection:text-white">
 
     <!-- Loading Screen -->
     <div id="loader">
-        <div class="w-64 h-px bg-gray-900 relative overflow-hidden">
-            <div id="loader-bar" class="loader-line absolute top-0 left-0 h-full"></div>
+        <div class="flex flex-col items-center justify-center">
+            <!-- JL Monogram Icon -->
+            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="mb-6">
+                <defs>
+                    <linearGradient id="bronze-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#E0AA77" />
+                        <stop offset="100%" style="stop-color:#CD7F32" />
+                    </linearGradient>
+                    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="2" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                </defs>
+                
+                <!-- J Path -->
+                <path d="M40 25V60C40 75 30 75 25 75" 
+                      stroke="url(#bronze-grad)" 
+                      stroke-width="6" 
+                      stroke-linecap="round" 
+                      class="dash-draw"
+                      filter="url(#glow)" />
+                
+                <!-- L Path -->
+                <path d="M60 25V75H85" 
+                      stroke="url(#bronze-grad)" 
+                      stroke-width="6" 
+                      stroke-linecap="round" 
+                      class="dash-draw" 
+                      style="animation-delay: 0.4s"
+                      filter="url(#glow)" />
+            </svg>
+            
+            <!-- Minimal Progress Bar -->
+            <div class="w-24 h-0.5 bg-gray-900 relative overflow-hidden rounded-full">
+                <div id="loader-bar" class="absolute top-0 left-0 h-full bg-[#CD7F32] w-0 transition-all duration-[1000ms] ease-out"></div>
+            </div>
         </div>
     </div>
 
@@ -295,6 +320,63 @@
                     Investment Deck
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: The Future of Home (Manifesto Section) -->
+    <section id="future" class="py-32 relative z-10 bg-[#050505] border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="gsap-fade-up">
+                    <span class="text-[#CD7F32] font-bold tracking-[0.3em] text-xs uppercase mb-4 block">The Paradigm Shift</span>
+                    <h2 class="text-4xl md:text-6xl font-bold mb-8 text-white leading-tight">
+                        It's not just a building.<br>
+                        It's a <span class="text-gradient-bronze">Platform.</span>
+                    </h2>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                        For 100 years, the home has been a static box. A passive container for life.
+                        <br><br>
+                        <strong>The Future of Home is active.</strong> It learns, it serves, and it earns. We are moving from the era of "Housing as Shelter" to "Housing as Service."
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-8 mt-8 border-t border-white/10 pt-8">
+                        <div>
+                            <div class="text-gray-500 text-xs uppercase tracking-widest mb-2">Old Real Estate</div>
+                            <ul class="text-gray-400 text-sm space-y-3">
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> Passive Asset</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> High Friction</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> Debt Driver</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="text-[#CD7F32] text-xs uppercase tracking-widest mb-2">SECHA Home</div>
+                            <ul class="text-white text-sm space-y-3">
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#CD7F32]"></span> Active Platform</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#CD7F32]"></span> Frictionless OS</li>
+                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#CD7F32]"></span> Wealth Engine</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative gsap-scale-up">
+                    <div class="aspect-square glass-panel rounded-3xl overflow-hidden relative flex items-center justify-center group">
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-60"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                        
+                        <!-- Floating Hologram Element -->
+                        <div class="relative z-10 text-center">
+                            <div class="w-24 h-24 mx-auto mb-6 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex items-center justify-center animate-[spin_10s_linear_infinite]">
+                                <div class="w-16 h-16 rounded-full border border-[#CD7F32] flex items-center justify-center">
+                                    <div class="w-2 h-2 bg-[#CD7F32] rounded-full"></div>
+                                </div>
+                            </div>
+                            <h3 class="text-3xl font-bold text-white mb-2">Hardware 2.0</h3>
+                            <p class="text-sm text-gray-300">Intelligent. Connected. Self-Optimizing.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -504,7 +586,7 @@
                                         <div class="text-xs text-gray-400">Net Risk Profile</div>
                                         <div class="text-2xl font-bold text-white">0.2%</div>
                                     </div>
-                                    <div class="text-green-500 text-xs">-95% vs Market Avg</div>
+                                    <div class="text-[#CD7F32] text-xs font-bold">-95% vs Market Avg</div>
                                 </div>
                             </div>
                         </div>
@@ -544,7 +626,7 @@
         </div>
     </section>
 
-    <!-- NEW: The Tenant Journey (Human Centric + Integrated Visuals) -->
+    <!-- NEW: The Tenant Journey (Refined UI/UX - Black & Bronze) -->
     <section id="journey" class="relative z-10 bg-black overflow-hidden border-t border-white/5">
         
         <!-- Background Grid -->
@@ -563,67 +645,71 @@
         <div class="max-w-7xl mx-auto px-6 relative pb-32 space-y-32">
             
             <!-- Step 1: The Barrier -->
-            <div class="story-step grid grid-cols-1 md:grid-cols-2 gap-12 items-center" data-index="0">
+            <div class="story-step grid grid-cols-1 md:grid-cols-2 gap-16 items-center" data-index="0">
                 <!-- Text -->
                 <div class="order-2 md:order-1">
                     <div class="flex items-center gap-4 mb-6">
-                        <div class="w-10 h-10 rounded-full bg-red-900/20 border border-red-500/50 flex items-center justify-center text-red-500 font-bold">01</div>
-                        <div class="text-red-500 font-mono text-xs tracking-widest uppercase">The Barrier</div>
+                        <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-500 font-bold font-mono">01</div>
+                        <div class="text-gray-500 font-mono text-xs tracking-widest uppercase">The Barrier</div>
                     </div>
                     <h3 class="text-4xl md:text-5xl font-bold mb-6 text-white">Locked Out.</h3>
                     <p class="text-lg text-gray-400 leading-relaxed font-light mb-6">
                         Meet <strong>Maya, 29</strong>. Architect. Despite a solid income, she is "Credit Invisible." Rejected by 3 banks for a rental deposit due to lack of history.
                     </p>
-                    <div class="inline-block px-4 py-2 border border-red-500/30 rounded bg-red-900/10 font-mono text-red-400 text-sm">
+                    <div class="inline-block px-4 py-2 border border-red-500/20 rounded bg-red-900/10 font-mono text-red-400 text-sm">
                         "System says No."
                     </div>
                 </div>
                 <!-- Visual Box -->
                 <div class="order-1 md:order-2">
-                    <div class="visual-box aspect-square md:aspect-[4/3] bg-black/80 border border-red-900/30 rounded-3xl overflow-hidden relative shadow-[0_0_50px_rgba(220,38,38,0.15)] flex items-center justify-center group">
-                        <!-- Cinematic Background -->
-                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1494607239400-ff147da42673?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center transition-transform duration-1000 group-hover:scale-105 filter grayscale contrast-125 opacity-40"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-red-900/20 mix-blend-multiply"></div>
+                    <div class="visual-box aspect-[4/3] bg-black/60 border border-white/10 rounded-3xl overflow-hidden relative shadow-2xl flex items-center justify-center group backdrop-blur-md">
+                        <!-- Subtle Background Glow -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-red-900/20 via-transparent to-transparent opacity-50"></div>
                         
                         <!-- UI Card -->
                         <div class="relative z-10 w-full p-8 flex flex-col items-center">
-                            <div class="w-20 h-20 rounded-full border-2 border-red-500/50 flex items-center justify-center mb-6 bg-black/60 backdrop-blur-xl animate-[pulse_3s_infinite]">
+                            <div class="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center mb-6 bg-black/80 shadow-lg">
                                 <svg class="w-8 h-8 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
                             </div>
-                            <div class="text-4xl font-bold text-white mb-2 tracking-tighter">ACCESS DENIED</div>
-                            <div class="bg-red-900/40 border border-red-500/30 px-4 py-1 rounded-full text-red-400 text-xs font-mono">CREDIT_HISTORY_MISSING</div>
+                            <div class="text-3xl font-bold text-white mb-2 tracking-tight">Access Denied</div>
+                            <div class="text-gray-500 text-sm font-mono tracking-widest mt-2">CREDIT_HISTORY_MISSING</div>
+                            
+                            <!-- Fake Error Lines -->
+                            <div class="mt-8 w-64 space-y-2 opacity-50">
+                                <div class="h-1 w-full bg-red-500/20 rounded-full"></div>
+                                <div class="h-1 w-2/3 bg-red-500/20 rounded-full mx-auto"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Step 2: The Unlock -->
-            <div class="story-step grid grid-cols-1 md:grid-cols-2 gap-12 items-center" data-index="1">
+            <div class="story-step grid grid-cols-1 md:grid-cols-2 gap-16 items-center" data-index="1">
                 <!-- Visual Box -->
                 <div class="order-1">
-                    <div class="visual-box aspect-square md:aspect-[4/3] bg-black/80 border border-[#CD7F32]/30 rounded-3xl overflow-hidden relative shadow-[0_0_50px_rgba(205,127,50,0.15)] flex items-center justify-center group">
-                        <!-- Cinematic Background -->
-                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=2832&auto=format&fit=crop')] bg-cover bg-center transition-transform duration-1000 group-hover:scale-105 opacity-50 mix-blend-screen"></div>
-                        <div class="absolute inset-0 bg-black/90"></div>
+                    <div class="visual-box aspect-[4/3] bg-black/60 border border-[#CD7F32]/30 rounded-3xl overflow-hidden relative shadow-[0_0_50px_rgba(205,127,50,0.1)] flex items-center justify-center group backdrop-blur-md">
+                        <!-- Subtle Background Glow -->
+                        <div class="absolute inset-0 bg-gradient-to-bl from-[#CD7F32]/10 via-transparent to-transparent opacity-50"></div>
                         
                         <!-- UI Card -->
-                        <div class="relative z-10 w-3/4 bg-black/80 backdrop-blur-xl border border-[#CD7F32]/40 rounded-2xl p-6 shadow-2xl">
-                            <div class="flex justify-between items-center mb-4 border-b border-[#CD7F32]/20 pb-4">
+                        <div class="relative z-10 w-3/4 bg-black/80 border border-[#CD7F32]/30 rounded-2xl p-6 shadow-2xl">
+                            <div class="flex justify-between items-center mb-6 border-b border-[#CD7F32]/20 pb-4">
                                 <span class="text-[#CD7F32] font-mono text-xs tracking-widest">RENOVA INTELLIGENCE</span>
-                                <div class="w-2 h-2 bg-[#CD7F32] rounded-full animate-pulse"></div>
+                                <div class="w-1.5 h-1.5 bg-[#CD7F32] rounded-full animate-pulse"></div>
                             </div>
-                            <div class="space-y-3">
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-gray-400">Cash Flow</span>
-                                    <span class="text-white font-bold">$4,250/mo</span>
+                            <div class="space-y-4">
+                                <div class="flex justify-between text-sm items-center">
+                                    <span class="text-gray-500">Cash Flow Analysis</span>
+                                    <span class="text-white font-bold font-mono">$4,250/mo</span>
                                 </div>
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-gray-400">Risk Profile</span>
-                                    <span class="text-green-400 font-bold">Low (0.02)</span>
+                                <div class="flex justify-between text-sm items-center">
+                                    <span class="text-gray-500">Risk Profile</span>
+                                    <span class="text-[#CD7F32] font-bold font-mono">0.02 (Low)</span>
                                 </div>
                             </div>
-                            <div class="mt-6 bg-[#CD7F32] text-black text-center font-bold py-2 rounded-lg text-sm tracking-widest">
-                                APPROVED
+                            <div class="mt-6 w-full bg-[#CD7F32]/10 border border-[#CD7F32]/50 text-[#CD7F32] text-center font-bold py-2 rounded-lg text-xs tracking-[0.2em] uppercase">
+                                Approved
                             </div>
                         </div>
                     </div>
@@ -631,60 +717,60 @@
                 <!-- Text -->
                 <div class="order-2">
                     <div class="flex items-center gap-4 mb-6">
-                        <div class="w-10 h-10 rounded-full bg-[#CD7F32]/20 border border-[#CD7F32]/50 flex items-center justify-center text-[#CD7F32] font-bold">02</div>
+                        <div class="w-10 h-10 rounded-full bg-[#CD7F32]/10 border border-[#CD7F32]/30 flex items-center justify-center text-[#CD7F32] font-bold font-mono">02</div>
                         <div class="text-[#CD7F32] font-mono text-xs tracking-widest uppercase">The Unlock</div>
                     </div>
                     <h3 class="text-4xl md:text-5xl font-bold mb-6 text-white">Intelligence Over History.</h3>
                     <p class="text-lg text-gray-400 leading-relaxed font-light mb-6">
                         She applies to SECHA. RenovaCredit analyzes her <strong>real-time cash flow</strong>, not her past. It sees stability where banks saw risk.
                     </p>
-                    <div class="inline-block px-4 py-2 border border-[#CD7F32]/30 rounded bg-[#CD7F32]/10 font-mono text-[#CD7F32] text-sm">
+                    <div class="inline-block px-4 py-2 border border-[#CD7F32]/30 rounded bg-[#CD7F32]/5 font-mono text-[#CD7F32] text-sm">
                         "Data sees Potential."
                     </div>
                 </div>
             </div>
 
             <!-- Step 3: The Sanctuary -->
-            <div class="story-step grid grid-cols-1 md:grid-cols-2 gap-12 items-center" data-index="2">
+            <div class="story-step grid grid-cols-1 md:grid-cols-2 gap-16 items-center" data-index="2">
                 <!-- Text -->
                 <div class="order-2 md:order-1">
                     <div class="flex items-center gap-4 mb-6">
-                        <div class="w-10 h-10 rounded-full bg-white/10 border border-white/50 flex items-center justify-center text-white font-bold">03</div>
+                        <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white font-bold font-mono">03</div>
                         <div class="text-white font-mono text-xs tracking-widest uppercase">The Sanctuary</div>
                     </div>
                     <h3 class="text-4xl md:text-5xl font-bold mb-6 text-white">Peace of Mind.</h3>
                     <p class="text-lg text-gray-400 leading-relaxed font-light mb-6">
                         Day 45: The AC malfunctions. With <strong>Living OS</strong>, she taps a button. Service is deployed automatically. Fixed in 3 hours. Zero friction. She focuses on her work, not her walls.
                     </p>
-                    <div class="inline-block px-4 py-2 border border-white/30 rounded bg-white/5 font-mono text-white text-sm">
+                    <div class="inline-block px-4 py-2 border border-white/20 rounded bg-white/5 font-mono text-gray-300 text-sm">
                         "Living on Autopilot."
                     </div>
                 </div>
                 <!-- Visual Box -->
                 <div class="order-1 md:order-2">
-                    <div class="visual-box aspect-square md:aspect-[4/3] bg-black/80 border border-white/20 rounded-3xl overflow-hidden relative shadow-[0_0_50px_rgba(255,255,255,0.1)] flex items-center justify-center group">
+                    <div class="visual-box aspect-[4/3] bg-black/60 border border-white/10 rounded-3xl overflow-hidden relative shadow-2xl flex items-center justify-center group backdrop-blur-md">
                         <!-- Cinematic Background -->
-                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1616486338812-3dadae4b4f9d?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center transition-transform duration-1000 group-hover:scale-105 opacity-60"></div>
-                        <div class="absolute inset-0 bg-black/50"></div>
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1616486338812-3dadae4b4f9d?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center opacity-30 grayscale transition-opacity duration-700 group-hover:opacity-50"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
                         
                         <!-- UI Card -->
-                        <div class="relative z-10 w-64 bg-black/60 backdrop-blur-xl border border-white/20 p-4 rounded-2xl shadow-xl">
-                            <div class="flex items-center gap-3 mb-4">
-                                <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                        <div class="relative z-10 w-64 bg-black/80 backdrop-blur-xl border border-white/10 p-5 rounded-2xl shadow-xl">
+                            <div class="flex items-center gap-4 mb-5">
+                                <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center border border-white/5">
                                     <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
                                 </div>
                                 <div>
                                     <div class="text-sm font-bold text-white">Unit 402</div>
-                                    <div class="text-[10px] text-green-400">System Online</div>
+                                    <div class="text-[10px] text-green-400 flex items-center gap-1"><span class="w-1 h-1 bg-green-400 rounded-full"></span> System Online</div>
                                 </div>
                             </div>
-                            <div class="space-y-2">
-                                <div class="bg-white/10 rounded p-2 flex justify-between items-center">
-                                    <span class="text-xs text-gray-300">Maintenance</span>
-                                    <span class="text-[10px] text-white bg-green-500/20 px-2 py-0.5 rounded border border-green-500/30">RESOLVED</span>
+                            <div class="space-y-3">
+                                <div class="bg-white/5 rounded-lg p-3 flex justify-between items-center border border-white/5">
+                                    <span class="text-xs text-gray-400">Maintenance</span>
+                                    <span class="text-[10px] text-white bg-green-500/20 px-2 py-0.5 rounded border border-green-500/20">RESOLVED</span>
                                 </div>
-                                <div class="bg-white/10 rounded p-2 flex justify-between items-center">
-                                    <span class="text-xs text-gray-300">Rent</span>
+                                <div class="bg-white/5 rounded-lg p-3 flex justify-between items-center border border-white/5">
+                                    <span class="text-xs text-gray-400">Rent</span>
                                     <span class="text-[10px] text-white">AUTO-PAID</span>
                                 </div>
                             </div>
@@ -694,27 +780,29 @@
             </div>
 
             <!-- Step 4: The Growth -->
-            <div class="story-step grid grid-cols-1 md:grid-cols-2 gap-12 items-center" data-index="3">
+            <div class="story-step grid grid-cols-1 md:grid-cols-2 gap-16 items-center" data-index="3">
                 <!-- Visual Box -->
                 <div class="order-1">
-                    <div class="visual-box aspect-square md:aspect-[4/3] bg-black/80 border border-green-500/30 rounded-3xl overflow-hidden relative shadow-[0_0_50px_rgba(34,197,94,0.15)] flex items-center justify-center group">
-                        <div class="absolute inset-0 bg-gradient-to-br from-green-900/10 to-transparent"></div>
+                    <div class="visual-box aspect-[4/3] bg-black/60 border border-white/10 rounded-3xl overflow-hidden relative shadow-2xl flex items-center justify-center group backdrop-blur-md">
+                        <!-- Subtle Background Glow -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-green-900/10 via-transparent to-transparent opacity-50"></div>
                         
                         <!-- UI Schematic -->
                         <div class="relative z-10 w-full h-full p-12 flex flex-col items-center justify-center">
-                            <div class="relative mb-6">
-                                <svg class="w-32 h-32 transform -rotate-90">
-                                    <circle cx="64" cy="64" r="60" stroke="rgba(255,255,255,0.1)" stroke-width="4" fill="transparent" />
-                                    <circle cx="64" cy="64" r="60" stroke="#22c55e" stroke-width="4" fill="transparent" stroke-dasharray="377" stroke-dashoffset="50" stroke-linecap="round" class="filter drop-shadow-[0_0_10px_rgba(34,197,94,0.5)]" />
+                            <div class="relative mb-8">
+                                <!-- Chart Circle -->
+                                <svg class="w-40 h-40 transform -rotate-90">
+                                    <circle cx="80" cy="80" r="70" stroke="rgba(255,255,255,0.05)" stroke-width="6" fill="transparent" />
+                                    <circle cx="80" cy="80" r="70" stroke="#CD7F32" stroke-width="6" fill="transparent" stroke-dasharray="377" stroke-dashoffset="50" stroke-linecap="round" class="filter drop-shadow-[0_0_15px_rgba(205,127,50,0.3)]" />
                                 </svg>
                                 <div class="absolute inset-0 flex flex-col items-center justify-center">
-                                    <span class="text-4xl font-bold text-white tracking-tighter">765</span>
-                                    <span class="text-[10px] text-green-400 font-mono bg-green-900/30 px-2 py-0.5 rounded-full mt-1">▲ +45</span>
+                                    <span class="text-5xl font-bold text-white tracking-tighter">765</span>
+                                    <span class="text-[10px] text-green-400 font-mono bg-green-900/20 px-2 py-0.5 rounded-full mt-2 border border-green-500/20">▲ +45 PTS</span>
                                 </div>
                             </div>
                             <div class="text-center">
-                                <div class="text-green-500 text-xs font-bold uppercase tracking-widest mb-1">Financial Health</div>
-                                <div class="text-white text-lg font-light">Excellent</div>
+                                <div class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-1">Financial Health</div>
+                                <div class="text-white text-lg font-light tracking-wide">Excellent</div>
                             </div>
                         </div>
                     </div>
@@ -722,54 +810,54 @@
                 <!-- Text -->
                 <div class="order-2">
                     <div class="flex items-center gap-4 mb-6">
-                        <div class="w-10 h-10 rounded-full bg-green-900/20 border border-green-500/50 flex items-center justify-center text-green-500 font-bold">04</div>
+                        <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-500 font-bold font-mono">04</div>
                         <div class="text-green-500 font-mono text-xs tracking-widest uppercase">The Growth</div>
                     </div>
                     <h3 class="text-4xl md:text-5xl font-bold mb-6 text-white">Rent as Equity.</h3>
                     <p class="text-lg text-gray-400 leading-relaxed font-light mb-6">
                         Day 365: Maya isn't just a tenant; she's an investor in her own future. Every on-time rent payment is reported to credit bureaus. Her score jumps 45 points.
                     </p>
-                    <div class="inline-block px-4 py-2 border border-green-500/30 rounded bg-green-900/10 font-mono text-green-400 text-sm">
+                    <div class="inline-block px-4 py-2 border border-green-500/20 rounded bg-green-900/10 font-mono text-green-400 text-sm">
                         "Rent becomes Wealth."
                     </div>
                 </div>
             </div>
 
-            <!-- Step 5: The Destination (New Section) -->
-            <div class="story-step grid grid-cols-1 md:grid-cols-2 gap-12 items-center" data-index="4">
+            <!-- Step 5: The Destination -->
+            <div class="story-step grid grid-cols-1 md:grid-cols-2 gap-16 items-center" data-index="4">
                 <!-- Text -->
                 <div class="order-2 md:order-1">
                     <div class="flex items-center gap-4 mb-6">
-                        <div class="w-10 h-10 rounded-full bg-[#CD7F32]/20 border border-[#CD7F32]/50 flex items-center justify-center text-[#CD7F32] font-bold">05</div>
+                        <div class="w-10 h-10 rounded-full bg-[#CD7F32]/10 border border-[#CD7F32]/30 flex items-center justify-center text-[#CD7F32] font-bold font-mono">05</div>
                         <div class="text-[#CD7F32] font-mono text-xs tracking-widest uppercase">The Destination</div>
                     </div>
                     <h3 class="text-4xl md:text-5xl font-bold mb-6 text-white">The Owner.</h3>
                     <p class="text-lg text-gray-400 leading-relaxed font-light mb-6">
-                        Year 3. Maya graduates from the system. Using her optimized credit score and accrued SECHA rewards, she secures a mortgage for her own property. She enters the asset class she was once excluded from.
+                        Year 3. Maya graduates from the system. Using her optimized credit score and accrued SECHA rewards, she secures a mortgage for her own property.
                     </p>
-                    <div class="inline-block px-4 py-2 border border-[#CD7F32]/30 rounded bg-[#CD7F32]/10 font-mono text-[#CD7F32] text-sm">
+                    <div class="inline-block px-4 py-2 border border-[#CD7F32]/30 rounded bg-[#CD7F32]/5 font-mono text-[#CD7F32] text-sm">
                         "From Locked Out to Key Holder."
                     </div>
                 </div>
                 <!-- Visual Box -->
                 <div class="order-1 md:order-2">
-                    <div class="visual-box aspect-square md:aspect-[4/3] bg-black/80 border border-[#CD7F32]/30 rounded-3xl overflow-hidden relative shadow-[0_0_60px_rgba(205,127,50,0.2)] flex items-center justify-center group">
+                    <div class="visual-box aspect-[4/3] bg-black/60 border border-[#CD7F32]/30 rounded-3xl overflow-hidden relative shadow-[0_0_60px_rgba(205,127,50,0.15)] flex items-center justify-center group backdrop-blur-md">
                         <!-- Cinematic Background -->
-                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2073&auto=format&fit=crop')] bg-cover bg-center transition-transform duration-1000 group-hover:scale-105 opacity-50 mix-blend-overlay"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-[#CD7F32]/10"></div>
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2073&auto=format&fit=crop')] bg-cover bg-center opacity-40 grayscale mix-blend-overlay"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-[#CD7F32]/5"></div>
                         
                         <!-- UI Schematic -->
                         <div class="relative z-10 w-full h-full p-12 flex flex-col items-center justify-center">
-                            <div class="w-24 h-24 rounded-full border border-[#CD7F32] flex items-center justify-center mb-6 bg-[#CD7F32]/10 backdrop-blur-md shadow-[0_0_30px_rgba(205,127,50,0.3)] animate-[pulse_4s_infinite]">
+                            <div class="w-24 h-24 rounded-full border border-[#CD7F32] flex items-center justify-center mb-8 bg-[#CD7F32]/5 backdrop-blur-md shadow-[0_0_30px_rgba(205,127,50,0.2)] animate-[pulse_4s_infinite]">
                                 <svg class="w-10 h-10 text-[#CD7F32]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
                             </div>
-                            <div class="text-center transform transition-transform duration-500 group-hover:scale-105">
-                                <div class="text-white text-3xl font-bold tracking-tight mb-1">CONTRACT SIGNED</div>
-                                <div class="text-[#CD7F32] text-xs font-mono tracking-[0.3em] uppercase">Ownership Transferred</div>
+                            <div class="text-center">
+                                <div class="text-white text-3xl font-bold tracking-tight mb-2">Contract Signed</div>
+                                <div class="text-[#CD7F32] text-xs font-mono tracking-[0.3em] uppercase opacity-80">Ownership Transferred</div>
                             </div>
-                            <div class="mt-8 w-full bg-white/5 border border-white/10 rounded-lg p-3 flex justify-between items-center backdrop-blur-sm">
-                                <span class="text-gray-400 text-xs">New Asset Value</span>
-                                <span class="text-white font-bold text-sm">$350,000</span>
+                            <div class="mt-10 w-full max-w-xs bg-white/5 border border-white/10 rounded-xl p-4 flex justify-between items-center backdrop-blur-md">
+                                <span class="text-gray-400 text-xs uppercase tracking-wider">Asset Value</span>
+                                <span class="text-white font-bold font-mono text-lg">$350,000</span>
                             </div>
                         </div>
                     </div>
@@ -794,6 +882,28 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
                 </a>
             </div>
+        </div>
+    </section>
+
+    <!-- NEW: Founder CTA (Replaces Quote) -->
+    <section class="py-24 relative z-10 bg-[#050505] border-t border-white/5 overflow-hidden">
+    <!-- Investment CTA & Founder Message (Merged) -->
+    <section id="invest" class="py-32 relative z-10 text-center">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#1a0f00] -z-10"></div>
+        <div class="max-w-4xl mx-auto px-6 gsap-fade-up">
+            
+            <!-- Founder Quote Block -->
+            <div class="relative bg-white/5 border border-white/10 rounded-2xl p-8 md:p-12 mb-12 backdrop-blur-sm">
+                <svg class="w-8 h-8 text-[#CD7F32]/40 absolute top-8 left-8" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 13.1216 16 12.017 16H9.01699V12H14.017V8H9.01699V5H5.01699V21H14.017ZM21.017 21L21.017 18C21.017 16.8954 20.1216 16 19.017 16H16.017V12H21.017V8H16.017V5H12.017V21H21.017Z"/></svg>
+                <blockquote class="text-xl md:text-2xl text-gray-200 font-light leading-relaxed mb-8 italic relative z-10">
+                    "We are not just building a real estate company. We are building an engine for economic mobility. When you invest in SECHA, you are investing in the belief that the path to wealth should be accessible to everyone who works for it."
+                </blockquote>
+                <div class="flex flex-col items-center justify-center border-t border-white/10 pt-6 mx-auto w-fit px-8">
+                    <div class="text-white font-bold tracking-wide text-lg">Josephine Lovensa</div>
+                    <div class="text-[#CD7F32] text-xs font-mono tracking-[0.2em] uppercase mt-1">Founder & CEO</div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -834,6 +944,7 @@
 
         // Hero Animations using GSAP
         function initHeroAnimations() {
+            if (typeof gsap === 'undefined') return;
             const tl = gsap.timeline();
             
             tl.to("#hero-tag", { y: 0, opacity: 1, duration: 1, ease: "power3.out" })
@@ -843,52 +954,54 @@
         }
 
         // Scroll Animations
-        gsap.registerPlugin(ScrollTrigger);
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
 
-        gsap.utils.toArray('.gsap-fade-up').forEach(element => {
-            gsap.from(element, {
-                scrollTrigger: {
-                    trigger: element,
-                    start: "top 80%",
-                    toggleActions: "play none none reverse"
-                },
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                ease: "power3.out"
+            gsap.utils.toArray('.gsap-fade-up').forEach(element => {
+                gsap.from(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power3.out"
+                });
             });
-        });
 
-        gsap.utils.toArray('.gsap-scale-up').forEach(element => {
-            gsap.from(element, {
-                scrollTrigger: {
-                    trigger: element,
-                    start: "top 80%",
-                    toggleActions: "play none none reverse"
-                },
-                scale: 0.9,
-                opacity: 0,
-                duration: 1.2,
-                ease: "power2.out"
+            gsap.utils.toArray('.gsap-scale-up').forEach(element => {
+                gsap.from(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    },
+                    scale: 0.9,
+                    opacity: 0,
+                    duration: 1.2,
+                    ease: "power2.out"
+                });
             });
-        });
 
-        // Integrated Visual Boxes Animation
-        const visualBoxes = document.querySelectorAll('.visual-box');
+            // Integrated Visual Boxes Animation
+            const visualBoxes = document.querySelectorAll('.visual-box');
 
-        visualBoxes.forEach((box) => {
-            gsap.from(box, {
-                scrollTrigger: {
-                    trigger: box,
-                    start: "top 85%",
-                    toggleActions: "play none none reverse"
-                },
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                ease: "power3.out"
+            visualBoxes.forEach((box) => {
+                gsap.from(box, {
+                    scrollTrigger: {
+                        trigger: box,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power3.out"
+                });
             });
-        });
+        }
 
         // SVG Drawing Animation Support
         const style = document.createElement('style');
