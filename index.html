@@ -211,16 +211,14 @@
             opacity: 1;
             transform: translateX(0);
         }
-        .story-visual-card {
+        .visual-box {
             transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
             opacity: 0;
-            transform: scale(0.9);
-            position: absolute;
-            inset: 0;
+            transform: translateY(30px);
         }
-        .story-visual-card.active {
+        .visual-box.active {
             opacity: 1;
-            transform: scale(1);
+            transform: translateY(0);
         }
 
         /* Loader */
@@ -458,7 +456,91 @@
 
     <!-- RenovaCredit Section (Renovation Engine) -->
     <section id="renova" class="py-32 relative z-10 overflow-hidden">
-        <!-- ... content ... -->
+        <!-- Background Glow -->
+        <div class="absolute top-1/2 left-0 w-1/2 h-full bg-[#CD7F32] blur-[150px] opacity-10 -translate-y-1/2 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+                <div class="order-2 lg:order-1 relative gsap-scale-up">
+                    <div class="glass-panel rounded-3xl p-8 border-l-4 border-l-[#CD7F32]">
+                        <div class="flex justify-between items-center mb-8 border-b border-white/10 pb-4">
+                            <div class="text-sm text-gray-400 font-mono">RENOVA_DUAL_CORE</div>
+                            <div class="flex gap-2">
+                                <span class="block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                                <span class="text-xs text-green-500">ENGINE ACTIVE</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Abstract Graph Visualization -->
+                        <div class="space-y-6">
+                            <!-- Core 1: Asset -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-xs text-gray-400">
+                                    <span class="text-[#CD7F32] font-bold">CORE 1: ASSET VALUE</span>
+                                    <span>+35% Uplift</span>
+                                </div>
+                                <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-[#CD7F32] to-yellow-600 w-[75%]"></div>
+                                </div>
+                                <p class="text-[10px] text-gray-500">Renovation Capital Injection</p>
+                            </div>
+
+                            <!-- Core 2: Human -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-xs text-gray-400">
+                                    <span class="text-blue-400 font-bold">CORE 2: TENANT CREDIT</span>
+                                    <span>Score 620 &rarr; 750</span>
+                                </div>
+                                <div class="h-2 bg-white/5 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gradient-to-r from-blue-500 to-blue-300 w-[90%]"></div>
+                                </div>
+                                <p class="text-[10px] text-gray-500">Behavioral Payment Tracking</p>
+                            </div>
+
+                            <!-- Risk Reduction -->
+                            <div class="pt-4 border-t border-white/10">
+                                <div class="flex justify-between items-end">
+                                    <div>
+                                        <div class="text-xs text-gray-400">Net Risk Profile</div>
+                                        <div class="text-2xl font-bold text-white">0.2%</div>
+                                    </div>
+                                    <div class="text-green-500 text-xs">-95% vs Market Avg</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-white/10">
+                            <a href="https://jplovensa.github.io/SECHA-Credit-Engine/" target="_blank" class="w-full flex items-center justify-between group">
+                                <span class="text-white font-medium group-hover:text-[#CD7F32] transition-colors">See the Risk Engine Logic</span>
+                                <span class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#CD7F32] group-hover:text-black transition-all">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-1 lg:order-2 gsap-fade-up">
+                    <span class="text-[#CD7F32] font-bold tracking-widest text-sm uppercase">The Dual-Core Engine</span>
+                    <h2 class="text-5xl md:text-6xl font-bold mt-4 mb-6">RenovaCredit</h2>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                        Why choose between upgrading the building or upgrading the tenant? We do both. RenovaCredit is a dual-core financial engine:
+                        <br><br>
+                        1. <strong>Asset Core:</strong> Provides capital to renovate the home, instantly boosting asset value.<br>
+                        2. <strong>Human Core:</strong> Tracks tenant payment behavior to build their credit score, turning "rent" into "reputation."
+                    </p>
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex items-center gap-3">
+                            <svg class="text-[#CD7F32]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <strong>Renovation Finance:</strong> Transforming C-grade assets to A-grade.
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="text-blue-400" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <strong>Behavioral Credit:</strong> Reducing default risk by incentivizing payment.
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -791,46 +873,6 @@
             });
         });
 
-        // Journey Section Animations (Rail & Dots)
-        const storySteps = document.querySelectorAll('.story-step');
-        const progressRail = document.getElementById('progress-rail');
-
-        storySteps.forEach((step, index) => {
-            ScrollTrigger.create({
-                trigger: step,
-                start: "top center",
-                end: "bottom center",
-                onEnter: () => updateActiveStep(index),
-                onEnterBack: () => updateActiveStep(index),
-                onUpdate: (self) => updateProgress(self, index)
-            });
-        });
-
-        function updateProgress(self, index) {
-            if(progressRail) {
-                const totalSteps = storySteps.length;
-                // Calculate progress based on the current step's progress plus previous steps
-                const stepProgress = self.progress; 
-                const totalProgress = ((index + stepProgress) / totalSteps) * 100;
-                progressRail.style.height = `${Math.min(totalProgress, 100)}%`;
-            }
-        }
-
-        function updateActiveStep(index) {
-            storySteps.forEach((step, i) => {
-                const dot = step.querySelector('.dot-indicator div');
-                const border = step.querySelector('.dot-indicator');
-                
-                if (i === index) {
-                    if(dot) gsap.to(dot, { opacity: 1, duration: 0.3 });
-                    if(border) gsap.to(border, { scale: 1.2, borderColor: 'white' });
-                } else {
-                    if(dot) gsap.to(dot, { opacity: 0, duration: 0.3 });
-                    if(border) gsap.to(border, { scale: 1, borderColor: '#4b5563' }); // gray-600
-                }
-            });
-        }
-
         // Integrated Visual Boxes Animation
         const visualBoxes = document.querySelectorAll('.visual-box');
 
@@ -973,3 +1015,4 @@
     </script>
 </body>
 </html>
+
