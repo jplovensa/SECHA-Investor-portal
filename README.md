@@ -16,13 +16,13 @@ Use the existing isolated checkout; no Git worktree is needed. All runtime image
 - Manifesto, promised-land vision and Josephine-only founder presentation.
 - Proposed Greater Jakarta beachhead and bottom-up market model with explicitly labelled annual-volume assumptions.
 - Founder-confirmed previous backers: Antler, Startupbootcamp and BonBillo.
-- Three captures from the actual public Studio+ playground source, with keyboard-accessible selectors and a live-product link.
+- SECHA+ explained as a Sims-like renovation-concept playground, with three captures from the actual public Studio+ workspace source, with keyboard-accessible selectors and a live-product link.
 - US$10,000 minimum package value with a fixed 30% gross margin, including higher-package examples and updated annual-volume, contribution, break-even and working-capital calculations.
-- AI-generated realistic EPS-composite wall, table and partition concept; flatpack and modular assembly development specifications.
+- AI-generated SketchUp-style exploded Snap panel, EPS-core table and partition concept; a four-stage gated roadmap from material prototypes to configurable renovation packages.
 - Expandable investor FAQs and an enquiry dialog with clipboard support.
-- Downloadable seven-page investment memo with material-development imagery and specifications.
+- Downloadable eight-page investment memo with material-development imagery and specifications.
 
-The roughly eight-second Indonesia-to-Asia opening film starts on each full page load. Skip or Escape dismisses it; Pause/Resume and manual replay are available. Automatic playback is bypassed for reduced motion and Save-Data. Media failures and timeouts reveal the memo. JavaScript-disabled visitors can read the memo without the film.
+The nine-second original SECHA+ interface-motion opening film starts on each full page load. Skip or Escape dismisses it; Pause/Resume and manual replay are available. Automatic playback is bypassed for reduced motion and Save-Data. Media failures and timeouts reveal the memo. JavaScript-disabled visitors can read the memo without the film.
 
 The Studio+ captures are product evidence, not embedded operational dashboards. The portal does not process renovation orders, credit applications or enquiry submissions.
 
@@ -36,4 +36,4 @@ Use --chromium to select another binary and --artifacts to set the screenshot di
 
 See [content provenance](docs/content-notes.md), [design QA](design-qa.md) and the [editable print memo](docs/investor-brief.html).
 
-Regenerate the film with bash scripts/render-opening.sh /path/to/original/furniture-assembly.mp4 (requires ffmpeg and Python matplotlib). Use the original SECHA website source clip, not the generated output. The renderer first builds a local Natural Earth map of Asia centred on SECHA’s Jakarta origin, then dissolves into the modular assembly film.
+Regenerate the original film with `bash scripts/render-opening.sh` (requires ffmpeg, Python Playwright and `/usr/bin/chromium`). The offline renderer starts a local HTTP server, draws 216 deterministic Canvas frames and encodes a nine-second H.264 video. No website footage or external source clip is used.

@@ -1,0 +1,292 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @font-face {
+        font-family: Inter;
+        src: url("../assets/fonts/inter-500-latin.woff2");
+      }
+      body {
+        margin: 0;
+        background: #162638;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas width="960" height="540"></canvas>
+    <script>
+      const c = document.querySelector("canvas"),
+        g = c.getContext("2d");
+      const ivory = "#f4efe4",
+        bronze = "#c4a578",
+        navy = "#162638";
+      const ease = (x) => {
+        x = Math.max(0, Math.min(1, x));
+        return x * x * (3 - 2 * x);
+      };
+      function line(points, color = bronze, width = 1, fill = null) {
+        g.beginPath();
+        points.forEach((p, i) => (i ? g.lineTo(...p) : g.moveTo(...p)));
+        if (fill) {
+          g.closePath();
+          g.fillStyle = fill;
+          g.fill();
+        }
+        g.strokeStyle = color;
+        g.lineWidth = width;
+        g.stroke();
+      }
+      function text(s, x, y, size = 12, color = ivory) {
+        g.fillStyle = color;
+        g.font = `500 ${size}px Inter`;
+        g.fillText(s, x, y);
+      }
+      function box(x, y, w, h, fill, stroke = bronze) {
+        g.fillStyle = fill;
+        g.fillRect(x, y, w, h);
+        g.strokeStyle = stroke;
+        g.lineWidth = 1;
+        g.strokeRect(x, y, w, h);
+      }
+      const iso = (x, y, z = 0) => [
+        490 + (x - y) * 0.81,
+        265 + (x + y) * 0.38 - z,
+      ];
+      function slab(x, y, w, d, z, h, fill) {
+        line(
+          [
+            iso(x, y, z),
+            iso(x + w, y, z),
+            iso(x + w, y + d, z),
+            iso(x, y + d, z),
+          ],
+          bronze,
+          1.3,
+          fill,
+        );
+        line(
+          [
+            iso(x, y + d, z),
+            iso(x + w, y + d, z),
+            iso(x + w, y + d, z - h),
+            iso(x, y + d, z - h),
+          ],
+          "#806847",
+          1,
+          "#263b51",
+        );
+        line(
+          [
+            iso(x + w, y, z),
+            iso(x + w, y + d, z),
+            iso(x + w, y + d, z - h),
+            iso(x + w, y, z - h),
+          ],
+          "#806847",
+          1,
+          "#1d3044",
+        );
+      }
+      window.render = (t) => {
+        g.globalAlpha = 1;
+        g.setTransform(1, 0, 0, 1, 0, 0);
+        g.fillStyle = navy;
+        g.fillRect(0, 0, 960, 540);
+        let glow = g.createRadialGradient(510, 260, 5, 510, 260, 480);
+        glow.addColorStop(0, "#324657");
+        glow.addColorStop(1, navy);
+        g.fillStyle = glow;
+        g.fillRect(0, 0, 960, 540);
+        // A slowly travelling drafting grid anchors the continuous camera move.
+        g.globalAlpha = 0.14;
+        for (let x = -700; x < 1100; x += 45) {
+          line(
+            [
+              [x + t * 4, 540],
+              [x + 500 + t * 4, 0],
+            ],
+            "#c4a578",
+          );
+          line(
+            [
+              [x - t * 4, 0],
+              [x + 1200 - t * 4, 540],
+            ],
+            "#c4a578",
+          );
+        }
+        g.globalAlpha = 1;
+        const end = ease((t - 6) / 1.2),
+          build = ease((t - 0.4) / 1.8),
+          ui = ease((t - 2.4) / 0.6);
+        text("SECHA+", 38, 43, 18);
+        text("CONCEPT INTERFACE / ORIGINAL MOTION STUDY", 38, 65, 9, bronze);
+        text(
+          t < 2.7
+            ? "01 / IMAGINE THE SPACE"
+            : t < 6
+              ? "02 / MAKE EVERY CHOICE VISIBLE"
+              : "03 / PACKAGE THE RENOVATION",
+          38,
+          492,
+          13,
+          bronze,
+        );
+        text(
+          t < 2.7
+            ? "STARTING IN INDONESIA"
+            : t < 6
+              ? "LAYOUT  /  MATERIAL  /  COMPONENT"
+              : "ONE KIT. A REPEATABLE SYSTEM.",
+          38,
+          518,
+          10,
+        );
+        g.save();
+        g.translate(-end * 80, 8 - Math.sin(t * 0.4) * 5);
+        g.translate(490, 280);
+        g.scale(1.07 + t * 0.006 - end * 0.19, 1.07 + t * 0.006 - end * 0.19);
+        g.translate(-490, -280);
+        slab(-170, -130, 340, 260, 0, 12, "#8c806b");
+        // The room draws up from its plan. No furniture-assembly footage is used.
+        let h = 125 * build;
+        line(
+          [
+            iso(-170, 130),
+            iso(-170, -130),
+            iso(170, -130),
+            iso(170, -130, h),
+            iso(-170, -130, h),
+            iso(-170, 130, h),
+          ],
+          bronze,
+          1.5,
+          "#344454",
+        );
+        line([iso(-170, -130, h), iso(-170, -130)], bronze);
+        g.globalAlpha = build;
+        for (let x = -155; x < 165; x += 55)
+          line([iso(x, -129, 3), iso(x, -129, h - 5)], "#8e9a9f", 0.6);
+        const furniture = ease((t - 1.1) / 1.3);
+        g.globalAlpha = furniture;
+        slab(-118, -60, 106, 55, 39 * furniture, 28, "#d1c4ae");
+        slab(-118, -90, 106, 24, 62 * furniture, 40, "#ddd3c1");
+        slab(
+          35,
+          -55,
+          78,
+          52,
+          49 * furniture,
+          7,
+          t > 4.2 ? "#c4a578" : "#e5e0d6",
+        );
+        for (const [x, y] of [
+          [39, -51],
+          [104, -51],
+          [39, -12],
+          [104, -12],
+        ])
+          line([iso(x, y, 43 * furniture), iso(x, y)], ivory, 2);
+        slab(10, 69, 105, 8, 90 * furniture, 86, "#cbbda5");
+        g.globalAlpha = ui;
+        line(
+          [
+            iso(24, -66, 56),
+            iso(124, -66, 56),
+            iso(124, 8, 56),
+            iso(24, 8, 56),
+            iso(24, -66, 56),
+          ],
+          ivory,
+          1.8,
+        );
+        let pointer = iso(100, -25, 56);
+        g.fillStyle = ivory;
+        g.beginPath();
+        g.moveTo(pointer[0] + Math.sin(t * 2) * 5, pointer[1]);
+        g.lineTo(pointer[0] + 12, pointer[1] + 18);
+        g.lineTo(pointer[0] + 15, pointer[1] + 8);
+        g.closePath();
+        g.fill();
+        g.restore();
+        g.globalAlpha = ui * (1 - end);
+        box(690, 120, 224, 227, "#1b2e40", "#64717b");
+        text("YOUR ROOM, YOUR RULES.", 706, 148, 11);
+        text("MATERIAL EXPLORER", 706, 179, 9, bronze);
+        ["#eee5d5", "#c4a578", "#596a66", "#233b4c"].forEach((color, i) =>
+          box(
+            706 + i * 46,
+            193,
+            34,
+            34,
+            color,
+            t > 4.2 && i === 1 ? ivory : "#61717d",
+          ),
+        );
+        text("SNAP PANEL", 706, 258, 13);
+        text("EPS CORE / RIGID FACES", 706, 281, 9, bronze);
+        box(706, 304, 191, 26, bronze);
+        text("ADD TO CONCEPT", 739, 322, 10, navy);
+        g.globalAlpha = end;
+        box(656, 120, 258, 253, "#1b2e40", "#a18966");
+        text("RENOVATION / PACKAGED", 675, 148, 12);
+        ["SNAP PANEL", "TABLE SYSTEM", "PARTITION", "CONNECTION KIT"].forEach(
+          (s, i) => {
+            text("0" + (i + 1), 675, 184 + i * 36, 10, bronze);
+            text(s, 707, 184 + i * 36, 11);
+            line(
+              [
+                [675, 195 + i * 36],
+                [894, 195 + i * 36],
+              ],
+              "#3f5160",
+            );
+          },
+        );
+        text("CONFIGURE → SPECIFY → PACK", 675, 350, 10, bronze);
+        // Geographic ambition is typographic, without suggesting live regional coverage.
+        g.globalAlpha = ease((t - 7.1) / 0.6);
+        text("INDONESIA", 55, 148, 12, bronze);
+        line(
+          [
+            [55, 166],
+            [180, 166],
+          ],
+          bronze,
+          1.5,
+        );
+        text("ASIA", 55, 218, 43);
+        text("THE RENOVATION", 55, 246, 11);
+        text("INTERFACE", 55, 265, 11);
+        g.globalAlpha = 1;
+        line(
+          [
+            [38, 458],
+            [922, 458],
+          ],
+          "#53616a",
+          0.7,
+        );
+        line(
+          [
+            [38, 458],
+            [38 + 884 * Math.min(t / 9, 1), 458],
+          ],
+          bronze,
+          1.5,
+        );
+        // Restrained edge vignette and cinematic letterboxing.
+        let v = g.createRadialGradient(480, 270, 170, 480, 270, 580);
+        v.addColorStop(0, "#00000000");
+        v.addColorStop(1, "#020b1680");
+        g.fillStyle = v;
+        g.fillRect(0, 0, 960, 540);
+      };
+      window.render(0);
+    </script>
+  </body>
+</html>

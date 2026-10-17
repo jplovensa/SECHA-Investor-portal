@@ -1,52 +1,37 @@
-# SECHA — Indonesia-to-Asia pitch and material system QA
+# SECHA+ interface film and material-product roadmap QA
 
-Final result: passed
+Final result: passed.
 
-## Current request
+## Current scope
 
-The portal now uses a US$10,000 minimum package and a fixed 30% gross-margin pricing rule at every package value. The new film starts in Jakarta/Indonesia, shows wider Asia, and dissolves into modular assembly under the headline "The renovation interface for Asia".
+Original nine-second interface motion graphic, replacing all website furniture-assembly footage; SketchUp-style exploded material concept; GX-100 renamed to Snap panel in current portal and PDF; four-stage material-product roadmap; SECHA+ explained as a Sims-like renovation-concept playground with Studio+ as its design workspace.
 
-The physical-system narrative now covers material development, EPS-core wall panels, framed composite tables and modular partitions, flatpack packaging and modular site assembly. The founder/backer record and actual Studio+ source captures remain intact. Copy uses a direct venture-pitch approach without claiming YC/a16z affiliation.
+The US$10,000 minimum, fixed 30% gross-margin pricing policy, market assumptions, founder-only presentation, backers and actual Studio+ source captures remain consistent.
 
-## Visual and media evidence
+## Browser verification
 
-Inspected desktop/mobile covers, the geographic opening, new material concept in the page and PDF, and seven print pages with no footer collisions.
+28 checks passed using `tests/browser-qa.py`, system Chromium and axe-core 4.10.3. Coverage includes:
 
-The new photorealistic EPS/flatpack image is generated concept art, labelled as such. It depicts EPS inside rigid facings and frames, not unsupported structural foam. The development specification makes validation status clear and claims no certifications or load/performance ratings.
-
-The opening map uses bundled public-domain Natural Earth outlines, highlights Indonesia and plots Jakarta at 106.8456 E, 6.2088 S. The geographic animation expresses origin and ambition, not operating coverage. The source modular film follows through a dissolve. The final H.264 film is approximately 8.08 seconds, 960 × 540, silent, with a map-phase poster. Renderer cache configuration and asset regeneration were exercised successfully.
-
-All editable typography remains Inter and the native palette remains SECHA navy/ivory/bronze.
-
-## Browser checks
-
-26 checks passed with tests/browser-qa.py, Chromium and axe-core 4.10.3:
-
-- Memo, manifesto, Josephine-only founder, reduced-motion bypass, Inter, confirmed backers and profile link.
-- Market assumptions, promised-land and growth sections.
-- Entry-unit defaults: US$10,000 package, US$7,000 fulfilment, US$3,000 gross profit, US$2,700 illustrative contribution, eight monthly break-even jobs and US$2,000 delivery gap.
-- Higher-price test: US$20,000 price, US$14,000 fulfilment, US$6,000 gross profit and US$5,700 illustrative contribution; annual scale updates to US$200M / US$60M.
-- Below-minimum input normalises to US$10,000. Margin stays exactly 30%, with no rate input.
-- Changed acquisition/support/overhead/deposit scenarios; zero and negative contribution; no break-even when contribution is not positive.
-- Generated material image loads at its expected resolution; wall/table/partition specifications and engineering disclosure work.
-- Every chapter destination; three Studio+ capture tabs, keyboard operation, full-size image and live route.
-- Volume-calculator minimum/intermediate/maximum cases: US$10M/US$3M, US$55M/US$16.5M, US$100M/US$30M.
-- Enquiry dialogs, clipboard, Escape/focus restoration, PDF download and FAQs.
-- No horizontal overflow at 320, 390, 600, 768, 1024 and 1440px, plus functioning mobile navigation.
-- Actual muted inline film playback, pause/resume, replay, Escape, media progress, completion, refresh and Skip.
-- Rejected autoplay, unavailable media and startup-stall recovery; Save-Data and no-JavaScript fallbacks.
+- SECHA+ playground copy, four material releases and proposed-status disclosure; renamed Snap panel, loaded SketchUp-style concept and wall/table/partition specifications.
+- Price floor, higher-package prices at fixed 30% gross margin, contribution and cash sensitivities, zero/negative contribution and scale calculations.
+- Chapter links, three actual Studio+ captures, keyboard tabs, enquiries, clipboard, focus restoration, PDF download and FAQs.
+- Six responsive widths from 320 to 1440px without horizontal overflow, plus mobile navigation.
+- Original nine-second film with real playback phases: imagine in Indonesia, configure in SECHA+, package and scale to Asia. Muted inline playback, progress, pause/resume, replay, Escape, completion, refresh and Skip.
+- Blocked autoplay, unavailable media, stalled startup, reduced-motion, Save-Data and no-JavaScript access.
 - No runtime JavaScript errors, failed main-journey assets or external runtime dependencies.
 
-WCAG 2 A/AA and WCAG 2.1 AA automated scans reported no violations for Studio+ states, the mobile memo, investor enquiry and paused opening dialog. This is not a complete manual accessibility audit.
+Automated WCAG 2 A/AA and WCAG 2.1 AA scans reported zero violations across the Studio+ states, enquiry dialog, mobile memo and paused mobile opening. This is not a complete manual accessibility audit.
 
-## Print and source checks
+## Visual, media and print checks
 
-The updated PDF has seven A4 pages. All page content stays within its page and clears the footer (minimum measured clearance 24px). Text checks verify the minimum price, 70/30 split, recomputed scale figures, EPS section and confirmed backers, with prior lower pricing and excluded partner/founder material removed from current business claims.
+Inspected the original film at four and eight seconds, the opening dialog, material concept, roadmap and print pages. The deterministic Canvas renderer uses local Inter, isometric geometry, drafting-grid motion, a camera move, material swatches, cursor/selection graphics and a component manifest. It imports no website footage. Encoded media: H.264, 960 × 540, 24 fps, nine seconds, silent, fast-start. Poster sampled at four seconds.
 
-JavaScript syntax, renderer shell syntax and whitespace checks passed. The EPS image and geographic source assets are local. The optional film renderer uses Python matplotlib and ffmpeg; the application needs neither at runtime.
+The eight-page PDF includes a dedicated material roadmap. All pages remain 1122px high with no overflow and at least 24px clearance before footers. Page numbers run 01/08 to 08/08. Materials and roadmap are consistent between portal and print source. JavaScript syntax, renderer shell syntax and Git whitespace checks passed.
 
 ## Claim boundaries
 
-The pricing policy is a current founder instruction, not a restatement of historical realised margins. Contribution varies after acquisition/support while gross margin stays fixed at 30%. Market volumes and CAC/support/overhead/deposit values remain labelled modelling assumptions. US$300K remains historical company-reported project value, not revenue.
+The material render is AI-generated SketchUp-style concept art, not a native SketchUp model, completed project or engineering specification. EPS is shown within supported composite assemblies. Final performance and components need engineering and testing. Roadmap stages and release gates are proposed, with no promised dates or completed validations.
 
-The material image is a development concept, not evidence of manufacturing readiness. The source-backed Studio+ screenshots are not proof of operational quoting/lending/fulfilment integrations. The live product domain remains independently unverified because of network-policy restrictions. Prior backers are founder-confirmed; cheque sizes and instruments are not invented.
+SECHA+ is compared to The Sims for concept exploration only, without implying affiliation. Motion UI is an illustrative product thesis; current captures do not establish live concept-to-order or fulfilment integration. Indonesia-to-Asia expresses ambition, not an existing regional operating footprint.
+
+Historical US$300K remains project value, not revenue. Market job volumes and contribution/cash inputs are labelled assumptions. Current package pricing is a founder instruction, not a claim about historical realised margins. Prior backers are founder-confirmed; investment amounts and instruments are not invented.

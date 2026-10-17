@@ -104,10 +104,18 @@ with sync_playwright() as p:
     expect(page.locator("#ledger-cost")).to_have_text("− US$7,000")
     expect(page.locator("#contribution")).to_have_text("US$2,700")
     passed("US$10,000 minimum enforced; 30% gross margin stays fixed for larger packages")
+    expect(page.locator("#platform")).to_contain_text("Think The Sims")
+    expect(page.locator("#platform")).to_contain_text("SECHA+ is the renovation playground")
+    expect(page.locator(".material-stages > li")).to_have_count(4)
+    for gate in ["Prove the composite.","Make the parts compatible.","Ship one complete renovation.","Turn play into a package."]:
+        expect(page.locator(".materials-roadmap")).to_contain_text(gate)
+    expect(page.locator(".materials-roadmap")).to_contain_text("Proposed development stages")
+    assert "GX-100" not in body
+    passed("SECHA+ Sims-like concept playground and four gated material-product releases")
     page.locator(".material-concept").scroll_into_view_if_needed()
     page.wait_for_function("document.querySelector('.material-concept img').naturalWidth === 1536")
-    expect(page.locator(".material-concept")).to_contain_text("AI-generated concept study")
-    for title in ["EPS-core wall panels.","EPS-core tables.","EPS-core partitions."]:
+    expect(page.locator(".material-concept")).to_contain_text("AI-generated SketchUp-style concept")
+    for title in ["Snap panel / EPS-core walls.","EPS-core tables.","EPS-core partitions."]:
         expect(page.locator("#delivery")).to_contain_text(title)
     page.locator(".material-engineering summary").click()
     expect(page.locator(".material-engineering")).to_have_attribute("open","")
@@ -210,7 +218,12 @@ with sync_playwright() as p:
     expect(film.locator("#opening")).to_be_visible()
     film.wait_for_function("document.querySelector('#opening-video').currentTime > 0.2")
     assert film.evaluate("document.querySelector('#opening-progress').value > 0")
+    assert 8.9 <= film.locator("#opening-video").evaluate("v=>v.duration") <= 9.1
+    expect(film.locator("#opening-phase")).to_contain_text("IMAGINE")
+    expect(film.locator("#opening-phase")).to_contain_text("CONFIGURE", timeout=5000)
     film.screenshot(path=str(artifacts / "opening-desktop.png"))
+    expect(film.locator("#opening-phase")).to_contain_text("SCALE TO ASIA", timeout=5000)
+    passed("Original nine-second interface film advances from concept to configuration to Asia")
     expect(film.locator("#opening")).not_to_be_visible(timeout=11000)
     expect(film.locator("body")).not_to_have_class("opening-active")
     passed("Automatic film playback, media-tied progress and end-to-memo transition")

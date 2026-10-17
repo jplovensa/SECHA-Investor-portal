@@ -3529,3 +3529,74 @@ dialog.opening {
     font-size: 11px;
   }
 }
+
+/* Materials move through release gates before becoming a room catalogue. */
+.materials-roadmap {
+  margin-top: 72px;
+  border-top: 1px solid var(--line, #d7cfc1);
+  padding-top: 40px;
+}
+.roadmap-heading {
+  max-width: 780px;
+}
+.roadmap-heading h3 {
+  font-size: clamp(28px, 3.4vw, 46px);
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+  margin: 20px 0;
+}
+.roadmap-heading > p {
+  max-width: 660px;
+  line-height: 1.7;
+}
+.material-stages {
+  list-style: none;
+  margin: 36px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 48px;
+}
+.material-stages li {
+  border-top: 1px solid #cfc5b5;
+  padding: 30px 0;
+}
+.material-stages .mono {
+  color: #806847;
+  font-size: 11px;
+}
+.material-stages h4 {
+  font-size: 25px;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+  margin: 18px 0;
+}
+.material-stages p {
+  font-size: 14px;
+  line-height: 1.75;
+}
+.material-stages .release-gate {
+  font-size: 12px;
+  padding: 16px;
+  background: #eae3d6;
+}
+.release-gate b {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.09em;
+  margin-bottom: 7px;
+}
+.roadmap-outcome {
+  border-top: 1px solid #cfc5b5;
+  padding-top: 24px;
+  line-height: 1.8;
+  font-size: 13px;
+}
+@media (max-width: 600px) {
+  .material-stages {
+    grid-template-columns: 1fr;
+  }
+  .materials-roadmap {
+    margin-top: 44px;
+  }
+}

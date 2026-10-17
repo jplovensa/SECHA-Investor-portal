@@ -13,7 +13,7 @@ The memo and interactive model now use:
 - Gross margin is fixed, with no editable margin-rate control. The input enforces the US$10,000 floor.
 - This is the current pricing policy, not a claim that historical job margins have been audited or restated.
 
-The user also instructed that the physical system include material development, flatpack packaging and modular assembly beyond the GX-100 snap-panel narrative. EPS-core wall panels, composite table tops and framed partitions are presented as development concepts.
+The user also instructed that the physical system include material development, flatpack packaging and modular assembly beyond the previous panel narrative; the user subsequently renamed GX-100 to Snap panel. EPS-core wall panels, composite table tops and framed partitions are presented as development concepts.
 
 The requested venture-pitch tone is a writing direction only; no YC or a16z affiliation, investment or endorsement is claimed.
 
@@ -52,30 +52,25 @@ The live domain was network-blocked, so current production deployment parity is 
 
 ## Generated material-development image
 
-assets/materials/eps-flatpack-concept.png was generated with the image-generation tool specifically for this request. The original is retained at /workspace/generated_images/exec-bcb25618-f370-4c7e-8613-04c2dd2eb96f.png.
+The current visual is `assets/materials/snap-panel-sketchup-concept.png`, generated for the user's request for a SketchUp-style architectural render. Original: `/workspace/generated_images/exec-adeca3f3-b242-413e-bed4-8ca035ffc7ad.png`. It shows exploded Snap panel layers, a supported EPS-core composite tabletop, a framed partition and flatpack components. It is an AI-generated illustration with architectural edges, not an actual SketchUp model, fabrication drawing, completed build or certified product. The previous photoreal study remains in the asset history and is no longer displayed.
 
-The prompt called for a photorealistic compact Indonesian apartment/studio material study: finished wall panels, a framed table and modular partition; visible EPS cores within rigid skins, reinforced edges and frames; flatpack cartons, connectors and assembly hardware. No text, dimensions, certifications or performance claims were requested.
+EPS is an internal composite core. Final skins, cores, frames, fixings, dimensions and performance need engineering and testing. No structural, fire, acoustic or other unprovided rating is claimed.
 
-The site and print memo explicitly identify the image as an AI-generated concept study, not completed-project photography, an engineering drawing or a certified product.
+## Original interface opening film
 
-EPS is an internal composite core, not unreinforced structural legs or unsupported load-bearing foam. Final density, facings, adhesives, edge/frame design, spans, fixings and site interfaces require prototypes, engineering and applicable performance testing. No fire, structural, acoustic, moisture, environmental, weight or other unprovided performance rating is asserted.
+The website's furniture-assembly clip has been replaced completely. `scripts/opening-scene.html` draws an original cinematic Canvas motion graphic: a drafted Indonesian room concept becomes an editable SECHA+ material interface, then a component package, alongside the Indonesia-to-Asia ambition. Isometric layers, a moving drafting grid, camera drift, selection outlines, a cursor, material swatches, component rows and a vignette represent the product thesis. It is an illustrative future-facing interface study, not evidence of live integrated ordering or regional operations.
 
-## Indonesia-to-Asia opening film
+`scripts/render-opening-frames.py` starts a loopback HTTP server, loads local Inter and renders 216 deterministic frames through Playwright/Chromium. `bash scripts/render-opening.sh` encodes them using ffmpeg: nine seconds, 24 fps, H.264, 960 × 540, silent and fast-start. No website footage, external clip or image generation is used for this original vector motion study. The poster is sampled at four seconds.
 
-The new opening first plots Jakarta (106.8456 E, 6.2088 S), highlights Indonesia and shows the wider Asian geography. It then dissolves into SECHA's supplied modular assembly animation. The geographic sequence expresses origin and regional ambition, not an existing operating footprint or capital-city designation.
+Skip, Escape, Pause/Resume and replay are retained. Playback progress follows real media time. Reduced motion and Save-Data bypass automatic playback. Startup errors release the memo; startup timeout 2.5 seconds, automatic maximum 11.5 seconds. JavaScript-disabled readers see the memo.
 
-Map source: public-domain Natural Earth 1:110m country outlines:
-https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson
+## SECHA+ and material roadmap
 
-A local geometry/name-only copy is bundled in scripts/data/natural-earth-countries.geojson. Matplotlib renders 60 map frames at 24 fps using the bundled Inter font. There are no runtime map requests.
+The user requested the Sims analogy. SECHA+ is described as the renovation-concept playground, with Studio+ the design workspace. The comparison concerns arranging a room, trying materials and exploring layouts; no affiliation with The Sims or its publisher is implied. Source-capture labels remain honest about their Studio+ origin. Concept-to-kit mapping, live pricing and controlled delivery are proposed integration work, not demonstrated current features.
 
-Assembly source: assets/video/furniture-assembly.mp4 from the website revision above. The original five-second silent source is slowed to six seconds with restrained saturation, contrast and warm colour balance. The 2.5-second map and assembly are joined with a 0.45-second dissolve.
+The four material-product stages are proposed strategy with release gates, not reported delivery commitments or engineering accomplishments: material validation; a compatible/versioned component library; constrained Greater Jakarta pilot room kits; a configurable SECHA+ catalogue tied to order-ready scopes. Engineering testing, fit, cost, damage, installation time, defects and concept-to-installed reconciliation gate release. Package policy remains a US$10,000 minimum and 30% gross margin; actual pilot fulfilment costs must be validated against the 70% budget.
 
-Final movie: H.264, 960 × 540, approximately 8.08 seconds, silent, with fast-start MP4 metadata. The poster is sampled from the Indonesia map phase. scripts/render-opening.sh and scripts/render-indonesia-map.py reproduce it from the original clip.
-
-Native Inter text reads "The renovation interface for Asia" and "From the heart of Indonesia". Playback progress represents actual media time. Automatic playback starts on full loads, except reduced-motion/Save-Data preferences; Skip, Escape, Pause/Resume and replay remain available. Errors/rejected autoplay fail open. Startup timeout: 2.5 seconds. Automatic maximum: 10.5 seconds. No JavaScript leaves the memo readable.
-
-Inter and Bootstrap Icons remain self-hosted with their licenses. The renderer's Inter TTF is covered by assets/fonts/OFL.txt. Native UI uses SECHA navy #162638, ivory #f4efe4, off-white #fffdf9, bronze #806847 and light bronze #c4a578.
+Inter and icons remain local and licensed. Palette: navy #162638, ivory #f4efe4, off-white #fffdf9, bronze #806847 and light bronze #c4a578.
 
 ## Updated market and growth model
 
@@ -105,7 +100,7 @@ The cash model assumes all fulfilment is paid before final collection and no sup
 
 ## Print memo and enquiries
 
-docs/investor-brief.html generates the seven-page assets/secha-investment-memo.pdf, including the new material concept and specifications. Check page count, source text, fixed pricing, calculated scale cases and footer clearances when regenerating.
+docs/investor-brief.html generates the eight-page assets/secha-investment-memo.pdf, including the new material concept and specifications. Check page count, source text, fixed pricing, calculated scale cases and footer clearances when regenerating.
 
 The US$1M raise retains the 45/35/20 allocation. The 35% physical-system bucket is now labelled Materials & flatpack to reflect the user's broadened development scope.
 
