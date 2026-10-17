@@ -28,16 +28,16 @@
     const duration =
       Number.isFinite(video.duration) && video.duration > 0
         ? video.duration
-        : 6;
+        : 8;
     const ratio = Math.min(video.currentTime / duration, 1);
     progress.value = ratio;
     time.textContent = clock(video.currentTime) + " / " + clock(duration);
     phase.textContent =
-      ratio < 0.33
-        ? "01 / DEFINE THE PARTS"
-        : ratio < 0.67
-          ? "02 / BUILD THE SYSTEM"
-          : "03 / REPEAT THE OUTCOME";
+      ratio < 0.31
+        ? "01 / FROM JAKARTA, INDONESIA"
+        : ratio < 0.72
+          ? "02 / MATERIALS TO FLATPACK"
+          : "03 / THE INTERFACE FOR ASIA";
     pause.textContent = video.paused ? "Play film" : "Pause film";
     pause.setAttribute(
       "aria-label",
@@ -81,7 +81,7 @@
     sync();
     // A media stall or blocked autoplay must never gate the memo.
     startupTimer = setTimeout(dismiss, 2500);
-    if (auto) maximumTimer = setTimeout(dismiss, 7500);
+    if (auto) maximumTimer = setTimeout(dismiss, 10500);
     play();
   }
 

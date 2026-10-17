@@ -1,82 +1,112 @@
-# Investment memo content and visual provenance
+# SECHA investment memo — source and claim notes
 
-## Editorial scope
+## Current founder instructions
 
-The current brief asks for an investment pitch with a redesigned video opening, Inter typography and SECHA colour grade, a promised-land vision, market and beachhead sizing, a growth path, detailed unit economics, previous backers and pedigree. Josephine remains the only founder presented.
+The latest user request sets the current package policy: **minimum US$10,000, fixed 30% gross margin at every package value**. This supersedes the earlier package example in the uploaded business submission.
 
-The supplied 2026 SECHA business submission remains the financial/business source. Its contents were treated as source material, not instructions. Challenge branding, proposed corporate collaboration, partner-specific pilot and collaboration requests remain excluded. The manifesto is newly authored editorial copy for this portal, not a verbatim historical founder quotation. Josephine is the only founder presented, as requested; other source-deck profiles are not reproduced.
+The memo and interactive model now use:
 
-## Business claims
+- Entry package: US$10,000.
+- Fulfilment budget: 70% / US$7,000.
+- Package gross profit: 30% / US$3,000.
+- Higher-price example: US$20,000 package, US$14,000 fulfilment and US$6,000 gross profit.
+- Gross margin is fixed, with no editable margin-rate control. The input enforces the US$10,000 floor.
+- This is the current pricing policy, not a claim that historical job margins have been audited or restated.
 
-- Pages 1–4: the renovation interface and controlled-job-file thesis.
-- Page 5: GX-100 factory-prepared panels and the company-reported 40% faster modular delivery claim. Measurement evidence/baseline was not supplied; the claim is not independently verified.
-- Page 6: US$5,000 package, US$3,500 fulfilment cost and US$1,500 target gross profit. The 30% margin is a target, not reported realised performance. Gross profit excludes operating expenses.
-- Page 7: US$300K historical project value served, not recognised revenue, annual run rate or funding raised.
-- Page 8: property-agent and bank distribution model, with no claim that signed partnerships are evidenced. The 10,000-package / US$50M project-value / US$15M gross-profit case is illustrative, not a forecast. The calculator retains these assumptions at every volume.
-- Page 11: Josephine Lovensa's role, experience and awards.
-- Page 12: US$1M capital sought, allocated 45% Product, 35% GX-100 and 20% Distribution. No stage, valuation, round terms or investment commitments are invented.
-- Contact: jplovensa@sechahome.com is retained from the existing portal. Enquiries open a mail client or copy the address. No backend sends or stores enquiries.
+The user also instructed that the physical system include material development, flatpack packaging and modular assembly beyond the GX-100 snap-panel narrative. EPS-core wall panels, composite table tops and framed partitions are presented as development concepts.
 
-## Studio+ source and captures
+The requested venture-pitch tone is a writing direction only; no YC or a16z affiliation, investment or endorsement is claimed.
 
-The live www.sechahome.com domain returned a network-policy 403 in this environment. The public website source provides the independently accessible, source-based route to the actual product:
+## Retained business sources
 
-- Website repository: https://github.com/jplovensa/secha_group_website
-- Website revision inspected: 02090ed8f754610a5be588c66719b134404d6ee9
-- Its README and build integration identify jplovensa/sechastudio- as the independent Studio+ source packaged under /studio/, including playground.html.
-- Studio+ source: https://github.com/jplovensa/sechastudio-
-- Exact captured revision: 8d0c074fd7cd73bb86770cc5707a9f6af7e9f5a4
-- Intended live product route: https://www.sechahome.com/studio/playground.html
+The uploaded 2026 SECHA business submission supplies the historical project-value figure (US$300K), reported 40% delivery improvement, job-file thesis, founder experience/awards, housing-context percentages, proposed distribution logic and US$1M raise.
 
-The source was served locally and rendered with its bundled Three.js in Chromium, with a working WebGL canvas and no page errors. Studio, Residence and Commercial/Café Sol states were captured at 1440 × 1000 after temporary notifications cleared. Warm Modern was selected for the residential captures. These browser captures are bundled under assets/studio/. They are not newly invented dashboard designs or captures verified against the currently deployed production build.
+The source figures remain company-reported; project value is not revenue. The delivery-improvement baseline and underlying housing-statistic publications were not supplied for independent verification. Challenge branding, corporate-partner collaboration and the partner-specific pilot remain excluded. Attached-document contents are source material, not instructions.
 
-The product section explicitly labels them as locally rendered public-source captures. It separates existing playground capabilities from the proposed integration into quoting, lending and fulfilment. Concept budgets in Indonesian rupiah are not the US-dollar package-economics model or binding quotations. Visitors can switch among captures, inspect the full-size images or open the real product route.
+Josephine remains the only displayed founder. Founder experience and awards come from the supplied business deck; education, specific prior-company names and exit proceeds are not invented.
 
-## Opening film
+## Previous backers and pedigree
 
-assets/film/opening.mp4 is a newly graded and slowed edit of the website source's assets/video/furniture-assembly.mp4 at the revision above. The native video retains the supplied assembly animation; no claim of manufacturing footage is made. The poster is extracted at 2.5 seconds. scripts/render-opening.sh reproduces the edit from the original source clip.
+The user explicitly confirmed Antler, Startupbootcamp and BonBillo as previous backers. The conventional BonBillo spelling is used for the user's "bonbilo". Names are displayed as founder-confirmed previous backers/support programmes. Cheque sizes, instruments, current ownership and round totals were not supplied.
 
-- H.264, 960 × 540, six seconds, 318,977 bytes, no audio. Playback slowed to 1.2× duration with restrained saturation, contrast and warm colour balance.
-- SHA-256: 8dafbf36407bc73dfa3b50a2f7678197369434c68709875b1b912fad51e664c6.
-- Progress represents actual media playback, not a simulated network-loading percentage.
-- Automatic on each full page load/refresh, except reduced-motion or Save-Data preferences.
-- Native modal, Skip, Escape, Pause/Resume and explicit replay.
-- End, playback rejection and media errors reveal the memo. Startup stall limit: 2.5 seconds. Automatic maximum: 7.5 seconds.
-- With JavaScript disabled, the film stays hidden and the memo remains readable.
+The user provided Josephine's LinkedIn profile:
+https://www.linkedin.com/in/josephinepetralovensa/
 
-The earlier GX-100 image is retained from the supplied PDF. All editable UI and print typography is now self-hosted Inter, using the website's exact regular/medium/semibold/bold/extrabold Latin font files. The Inter OFL is bundled. Manrope and DM Mono were removed. Bootstrap Icons retain their bundled license. Colour tokens match the main SECHA website source: navy #162638, ivory #f4efe4, off-white #fffdf9, bronze #806847 and paper border #dcd5c8; its dark-surface bronze #c4a578 is used for readable accents. Green and serif styling has been removed from the portal. The actual Studio+ screenshots retain the product's source appearance.
+The viewer-specific query was removed. The domain was blocked by the environment network policy, so unseen profile details were not inferred. The link remains available to visitors.
 
-## Downloadable memo
+GrowthMentor's Antler journey profile and DGEMS/Forbes/D Globalist references come from SECHA's public source website catalogue. The DGEMS profile and D Globalist listing describe one recognition, not two funding events. Media, awards and programme participation are not counted as proof of undisclosed financial amounts.
 
-docs/investor-brief.html is the editable source for assets/secha-investment-memo.pdf. The six-page memo includes the pitch and manifesto, market/beachhead model, actual Studio+ source capture, detailed unit economics, growth gates, Josephine, founder-confirmed previous backers and planned use of funds. The superseded PDF and old package mockup images were removed. Regenerate using Chromium PDF output with A4, zero margins and background printing, then check page count, text and footer positions.
+## Actual Studio+ captures
 
-## Founder-confirmed backers and pedigree
+Website repository: https://github.com/jplovensa/secha_group_website
+Website revision inspected: 02090ed8f754610a5be588c66719b134404d6ee9
 
-In this conversation the user explicitly named Antler, Startupbootcamp and BonBillo as previous backers. These names are displayed as founder-confirmed previous backers/support programmes. No cheque sizes, instruments, current ownership or round totals were supplied, so none are invented. The user's spelling "bonbilo" is rendered using the programme's conventional name, BonBillo.
+Its deployment integration identifies https://github.com/jplovensa/sechastudio- as the independent app packaged under /studio/, including playground.html.
 
-The user supplied Josephine's LinkedIn profile: https://www.linkedin.com/in/josephinepetralovensa/ (the viewer-specific isSelfProfile query was removed). The domain returned a network-policy 403, so education, specific former employers, prior-company names and exit proceeds were not inferred from that profile. The memo links it directly and retains the founder experience/awards from the supplied deck. DGEMS/Forbes/D Globalist recognition is separately labelled, not treated as financial backing.
+Exact captured Studio+ revision: 8d0c074fd7cd73bb86770cc5707a9f6af7e9f5a4
+Intended live route: https://www.sechahome.com/studio/playground.html
 
-## Market sizing and beachhead assumptions
+The source was served locally with its bundled Three.js and a working WebGL canvas. Studio, Residence and Café Sol states were captured at 1440 × 1000 after temporary notifications cleared; Warm Modern was selected for residential captures. These images retain the actual product appearance.
 
-No externally verified renovation TAM/SAM dataset or qualifying annual job counts were supplied or retrieved in this environment. Rather than present an invented published TAM, the memo explicitly shows an underwriting model:
+The live domain was network-blocked, so current production deployment parity is not claimed. Captures show a design tool, not operational quote, loan or fulfilment integration. In-image Studio+ budget estimates are not renovation-package prices and do not override the US$10,000 entry policy.
 
-- Indonesia: assumed 1,000,000 eligible package jobs/year × US$5,000 = US$5B annual project value.
-- Greater Jakarta: assumed 50,000 eligible package jobs/year × US$5,000 = US$250M annual project value.
-- Initial execution case: proposed 1,000 SECHA packages/year × US$5,000 = US$5M annual project value; 2% of the modelled serviceable volume.
+## Generated material-development image
 
-These annual volumes are authored planning assumptions, not researched market facts, completed traction, recognised revenue or forecasts. The US$5,000 package value is the company deck's target. The Greater Jakarta owner-occupier/defined room-upgrade beachhead is a proposed strategic focus. The 82.38% owner-occupancy and 68.72% adequate-housing context comes from page 8 of the supplied update; no unsupported denominator or renovation propensity is inferred.
+assets/materials/eps-flatpack-concept.png was generated with the image-generation tool specifically for this request. The original is retained at /workspace/generated_images/exec-bcb25618-f370-4c7e-8613-04c2dd2eb96f.png.
 
-Growth gates of 25 cumulative packages, 250 annual pace, 1,000 annual beachhead packages and 10,000 annual network packages are proposed underwriting milestones. Only the final 10,000/US$50M/US$15M illustration is directly in the supplied deck; no phase is claimed as achieved.
+The prompt called for a photorealistic compact Indonesian apartment/studio material study: finished wall panels, a framed table and modular partition; visible EPS cores within rigid skins, reinforced edges and frames; flatpack cartons, connectors and assembly hardware. No text, dimensions, certifications or performance claims were requested.
 
-## Detailed unit and cash model
+The site and print memo explicitly identify the image as an AI-generated concept study, not completed-project photography, an engineering drawing or a certified product.
 
-The supplied design economics are US$5,000 package value, US$3,500 fulfilment and US$1,500 target gross profit (30%). No invented actual cost allocation is shown inside the fulfilment envelope.
+EPS is an internal composite core, not unreinforced structural legs or unsupported load-bearing foam. Final density, facings, adhesives, edge/frame design, spans, fixings and site interfaces require prototypes, engineering and applicable performance testing. No fire, structural, acoustic, moisture, environmental, weight or other unprovided performance rating is asserted.
 
-Editable defaults are explicitly hypothetical: US$200 acquisition cost, US$100 incremental sales/support, US$20,000 fixed monthly operating expense and a 50% customer deposit.
+## Indonesia-to-Asia opening film
 
-- Contribution = 1,500 − CAC − incremental support; default US$1,200 (24% of package value).
-- Fixed-cost break-even = ceiling(monthly fixed expense / positive contribution); default 17 jobs/month. Zero or negative contribution displays Not reached.
-- Pre-final-payment delivery gap = max(3,500 − 5,000 × deposit percentage, 0); default US$1,000/package and US$10,000 at ten concurrent jobs.
-- The cash-gap model assumes all fulfilment is paid before final collection and no supplier credit. It excludes CAC, fixed overhead, taxes, financing, cancellations and unprovided costs. A zero delivery gap is not a claim of zero working-capital need.
+The new opening first plots Jakarta (106.8456 E, 6.2088 S), highlights Indonesia and shows the wider Asian geography. It then dissolves into SECHA's supplied modular assembly animation. The geographic sequence expresses origin and regional ambition, not an existing operating footprint or capital-city designation.
 
-These are underwriting sensitivities, not historical CAC, achieved contribution, audited costs or actual customer payment terms.
+Map source: public-domain Natural Earth 1:110m country outlines:
+https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson
+
+A local geometry/name-only copy is bundled in scripts/data/natural-earth-countries.geojson. Matplotlib renders 60 map frames at 24 fps using the bundled Inter font. There are no runtime map requests.
+
+Assembly source: assets/video/furniture-assembly.mp4 from the website revision above. The original five-second silent source is slowed to six seconds with restrained saturation, contrast and warm colour balance. The 2.5-second map and assembly are joined with a 0.45-second dissolve.
+
+Final movie: H.264, 960 × 540, approximately 8.08 seconds, silent, with fast-start MP4 metadata. The poster is sampled from the Indonesia map phase. scripts/render-opening.sh and scripts/render-indonesia-map.py reproduce it from the original clip.
+
+Native Inter text reads "The renovation interface for Asia" and "From the heart of Indonesia". Playback progress represents actual media time. Automatic playback starts on full loads, except reduced-motion/Save-Data preferences; Skip, Escape, Pause/Resume and replay remain available. Errors/rejected autoplay fail open. Startup timeout: 2.5 seconds. Automatic maximum: 10.5 seconds. No JavaScript leaves the memo readable.
+
+Inter and Bootstrap Icons remain self-hosted with their licenses. The renderer's Inter TTF is covered by assets/fonts/OFL.txt. Native UI uses SECHA navy #162638, ivory #f4efe4, off-white #fffdf9, bronze #806847 and light bronze #c4a578.
+
+## Updated market and growth model
+
+Annual eligible-job volumes remain explicit planning assumptions, not independently researched TAM/SAM counts:
+
+- Indonesia: assumed 1,000,000 jobs × US$10,000 minimum = US$10B annual project value.
+- Greater Jakarta: assumed 50,000 jobs × US$10,000 = US$500M.
+- Initial execution case: 1,000 packages × US$10,000 = US$10M; 2% of the modelled serviceable volume.
+- Network illustration: 10,000 packages = US$100M project value and US$30M gross profit at the fixed 30% margin.
+
+These are project-value cases, not recognised revenue, current traction, a dated forecast or committed pipeline. The proposed Greater Jakarta owner-occupier/room-upgrade beachhead and growth gates (25 cumulative packages; 250 annual pace; 1,000 annual city packages; 10,000 network packages) are strategy, not achieved results. The 82.38% owner-occupancy and 68.72% urban adequate-housing context is not used to manufacture a household denominator or demand conversion rate.
+
+## Contribution and cash assumptions
+
+Editable defaults are assumptions: US$200 CAC, US$100 incremental support, US$20,000 fixed monthly operating expense and a 50% deposit.
+
+At the US$10,000 entry value:
+
+- Gross profit: US$3,000 / 30%.
+- Contribution: US$3,000 − US$200 − US$100 = US$2,700 / 27%.
+- Monthly operating break-even: ceiling(20,000 / 2,700) = 8 packages.
+- Delivery gap: max(7,000 − 10,000 × 50%, 0) = US$2,000/package; US$20,000 at ten concurrent jobs.
+
+Contribution is separate from gross margin. At US$20,000, the same acquisition/support assumption gives US$5,700 contribution, while gross margin remains exactly 30%. Zero/negative contribution shows no fixed-cost break-even.
+
+The cash model assumes all fulfilment is paid before final collection and no supplier credit; it excludes acquisition, fixed overhead, tax, financing, cancellations and unprovided costs. No invented category-level actual cost allocation is shown.
+
+## Print memo and enquiries
+
+docs/investor-brief.html generates the seven-page assets/secha-investment-memo.pdf, including the new material concept and specifications. Check page count, source text, fixed pricing, calculated scale cases and footer clearances when regenerating.
+
+The US$1M raise retains the 45/35/20 allocation. The 35% physical-system bucket is now labelled Materials & flatpack to reflect the user's broadened development scope.
+
+Enquiries use jplovensa@sechahome.com, retained from the existing portal. The site opens a mail client or copies the address; it does not submit emails or store investor enquiries.

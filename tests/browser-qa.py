@@ -49,7 +49,7 @@ with sync_playwright() as p:
     assert page.goto(base, wait_until="networkidle").status == 200
     expect(page.locator("#opening")).not_to_be_visible()
     assert not page.locator("#opening-video").get_attribute("src")
-    assert "Make renovation" in page.locator("h1").inner_text()
+    assert "The renovation" in page.locator("h1").inner_text()
     body = page.locator("body").inner_text()
     for excluded in ["Leonardi", "Co-Founder", "NTT", "RenovaCredit", "Living OS"]:
         assert excluded not in body, excluded
@@ -67,21 +67,21 @@ with sync_playwright() as p:
     expect(page.locator(".market-sizing")).to_contain_text("PLANNING ASSUMPTIONS")
     expect(page.locator(".market-sizing")).to_contain_text("not independently researched TAM/SAM")
     passed("Inter, SECHA brand, founder-confirmed backers, market assumptions and growth case")
-    expect(page.locator("#contribution")).to_have_text("US$1,200")
-    expect(page.locator("#break-even")).to_have_text("17 jobs / month")
-    expect(page.locator("#cash-gap")).to_have_text("US$1,000")
-    expect(page.locator("#concurrent-gap")).to_have_text("US$10,000")
+    expect(page.locator("#contribution")).to_have_text("US$2,700")
+    expect(page.locator("#break-even")).to_have_text("8 jobs / month")
+    expect(page.locator("#cash-gap")).to_have_text("US$2,000")
+    expect(page.locator("#concurrent-gap")).to_have_text("US$20,000")
     page.locator("#cac").fill("500")
     page.locator("#support").fill("200")
     page.locator("#fixed-opex").fill("24000")
     page.locator("#deposit").fill("70")
-    expect(page.locator("#contribution")).to_have_text("US$800")
-    expect(page.locator("#break-even")).to_have_text("30 jobs / month")
+    expect(page.locator("#contribution")).to_have_text("US$2,300")
+    expect(page.locator("#break-even")).to_have_text("11 jobs / month")
     expect(page.locator("#cash-gap")).to_have_text("US$0")
-    page.locator("#cac").fill("1500")
+    page.locator("#cac").fill("3000")
     page.locator("#support").fill("0")
     expect(page.locator("#break-even")).to_have_text("Not reached")
-    page.locator("#cac").fill("2000")
+    page.locator("#cac").fill("3500")
     expect(page.locator("#contribution")).to_have_text("-US$500")
     expect(page.locator("#break-even")).to_have_text("Not reached")
     for field,value in [("cac","200"),("support","100"),("fixed-opex","20000"),("deposit","50")]:
@@ -89,6 +89,29 @@ with sync_playwright() as p:
     page.locator(".cost-scope summary").click()
     expect(page.locator(".cost-scope")).to_have_attribute("open","")
     passed("Detailed unit economics: defaults, sensitivity, cash coverage, zero/negative contribution and cost scope")
+
+    page.locator("#package-price").fill("20000")
+    expect(page.locator("#ledger-price")).to_have_text("US$20,000")
+    expect(page.locator("#ledger-cost")).to_have_text("− US$14,000")
+    expect(page.locator("#ledger-gross")).to_have_text("US$6,000 / 30%")
+    expect(page.locator("#contribution")).to_have_text("US$5,700")
+    expect(page.locator("#project-value")).to_have_text("US$200M")
+    expect(page.locator("#gross-profit")).to_have_text("US$60M")
+    page.locator("#package-price").fill("5000")
+    page.locator("#package-price").press("Tab")
+    expect(page.locator("#package-price")).to_have_value("10000")
+    expect(page.locator("#ledger-gross")).to_have_text("US$3,000 / 30%")
+    expect(page.locator("#ledger-cost")).to_have_text("− US$7,000")
+    expect(page.locator("#contribution")).to_have_text("US$2,700")
+    passed("US$10,000 minimum enforced; 30% gross margin stays fixed for larger packages")
+    page.locator(".material-concept").scroll_into_view_if_needed()
+    page.wait_for_function("document.querySelector('.material-concept img').naturalWidth === 1536")
+    expect(page.locator(".material-concept")).to_contain_text("AI-generated concept study")
+    for title in ["EPS-core wall panels.","EPS-core tables.","EPS-core partitions."]:
+        expect(page.locator("#delivery")).to_contain_text(title)
+    page.locator(".material-engineering summary").click()
+    expect(page.locator(".material-engineering")).to_have_attribute("open","")
+    passed("Generated material concept, wall/table/partition specifications and engineering disclosure")
 
     for anchor in page.locator('a[href^="#"]').all():
         assert page.locator(anchor.get_attribute("href")).count() == 1
@@ -111,7 +134,7 @@ with sync_playwright() as p:
     assert page.locator(".studio-evidence-header>a").get_attribute("href") == "https://www.sechahome.com/studio/playground.html"
     passed("Three real Studio+ captures, full-size links, live route and keyboard tabs")
 
-    for volume, project, profit in [("1000","US$5M","US$1.5M"),("5500","US$27.5M","US$8.25M"),("10000","US$50M","US$15M")]:
+    for volume, project, profit in [("1000","US$10M","US$3M"),("5500","US$55M","US$16.5M"),("10000","US$100M","US$30M")]:
         page.locator("#packages").fill(volume)
         expect(page.locator("#project-value")).to_have_text(project)
         expect(page.locator("#gross-profit")).to_have_text(profit)
@@ -188,7 +211,7 @@ with sync_playwright() as p:
     film.wait_for_function("document.querySelector('#opening-video').currentTime > 0.2")
     assert film.evaluate("document.querySelector('#opening-progress').value > 0")
     film.screenshot(path=str(artifacts / "opening-desktop.png"))
-    expect(film.locator("#opening")).not_to_be_visible(timeout=8500)
+    expect(film.locator("#opening")).not_to_be_visible(timeout=11000)
     expect(film.locator("body")).not_to_have_class("opening-active")
     passed("Automatic film playback, media-tied progress and end-to-memo transition")
     film.reload(wait_until="domcontentloaded")

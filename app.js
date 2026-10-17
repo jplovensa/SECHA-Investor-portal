@@ -1,5 +1,16 @@
 "use strict";
 
+// Current founder-defined package policy. Gross margin has no user-editable rate.
+const PACKAGE_MINIMUM = 10000;
+const PACKAGE_GROSS_MARGIN = 0.3;
+function packageValue() {
+  const input = document.getElementById("package-price");
+  const value = input?.valueAsNumber;
+  return Number.isFinite(value)
+    ? Math.max(PACKAGE_MINIMUM, Math.min(1000000, value))
+    : PACKAGE_MINIMUM;
+}
+
 const menuToggle = document.querySelector(".menu-toggle");
 const navigation = document.querySelector("#main-nav");
 function closeMenu() {
@@ -121,10 +132,10 @@ function updateScale() {
   document.getElementById("package-count").textContent =
     count.toLocaleString("en-US");
   document.getElementById("project-value").textContent = formatMillions(
-    count * 5000,
+    count * packageValue(),
   );
   document.getElementById("gross-profit").textContent = formatMillions(
-    count * 1500,
+    count * packageValue() * PACKAGE_GROSS_MARGIN,
   );
 }
 packages.addEventListener("input", updateScale);
@@ -187,13 +198,20 @@ function updateContribution() {
   const support = modelValue("support", 5000);
   const fixed = modelValue("fixed-opex", 1000000);
   const deposit = modelValue("deposit", 100);
-  const contribution = 1500 - cac - support;
-  const cashGap = Math.max(3500 - (5000 * deposit) / 100, 0);
+  const price = packageValue();
+  const gross = price * PACKAGE_GROSS_MARGIN;
+  const fulfilment = price - gross;
+  const contribution = gross - cac - support;
+  const cashGap = Math.max(fulfilment - (price * deposit) / 100, 0);
+  document.getElementById("unit-price").textContent = usd(price);
+  document.getElementById("ledger-price").textContent = usd(price);
+  document.getElementById("ledger-cost").textContent = "− " + usd(fulfilment);
+  document.getElementById("ledger-gross").textContent = usd(gross) + " / 30%";
   const contributionOutput = document.getElementById("contribution");
   contributionOutput.textContent = usd(contribution);
   contributionOutput.classList.toggle("negative", contribution <= 0);
   document.getElementById("contribution-margin").textContent =
-    ((contribution / 5000) * 100).toFixed(1) + "% of package value";
+    ((contribution / price) * 100).toFixed(1) + "% of package value";
   document.getElementById("break-even").textContent =
     contribution > 0
       ? Math.ceil(fixed / contribution).toLocaleString("en-US") +
@@ -210,3 +228,14 @@ unitInputs.forEach((input) =>
   input.addEventListener("input", updateContribution),
 );
 updateContribution();
+
+const packagePriceInput = document.getElementById("package-price");
+packagePriceInput.addEventListener("input", () => {
+  updateScale();
+  updateContribution();
+});
+packagePriceInput.addEventListener("change", () => {
+  packagePriceInput.value = String(packageValue());
+  updateScale();
+  updateContribution();
+});

@@ -3292,3 +3292,240 @@ dialog.opening {
     transition: none !important;
   }
 }
+
+/* Material development is an investable system, not a single panel claim. */
+.material-concept {
+  background: var(--white);
+  border: 1px solid var(--paper-line);
+}
+.material-concept > img {
+  width: 100%;
+  height: auto;
+}
+.material-concept figcaption {
+  padding: 16px 22px;
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+  color: #53616e;
+  font-size: 10px;
+  line-height: 1.8;
+}
+.material-concept figcaption > span:first-child {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--bronze);
+}
+.material-specs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 35px;
+  margin-top: 40px;
+}
+.material-specs article {
+  border-top: 1px solid var(--paper-line);
+  padding-top: 23px;
+}
+.material-specs .mono {
+  font-size: 9px;
+  color: var(--bronze);
+}
+.material-specs h3 {
+  font-size: 24px;
+  line-height: 1.4;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  margin: 23px 0 15px;
+}
+.material-specs p {
+  font-size: 13px;
+  line-height: 1.9;
+  color: #53616e;
+}
+.flatpack-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 25px;
+  border-top: 1px solid #c9bda9;
+  border-bottom: 1px solid #c9bda9;
+  margin-top: 40px;
+  padding: 23px 0;
+  font-size: 12px;
+}
+.flatpack-flow b {
+  font-size: 9px;
+  color: var(--bronze);
+  margin-right: 14px;
+  font-weight: 500;
+}
+.material-thesis {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  padding-top: 35px;
+}
+.material-thesis h3 {
+  font-size: 27px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.4;
+}
+.material-thesis p {
+  font-size: 13px;
+  line-height: 1.9;
+  color: #53616e;
+}
+.material-engineering {
+  border-top: 1px solid var(--paper-line);
+  margin-top: 30px;
+  padding-top: 20px;
+}
+.material-engineering summary {
+  font-size: 11px;
+  cursor: pointer;
+}
+.material-engineering p {
+  font-size: 11px;
+  line-height: 1.9;
+  color: #53616e;
+  margin-top: 15px;
+  max-width: 1050px;
+}
+.package-total > strong {
+  font: inherit;
+}
+.package-price-control {
+  grid-column: 1/-1;
+  margin-bottom: 27px;
+}
+.package-price-control > small {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  font-size: 9px;
+  line-height: 1.8;
+  color: #53616e;
+}
+.opening-story h2 {
+  font-size: clamp(48px, 5.1vw, 76px);
+}
+.opening-story .eyebrow {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+@media (max-width: 1150px) {
+  .material-specs {
+    gap: 28px;
+  }
+  .material-specs h3 {
+    font-size: 22px;
+  }
+  .opening-story h2 {
+    font-size: 5.2vw;
+  }
+}
+@media (max-width: 800px) {
+  .material-specs {
+    gap: 23px;
+  }
+  .material-specs h3 {
+    font-size: 20px;
+  }
+  .material-specs p {
+    font-size: 12px;
+  }
+  .flatpack-flow {
+    gap: 20px;
+    font-size: 11px;
+  }
+  .flatpack-flow b {
+    display: block;
+    margin: 0 0 7px;
+  }
+  .material-thesis {
+    gap: 35px;
+  }
+  .material-thesis h3 {
+    font-size: 24px;
+  }
+  .material-thesis p {
+    font-size: 12px;
+  }
+  .opening-story h2 {
+    font-size: 43px;
+  }
+}
+@media (max-width: 600px) {
+  .material-concept figcaption {
+    display: block;
+    padding: 14px 17px;
+    font-size: 10px;
+  }
+  .material-concept figcaption > span:first-child {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 8px;
+  }
+  .material-specs {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 30px;
+  }
+  .material-specs h3 {
+    font-size: 25px;
+    margin: 18px 0 13px;
+  }
+  .material-specs p {
+    font-size: 13px;
+  }
+  .flatpack-flow {
+    grid-template-columns: 1fr 1fr;
+    gap: 23px;
+    margin-top: 30px;
+    font-size: 12px;
+  }
+  .flatpack-flow b {
+    display: inline;
+    margin: 0 10px 0 0;
+  }
+  .material-thesis {
+    grid-template-columns: 1fr;
+    gap: 23px;
+  }
+  .material-thesis h3 {
+    font-size: 27px;
+  }
+  .material-thesis p {
+    font-size: 13px;
+  }
+  .material-engineering summary {
+    font-size: 11px;
+  }
+  .material-engineering p {
+    font-size: 11px;
+  }
+  .package-price-control {
+    margin-bottom: 34px;
+  }
+  .package-price-control > small {
+    font-size: 9px;
+  }
+  .opening-story h2 {
+    font-size: 42px;
+  }
+  .opening-story .eyebrow {
+    font-size: 8px;
+  }
+}
+@media (max-width: 360px) {
+  .opening-story h2 {
+    font-size: 37px;
+  }
+  .material-specs h3 {
+    font-size: 23px;
+  }
+  .flatpack-flow {
+    font-size: 11px;
+  }
+}

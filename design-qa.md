@@ -1,49 +1,52 @@
-# SECHA investment pitch — design and functional QA
+# SECHA — Indonesia-to-Asia pitch and material system QA
 
 Final result: passed
 
-## Scope and source evidence
+## Current request
 
-This revision redesigns the film opening and investment case in the main SECHA website's Inter typography and navy/ivory/bronze palette. The memo adds a promised-land vision, a proposed Greater Jakarta beachhead, an explicit market-sizing model, detailed unit/cash sensitivities, growth gates, pedigree and founder-confirmed previous backers.
+The portal now uses a US$10,000 minimum package and a fixed 30% gross-margin pricing rule at every package value. The new film starts in Jakarta/Indonesia, shows wider Asia, and dissolves into modular assembly under the headline "The renovation interface for Asia".
 
-The user named Antler, Startupbootcamp and BonBillo in this conversation and supplied Josephine's LinkedIn profile. These are treated as founder-confirmed names, without invented cheque sizes, instruments, education or exit proceeds. Existing founder credentials come from the supplied business deck.
+The physical-system narrative now covers material development, EPS-core wall panels, framed composite tables and modular partitions, flatpack packaging and modular site assembly. The founder/backer record and actual Studio+ source captures remain intact. Copy uses a direct venture-pitch approach without claiming YC/a16z affiliation.
 
-The source-backed Studio+ captures are retained. Source revisions and the live-domain access limit are recorded in docs/content-notes.md. The current production deployment is not independently verified.
+## Visual and media evidence
 
-## Visual verification
+Inspected desktop/mobile covers, the geographic opening, new material concept in the page and PDF, and seven print pages with no footer collisions.
 
-Inspected desktop/mobile covers, the redesigned navy opening with ivory video exhibit and bronze progress, full-page captures, market and beachhead sections, detailed economics, previous backing and the six-page printable investment memo.
+The new photorealistic EPS/flatpack image is generated concept art, labelled as such. It depicts EPS inside rigid facings and frames, not unsupported structural foam. The development specification makes validation status clear and claims no certifications or load/performance ratings.
 
-All editable typography uses Inter, including headings, italic-style emphasis replacements, labels, controls and print. Main SECHA source tokens: navy #162638, ivory #f4efe4, off-white #fffdf9, bronze #806847, light bronze #c4a578 and border #dcd5c8. Previous green and serif styling is removed.
+The opening map uses bundled public-domain Natural Earth outlines, highlights Indonesia and plots Jakarta at 106.8456 E, 6.2088 S. The geographic animation expresses origin and ambition, not operating coverage. The source modular film follows through a dissolve. The final H.264 film is approximately 8.08 seconds, 960 × 540, silent, with a map-phase poster. Renderer cache configuration and asset regeneration were exercised successfully.
 
-The supplied assembly film is slowed to six seconds and regraded with restrained saturation, contrast and warm colour balance. Native UI text remains accessible, separate from the video raster. Progress is driven by actual media time.
+All editable typography remains Inter and the native palette remains SECHA navy/ivory/bronze.
 
-## Verified checks
+## Browser checks
 
-24 browser checks passed with tests/browser-qa.py and axe-core 4.10.3:
+26 checks passed with tests/browser-qa.py, Chromium and axe-core 4.10.3:
 
-- Investment memo and manifesto; Josephine-only founder presentation.
-- Inter, founder-confirmed previous backers and profile link, explicit market assumptions, promised-land and growth sections.
-- Unit model defaults, changed acquisition/support/overhead/deposit assumptions, fully deposit-covered fulfilment, zero/negative contribution, break-even handling and cost-ledger disclosure.
-- Every chapter destination; three real Studio+ capture states and keyboard tabs; full-size image and live-product routes.
-- Annual package calculator minimum, intermediate and maximum values.
-- Contact and founder enquiry, actual clipboard copying, Escape and focus restoration.
-- Real PDF download and FAQ expansion.
-- No horizontal overflow at 320, 390, 600, 768, 1024 and 1440 pixels; functioning mobile navigation.
-- Real muted inline video playback, pause/resume, manual replay, Escape, focus restoration, media-tied progress, automatic completion, refresh and Skip.
-- Rejected autoplay, unavailable media and startup-stall recovery; Save-Data and reduced-motion bypass; readable no-JavaScript fallback.
-- No runtime JavaScript errors, failed assets or external runtime dependencies in the main user journey.
+- Memo, manifesto, Josephine-only founder, reduced-motion bypass, Inter, confirmed backers and profile link.
+- Market assumptions, promised-land and growth sections.
+- Entry-unit defaults: US$10,000 package, US$7,000 fulfilment, US$3,000 gross profit, US$2,700 illustrative contribution, eight monthly break-even jobs and US$2,000 delivery gap.
+- Higher-price test: US$20,000 price, US$14,000 fulfilment, US$6,000 gross profit and US$5,700 illustrative contribution; annual scale updates to US$200M / US$60M.
+- Below-minimum input normalises to US$10,000. Margin stays exactly 30%, with no rate input.
+- Changed acquisition/support/overhead/deposit scenarios; zero and negative contribution; no break-even when contribution is not positive.
+- Generated material image loads at its expected resolution; wall/table/partition specifications and engineering disclosure work.
+- Every chapter destination; three Studio+ capture tabs, keyboard operation, full-size image and live route.
+- Volume-calculator minimum/intermediate/maximum cases: US$10M/US$3M, US$55M/US$16.5M, US$100M/US$30M.
+- Enquiry dialogs, clipboard, Escape/focus restoration, PDF download and FAQs.
+- No horizontal overflow at 320, 390, 600, 768, 1024 and 1440px, plus functioning mobile navigation.
+- Actual muted inline film playback, pause/resume, replay, Escape, media progress, completion, refresh and Skip.
+- Rejected autoplay, unavailable media and startup-stall recovery; Save-Data and no-JavaScript fallbacks.
+- No runtime JavaScript errors, failed main-journey assets or external runtime dependencies.
 
-Automated WCAG 2 A/AA and WCAG 2.1 AA scans reported no violations across all three Studio+ states, investor enquiry, mobile memo and paused opening-film dialog. Automated scans do not replace a full manual accessibility audit.
+WCAG 2 A/AA and WCAG 2.1 AA automated scans reported no violations for Studio+ states, the mobile memo, investor enquiry and paused opening dialog. This is not a complete manual accessibility audit.
 
-JavaScript syntax, renderer shell syntax, whitespace, six-page PDF count, PDF content and footer/layout checks passed. The PDF uses Inter, contains the confirmed backer names and model qualifications, and excludes the earlier partner branding and other founder profiles.
+## Print and source checks
 
-## Financial and research boundaries
+The updated PDF has seven A4 pages. All page content stays within its page and clears the footer (minimum measured clearance 24px). Text checks verify the minimum price, 70/30 split, recomputed scale figures, EPS section and confirmed backers, with prior lower pricing and excluded partner/founder material removed from current business claims.
 
-- US$300K project value is historical company-reported project value, not revenue.
-- US$5,000/US$3,500/US$1,500 and 30% margin are designed target economics, not realised results.
-- National and Greater Jakarta eligible annual job counts are explicit planning assumptions, not externally validated market research. The sizing model is annual project value, not revenue or a forecast.
-- Acquisition/support/overhead/deposit inputs are underwriting assumptions. No actual subcategory fulfilment costs are invented.
-- Growth volumes are proposed gates, not achieved traction or committed pipeline.
-- Backer names are founder-confirmed; awards/media/programme participation are not counted as funding events.
-- LinkedIn was network-blocked. The profile is linked, but unseen education/employer information was not inferred.
+JavaScript syntax, renderer shell syntax and whitespace checks passed. The EPS image and geographic source assets are local. The optional film renderer uses Python matplotlib and ffmpeg; the application needs neither at runtime.
+
+## Claim boundaries
+
+The pricing policy is a current founder instruction, not a restatement of historical realised margins. Contribution varies after acquisition/support while gross margin stays fixed at 30%. Market volumes and CAC/support/overhead/deposit values remain labelled modelling assumptions. US$300K remains historical company-reported project value, not revenue.
+
+The material image is a development concept, not evidence of manufacturing readiness. The source-backed Studio+ screenshots are not proof of operational quoting/lending/fulfilment integrations. The live product domain remains independently unverified because of network-policy restrictions. Prior backers are founder-confirmed; cheque sizes and instruments are not invented.
