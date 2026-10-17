@@ -1,6 +1,6 @@
-# SECHA Investment Memo
+# SECHA / RenovaCredit Investment Memo
 
-An investment pitch in SECHA navy, ivory and bronze, using self-hosted Inter throughout. Includes a manifesto and promised-land vision, a proposed beachhead, explicit market-sizing assumptions, actual Studio+ captures, detailed unit/cash sensitivities, growth gates, Josephine's pedigree, founder-confirmed previous backers and the US$1M raise.
+An investment pitch in SECHA navy, ivory and bronze, using self-hosted Inter throughout. Includes a manifesto and promised-land vision, a proposed beachhead, explicit market-sizing assumptions, actual Studio+ captures, detailed unit/cash sensitivities, growth gates, Josephine's pedigree, founder-confirmed previous backers and the US$1M RenovaCredit product-development raise.
 
 ## Run
 
@@ -8,19 +8,21 @@ Requires Python 3. No dependency installation, build, API keys or backend is nee
 
     python3 -m http.server 8000 --bind 0.0.0.0
 
-Use the existing isolated checkout; no Git worktree is needed. All runtime imagery, film, fonts, scripts and styles are local. External links open SECHA's Studio+ playground or the visitor's email client.
+Use the existing isolated checkout; no Git worktree is needed. All runtime imagery, film, fonts, scripts and styles are local. External links open RenovaCredit, SECHA's Studio+ playground, public company profiles or the visitor's email client.
 
 ## Experience
 
-- Memo cover and chapter index.
+- Eleven-chapter investment memo with RenovaCredit as the product line this round funds.
+- Actual RenovaCredit public-source workspace capture, workflow explanation, proposed commercial model and pilot proof points.
+- Three-package modular renovation menu with add-on modules, finish directions, component counts, fixed 70/30 cost/profit split, owner-cash funding gaps, reset and handoff to unit economics.
 - Manifesto, promised-land vision and Josephine-only founder presentation.
 - Proposed Greater Jakarta beachhead and bottom-up market model with explicitly labelled annual-volume assumptions.
 - Founder-confirmed previous backers: Antler, Startupbootcamp and BonBillo.
 - SECHA+ explained as a Sims-like renovation-concept playground, with three captures from the actual public Studio+ workspace source, with keyboard-accessible selectors and a live-product link.
 - US$10,000 minimum package value with a fixed 30% gross margin, including higher-package examples and updated annual-volume, contribution, break-even and working-capital calculations.
-- AI-generated SketchUp-style exploded Snap panel, EPS-core table and partition concept; a four-stage gated roadmap from material prototypes to configurable renovation packages.
+- SketchUp-style exploded Snap panel, EPS-core table and partition concept; a four-stage gated roadmap from material prototypes to configurable renovation packages.
 - Expandable investor FAQs and an enquiry dialog with clipboard support.
-- Downloadable eight-page investment memo with material-development imagery and specifications.
+- Downloadable ten-page investment memo with material-development imagery and specifications.
 
 The nine-second original SECHA+ interface-motion opening film starts on each full page load. Skip or Escape dismisses it; Pause/Resume and manual replay are available. Automatic playback is bypassed for reduced motion and Save-Data. Media failures and timeouts reveal the memo. JavaScript-disabled visitors can read the memo without the film.
 

@@ -51,7 +51,7 @@ with sync_playwright() as p:
     assert not page.locator("#opening-video").get_attribute("src")
     assert "The renovation" in page.locator("h1").inner_text()
     body = page.locator("body").inner_text()
-    for excluded in ["Leonardi", "Co-Founder", "NTT", "RenovaCredit", "Living OS"]:
+    for excluded in ["Leonardi", "Co-Founder", "NTT", "Living OS"]:
         assert excluded not in body, excluded
     assert page.locator("#founder h2").inner_text().replace("\n"," ") == "Josephine Lovensa."
     expect(page.locator("#manifesto")).to_contain_text("Freedom in the choices.")
@@ -112,9 +112,48 @@ with sync_playwright() as p:
     expect(page.locator(".materials-roadmap")).to_contain_text("Proposed development stages")
     assert "GX-100" not in body
     passed("SECHA+ Sims-like concept playground and four gated material-product releases")
+    expect(page.locator("#renovacredit")).to_contain_text("THE PRODUCT WE ARE RAISING FOR")
+    expect(page.locator("#investment")).to_contain_text("Fund RenovaCredit.")
+    expect(page.locator("#renovacredit a").first).to_have_attribute("href","https://jplovensa.github.io/SECHA-Credit-Engine/")
+    page.locator(".credit-capture").scroll_into_view_if_needed()
+    page.wait_for_function("document.querySelector('.credit-capture img').naturalWidth === 1440")
+    assert "AI-generated" not in body
+    passed("RenovaCredit fundraising line, source capture, product link and requested material caption")
+    for package, price, profit in [("refresh","US$10,000","US$3,000"),("livework","US$15,000","US$4,500"),("studio","US$20,000","US$6,000")]:
+        page.locator(f'input[name="renovation-package"][value="{package}"]').check()
+        expect(page.locator("#menu-total")).to_have_text(price)
+        expect(page.locator("#menu-profit")).to_have_text(profit)
+    page.locator('input[name="renovation-package"][value="livework"]').check()
+    page.locator("#menu-panels").select_option("1")
+    page.locator("#menu-tables").select_option("1")
+    page.locator("#menu-finish").select_option("bronze")
+    expect(page.locator("#menu-total")).to_have_text("US$19,500")
+    expect(page.locator("#menu-cost")).to_have_text("US$13,650")
+    expect(page.locator("#menu-profit")).to_have_text("US$5,850")
+    expect(page.locator("#menu-components")).to_have_text("16 Snap panels · 2 tables · 1 partition")
+    expect(page.locator("#menu-gap")).to_have_text("US$9,750")
+    expect(page.locator("#menu-development")).to_contain_text("tip-over trials")
+    expect(page.locator("#menu-packet")).to_contain_text("US$9,750 uncommitted gap")
+    for cash,gap in [("0","US$19,500"),("100","US$0")]:
+        page.locator("#menu-cash").fill(cash)
+        expect(page.locator("#menu-gap")).to_have_text(gap)
+    page.locator("#menu-partitions").select_option("2")
+    expect(page.locator("#menu-total")).to_have_text("US$22,500")
+    expect(page.locator("#menu-components")).to_contain_text("3 partitions")
+    audit(page,"Configured renovation menu")
+    page.locator("#menu-use-economics").click()
+    expect(page.locator("#package-price")).to_have_value("22500")
+    expect(page.locator("#ledger-gross")).to_have_text("US$6,750 / 30%")
+    page.locator(".menu-reset").click()
+    expect(page.locator("#menu-total")).to_have_text("US$10,000")
+    expect(page.locator("#menu-gap")).to_have_text("US$5,000")
+    expect(page.locator("#menu-components")).to_have_text("8 Snap panels · 1 table · 0 partitions")
+    assert "Partition:" not in page.locator("#menu-development").inner_text()
+    page.locator("#package-price").fill("10000")
+    passed("Three menu packages, modules, finish, 70/30 costs, owner-cash extremes, material requirements, reset and unit-model handoff")
     page.locator(".material-concept").scroll_into_view_if_needed()
     page.wait_for_function("document.querySelector('.material-concept img').naturalWidth === 1536")
-    expect(page.locator(".material-concept")).to_contain_text("AI-generated SketchUp-style concept")
+    expect(page.locator(".material-concept")).to_contain_text("Material development concept")
     for title in ["Snap panel / EPS-core walls.","EPS-core tables.","EPS-core partitions."]:
         expect(page.locator("#delivery")).to_contain_text(title)
     page.locator(".material-engineering summary").click()

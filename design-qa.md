@@ -1,37 +1,40 @@
-# SECHA+ interface film and material-product roadmap QA
+# SECHA / RenovaCredit fundraising memo QA
 
 Final result: passed.
 
 ## Current scope
 
-Original nine-second interface motion graphic, replacing all website furniture-assembly footage; SketchUp-style exploded material concept; GX-100 renamed to Snap panel in current portal and PDF; four-stage material-product roadmap; SECHA+ explained as a Sims-like renovation-concept playground with Studio+ as its design workspace.
+RenovaCredit is now the product line this US$1M raise funds. The memo connects SECHA+ concept development, a modular renovation menu, physical delivery and the project/finance workflow. Original copy explains the problem, initial customer set, proposed commercial model, proof points and use of capital without implying YC/a16z endorsement.
 
-The US$10,000 minimum, fixed 30% gross-margin pricing policy, market assumptions, founder-only presentation, backers and actual Studio+ source captures remain consistent.
+The menu has three illustrative packages at US$10K, US$15K and US$20K. Panels, tables, partitions, finish direction and owner cash can be changed. Component counts, 70% fulfilment budget, fixed 30% gross profit, uncommitted funding gap, development needs and proposed RenovaCredit handoff update together. The selected price can be sent to the unit model. No order, credit application or data transmission occurs.
+
+Visible material captions now say “Material development concept,” as requested, while preserving the distinction from a completed project or engineering drawing. Source provenance remains in the content notes. The stale US$2M allocation heading was corrected to the existing US$1M round and US$450K/350K/200K amounts.
 
 ## Browser verification
 
-28 checks passed using `tests/browser-qa.py`, system Chromium and axe-core 4.10.3. Coverage includes:
+31 checks passed using `tests/browser-qa.py`, system Chromium and axe-core 4.10.3, including:
 
-- SECHA+ playground copy, four material releases and proposed-status disclosure; renamed Snap panel, loaded SketchUp-style concept and wall/table/partition specifications.
-- Price floor, higher-package prices at fixed 30% gross margin, contribution and cash sensitivities, zero/negative contribution and scale calculations.
-- Chapter links, three actual Studio+ captures, keyboard tabs, enquiries, clipboard, focus restoration, PDF download and FAQs.
-- Six responsive widths from 320 to 1440px without horizontal overflow, plus mobile navigation.
-- Original nine-second film with real playback phases: imagine in Indonesia, configure in SECHA+, package and scale to Asia. Muted inline playback, progress, pause/resume, replay, Escape, completion, refresh and Skip.
-- Blocked autoplay, unavailable media, stalled startup, reduced-motion, Save-Data and no-JavaScript access.
+- RenovaCredit fundraising position, correct product URL and loaded actual-source workspace capture.
+- Three package bases; module/finish changes; component counts; fixed gross margin; 0%/100% owner-cash cases; context-dependent development needs and funding record.
+- Configured Live + Work case: US$19,500 total, US$13,650 fulfilment, US$5,850 gross profit and US$9,750 gap at 50% owner cash.
+- Added partition modules, unit-model handoff, package reset and live status announcements. Reset timing was fixed so the display recalculates after native form controls reset.
+- Existing price floor, higher-package margins, contribution/cash sensitivities, volume cases, zero/negative contribution, chapter navigation, source-backed Studio+ tabs, enquiry/clipboard/focus, download and FAQs.
+- No horizontal overflow at 320, 390, 600, 768, 1024 and 1440px; functioning mobile navigation.
+- Nine-second original opening-film playback, phases, pause/resume, replay, completion, refresh, Skip/Escape and reduced-motion/Save-Data/no-JavaScript/media-failure fallbacks.
 - No runtime JavaScript errors, failed main-journey assets or external runtime dependencies.
 
-Automated WCAG 2 A/AA and WCAG 2.1 AA scans reported zero violations across the Studio+ states, enquiry dialog, mobile memo and paused mobile opening. This is not a complete manual accessibility audit.
+Automated WCAG 2 A/AA and WCAG 2.1 AA scans found zero violations across the configured menu, Studio+ states, enquiry, mobile memo and opening dialog. Dark-section text and light-section disclosures were adjusted after contrast checks. This is not a complete manual accessibility audit.
 
-## Visual, media and print checks
+## Visual and print checks
 
-Inspected the original film at four and eight seconds, the opening dialog, material concept, roadmap and print pages. The deterministic Canvas renderer uses local Inter, isometric geometry, drafting-grid motion, a camera move, material swatches, cursor/selection graphics and a component manifest. It imports no website footage. Encoded media: H.264, 960 × 540, 24 fps, nine seconds, silent, fast-start. Poster sampled at four seconds.
+Reviewed desktop credit/product and menu states, mobile menu, and the print cover, RenovaCredit and package-menu pages. The final PDF has ten A4 pages, sequential 01/10–10/10 footers, no page overflow and a minimum rounded 35px footer clearance. The downloaded PDF is byte-identical to the final asset. Text checks confirm RenovaCredit, configured menu amounts, Snap panel and material-development requirements, with no visible generated-image label.
 
-The eight-page PDF includes a dedicated material roadmap. All pages remain 1122px high with no overflow and at least 24px clearance before footers. Page numbers run 01/08 to 08/08. Materials and roadmap are consistent between portal and print source. JavaScript syntax, renderer shell syntax and Git whitespace checks passed.
+JavaScript syntax, shell syntax and Git whitespace checks passed. All runtime assets remain local. The preview server runs on port 8000.
 
 ## Claim boundaries
 
-The material render is AI-generated SketchUp-style concept art, not a native SketchUp model, completed project or engineering specification. EPS is shown within supported composite assemblies. Final performance and components need engineering and testing. Roadmap stages and release gates are proposed, with no promised dates or completed validations.
+RenovaCredit is a public-source interactive demonstration with fictional cases. The local capture does not prove live lending, document verification, partner contracts, loan performance or current production deployment parity. The GitHub Pages host was blocked by environment policy, so the public repository was reviewed and rendered locally; revision and URL are recorded in `docs/content-notes.md`.
 
-SECHA+ is compared to The Sims for concept exploration only, without implying affiliation. Motion UI is an illustrative product thesis; current captures do not establish live concept-to-order or fulfilment integration. Indonesia-to-Asia expresses ambition, not an existing regional operating footprint.
+Workflow subscription/per-case fees are proposed commercial tests, not confirmed revenue. Project-value scenarios are renovation context, not software TAM or loan assets. The current 30% package gross-margin rule is founder-defined, not a historical audited result. US$300K remains historical project value.
 
-Historical US$300K remains project value, not revenue. Market job volumes and contribution/cash inputs are labelled assumptions. Current package pricing is a founder instruction, not a claim about historical realised margins. Prior backers are founder-confirmed; investment amounts and instruments are not invented.
+Menu scopes, quantities and add-on prices are illustrative assumptions. Final engineering, supplier costs, site conditions, tax, scope exclusions and quotations require validation. A package funding gap is not a loan offer or the unit model's operating cash gap. Material concepts and roadmap gates do not imply certifications or completed manufacturing readiness.

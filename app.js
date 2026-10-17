@@ -239,3 +239,94 @@ packagePriceInput.addEventListener("change", () => {
   updateScale();
   updateContribution();
 });
+
+// A local package-menu simulation. No customer or financing data is submitted.
+const renovationMenu = document.getElementById("package-menu-form");
+const menuPackages = {
+  refresh: {
+    name: "Room Refresh",
+    price: 10000,
+    panels: 8,
+    tables: 1,
+    partitions: 0,
+  },
+  livework: {
+    name: "Live + Work",
+    price: 15000,
+    panels: 12,
+    tables: 1,
+    partitions: 1,
+  },
+  studio: {
+    name: "Studio Reset",
+    price: 20000,
+    panels: 16,
+    tables: 2,
+    partitions: 2,
+  },
+};
+function configuredPackage() {
+  const selected = renovationMenu.querySelector(
+    'input[name="renovation-package"]:checked',
+  ).value;
+  const base = menuPackages[selected];
+  const panelSets = Number(document.getElementById("menu-panels").value);
+  const tables = Number(document.getElementById("menu-tables").value);
+  const partitions = Number(document.getElementById("menu-partitions").value);
+  const accent = document.getElementById("menu-finish").value === "bronze";
+  return {
+    name: base.name,
+    price:
+      base.price +
+      panelSets * 2000 +
+      (tables + partitions) * 1500 +
+      (accent ? 1000 : 0),
+    panels: base.panels + panelSets * 4,
+    tables: base.tables + tables,
+    partitions: base.partitions + partitions,
+  };
+}
+function updatePackageMenu() {
+  const kit = configuredPackage();
+  const cashPercent = Number(document.getElementById("menu-cash").value);
+  const cash = (kit.price * cashPercent) / 100;
+  document.getElementById("menu-status").textContent =
+    `${kit.name}, ${usd(kit.price)}, fixed 30% gross margin, ${usd(kit.price - cash)} uncommitted funding gap.`;
+  document.getElementById("menu-name").textContent = kit.name;
+  document.getElementById("menu-total").textContent = usd(kit.price);
+  document.getElementById("menu-components").textContent =
+    `${kit.panels} Snap panels · ${kit.tables} ${kit.tables === 1 ? "table" : "tables"} · ${kit.partitions} ${kit.partitions === 1 ? "partition" : "partitions"}`;
+  document.getElementById("menu-cost").textContent = usd(
+    kit.price * (1 - PACKAGE_GROSS_MARGIN),
+  );
+  document.getElementById("menu-profit").textContent = usd(
+    kit.price * PACKAGE_GROSS_MARGIN,
+  );
+  document.getElementById("menu-cash-output").textContent =
+    `${cashPercent}% · ${usd(cash)}`;
+  document.getElementById("menu-gap").textContent = usd(kit.price - cash);
+  document.getElementById("menu-packet").textContent =
+    `${kit.name} · ${usd(kit.price)} scope · ${usd(cash)} owner cash · ${usd(kit.price - cash)} uncommitted gap.`;
+  document.getElementById("menu-development").textContent =
+    `Snap panel: core/skin bonding, edge connections and ${kit.panels}-panel component scheduling. Table: load-path, fixing and frame trials for ${kit.tables} ${kit.tables === 1 ? "kit" : "kits"}. ` +
+    (kit.partitions
+      ? `Partition: base stability, joints and tip-over trials for ${kit.partitions} ${kit.partitions === 1 ? "kit" : "kits"}. `
+      : "") +
+    "Shared: finish validation, packed-kit protection, installation sequence and component traceability.";
+}
+renovationMenu.addEventListener("input", updatePackageMenu);
+renovationMenu.addEventListener("change", updatePackageMenu);
+renovationMenu.addEventListener("submit", (event) => event.preventDefault());
+renovationMenu.addEventListener("reset", () =>
+  setTimeout(updatePackageMenu, 0),
+);
+document.getElementById("menu-use-economics").addEventListener("click", () => {
+  packagePriceInput.value = String(configuredPackage().price);
+  updateScale();
+  updateContribution();
+  document
+    .getElementById("economics")
+    .scrollIntoView({ behavior: "auto", block: "start" });
+  packagePriceInput.focus({ preventScroll: true });
+});
+updatePackageMenu();

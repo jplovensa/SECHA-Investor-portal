@@ -2,7 +2,7 @@
 
 ## Current founder instructions
 
-The latest user request sets the current package policy: **minimum US$10,000, fixed 30% gross margin at every package value**. This supersedes the earlier package example in the uploaded business submission.
+The package policy remains: **minimum US$10,000, fixed 30% gross margin at every package value**. This supersedes the earlier package example in the uploaded business submission.
 
 The memo and interactive model now use:
 
@@ -100,8 +100,26 @@ The cash model assumes all fulfilment is paid before final collection and no sup
 
 ## Print memo and enquiries
 
-docs/investor-brief.html generates the eight-page assets/secha-investment-memo.pdf, including the new material concept and specifications. Check page count, source text, fixed pricing, calculated scale cases and footer clearances when regenerating.
+docs/investor-brief.html generates the ten-page assets/secha-investment-memo.pdf, including the new material concept and specifications. Check page count, source text, fixed pricing, calculated scale cases and footer clearances when regenerating.
 
-The US$1M raise retains the 45/35/20 allocation. The 35% physical-system bucket is now labelled Materials & flatpack to reflect the user's broadened development scope.
+The US$1M raise retains the 45/35/20 allocation: US$450K RenovaCredit product, US$350K Materials & flatpack, US$200K Pilot & partner development. A stale US$2,000,000 allocation heading was corrected to match the existing US$1M raise and allocation amounts. This is product-development capital, distinct from any future lending facility.
 
 Enquiries use jplovensa@sechahome.com, retained from the existing portal. The site opens a mail client or copies the address; it does not submit emails or store investor enquiries.
+
+## RenovaCredit product line and latest memo revision
+
+The latest user explicitly restored RenovaCredit as the product line the company is raising for, superseding the earlier removal. Requested URL: https://jplovensa.github.io/SECHA-Credit-Engine/. Direct GitHub Pages access was blocked by environment network policy. The public repository was read through the allowed GitHub host: https://github.com/jplovensa/SECHA-Credit-Engine, revision `eb2de3f2506bdfd95f9b682ebd7a8f372f9da538`. Current deployment parity is not claimed.
+
+The source describes an interactive demonstration of source-linked scope/RAB review, versioned budgets, evidence, owner consent, funding gaps, separate claim certification/authorization/payment/reconciliation and a Renovation Passport. It uses fictional records and no live bank connection, document verification or money movement. `assets/credit/renovacredit-workspace.webp` captures that actual source rendered locally at 1440 × 1000. No sample case totals are represented as company traction, funded volume, customers or loan performance.
+
+The commercial model (workflow subscription or per-case processing, initially for renovation operators managing repeated cases and financing handoffs) is a proposed pilot hypothesis, not a confirmed business contract or fee schedule. Market values describe renovation project throughput; RenovaCredit revenue and credit assets are not inferred from them. No lending margin, take rate, approval rate, default rate or committed financing partner is invented. The memo uses original copy with venture-investor clarity; it claims no YC/a16z affiliation, support or endorsement.
+
+## Package menu and development requirements
+
+The new menu is a local investor simulation. Base scopes: Room Refresh US$10K / 8 panels + 1 table; Live + Work US$15K / 12 panels + 1 table + 1 partition; Studio Reset US$20K / 16 panels + 2 tables + 2 partitions. Add 4 panels for US$2K, a table or partition kit for US$1.5K, or a bronze finish direction for US$1K. These counts and add-on amounts are explicit illustrative design assumptions, not sourced dimensions, certified engineering, validated supplier quotes or purchasable offers.
+
+Every combination applies the existing 30% gross-margin rule (70% fulfilment budget). Owner cash is selectable from 0–100%; package price less cash is the uncommitted gap, with no loan commitment, interest or finance fee assumed. It is distinct from the operating cash-gap calculation in the unit model. The handoff copies only the selected package price to the model; it does not transmit data to RenovaCredit or create an application. Reset restores Room Refresh, no additions, ivory finish and 50% cash. Simulation state is not persisted or sent externally.
+
+Material-development needs cover core/skin bonding, edges and connections, composite tops and frames, partition stability, applicable performance tests, batch/tolerance controls, transit protection, assembly and actual cost capture. Counts in the simulator do not define panel dimensions or finished room area; site surveys, exclusions, tax and engineering remain necessary. Structural alterations, major MEP and permit work are outside the example menu.
+
+The user requested removal of the generated-image label. Public captions now read “Material development concept” and retain the distinction from completed builds and engineering drawings. Image provenance remains recorded in these source notes; the image is not represented as completed construction or an actual editable SketchUp file.
