@@ -28,16 +28,16 @@
     const duration =
       Number.isFinite(video.duration) && video.duration > 0
         ? video.duration
-        : 5;
+        : 6;
     const ratio = Math.min(video.currentTime / duration, 1);
     progress.value = ratio;
     time.textContent = clock(video.currentTime) + " / " + clock(duration);
     phase.textContent =
       ratio < 0.33
-        ? "01 / SET THE FOUNDATION"
+        ? "01 / DEFINE THE PARTS"
         : ratio < 0.67
-          ? "02 / BRING THE PARTS TOGETHER"
-          : "03 / MAKE ROOM FOR LIVING";
+          ? "02 / BUILD THE SYSTEM"
+          : "03 / REPEAT THE OUTCOME";
     pause.textContent = video.paused ? "Play film" : "Pause film";
     pause.setAttribute(
       "aria-label",

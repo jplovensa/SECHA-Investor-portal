@@ -1,39 +1,49 @@
-# SECHA investment memo — design and functional QA
+# SECHA investment pitch — design and functional QA
 
 Final result: passed
 
-## Reference and scope
+## Scope and source evidence
 
-The requested revision converts the portal into an investment memo with a manifesto, presents Josephine as the only founder, replaces the hypothetical product mockup with actual Studio+ source captures, and adds a video opening.
+This revision redesigns the film opening and investment case in the main SECHA website's Inter typography and navy/ivory/bronze palette. The memo adds a promised-land vision, a proposed Greater Jakarta beachhead, an explicit market-sizing model, detailed unit/cash sensitivities, growth gates, pedigree and founder-confirmed previous backers.
 
-Source evidence is the supplied business update and the actual public Studio+ code at revision 8d0c074fd7cd73bb86770cc5707a9f6af7e9f5a4. The website's deployment integration identifies that repository and the /studio/playground.html route. The live domain is blocked by this environment's network policy; production deployment parity is not claimed. See docs/content-notes.md for exact sources and media provenance.
+The user named Antler, Startupbootcamp and BonBillo in this conversation and supplied Josephine's LinkedIn profile. These are treated as founder-confirmed names, without invented cheque sizes, instruments, education or exit proceeds. Existing founder credentials come from the supplied business deck.
+
+The source-backed Studio+ captures are retained. Source revisions and the live-domain access limit are recorded in docs/content-notes.md. The current production deployment is not independently verified.
 
 ## Visual verification
 
-Inspected the source playground in Studio, Residence and Commercial states; the memo cover, manifesto, product chapter and founder chapter; desktop and mobile page captures; the opening-film state; and the three-page printable memo.
+Inspected desktop/mobile covers, the redesigned navy opening with ivory video exhibit and bronze progress, full-page captures, market and beachhead sections, detailed economics, previous backing and the six-page printable investment memo.
 
-The product chapter preserves the actual app's layout, controls and 3D scene through screenshots. Its own tab controls and full-size links work; a separate action opens the real playground. The authored manifesto is presented as editorial copy, not a historical founder quotation.
+All editable typography uses Inter, including headings, italic-style emphasis replacements, labels, controls and print. Main SECHA source tokens: navy #162638, ivory #f4efe4, off-white #fffdf9, bronze #806847, light bronze #c4a578 and border #dcd5c8. Previous green and serif styling is removed.
 
-## Browser verification
+The supplied assembly film is slowed to six seconds and regraded with restrained saturation, contrast and warm colour balance. Native UI text remains accessible, separate from the video raster. Progress is driven by actual media time.
 
-22 checks passed with tests/browser-qa.py in Chromium:
+## Verified checks
 
-- Memo, manifesto, Josephine-only founder, reduced-motion bypass and all chapter destinations.
-- Three real source captures, selected states, accessible tab keys, full-size image links and live route.
-- Calculator minimum, intermediate and maximum values.
-- Investor enquiry and founder contact, actual clipboard copying, Escape and focus restoration.
+24 browser checks passed with tests/browser-qa.py and axe-core 4.10.3:
+
+- Investment memo and manifesto; Josephine-only founder presentation.
+- Inter, founder-confirmed previous backers and profile link, explicit market assumptions, promised-land and growth sections.
+- Unit model defaults, changed acquisition/support/overhead/deposit assumptions, fully deposit-covered fulfilment, zero/negative contribution, break-even handling and cost-ledger disclosure.
+- Every chapter destination; three real Studio+ capture states and keyboard tabs; full-size image and live-product routes.
+- Annual package calculator minimum, intermediate and maximum values.
+- Contact and founder enquiry, actual clipboard copying, Escape and focus restoration.
 - Real PDF download and FAQ expansion.
-- No horizontal overflow at 320, 390, 600, 768, 1024 and 1440px; working mobile navigation.
-- Video playback, muted/inline mode, pause/resume, manual replay, Escape and focus restoration.
-- Automatic playback and end-to-memo transition, real media-tied progress, refresh replay and Skip.
-- Recovery from rejected autoplay, unavailable media and stalled startup.
-- Save-Data bypass and readable no-JavaScript fallback.
-- No runtime JavaScript errors, failed page assets or external runtime dependencies in the main user journey.
+- No horizontal overflow at 320, 390, 600, 768, 1024 and 1440 pixels; functioning mobile navigation.
+- Real muted inline video playback, pause/resume, manual replay, Escape, focus restoration, media-tied progress, automatic completion, refresh and Skip.
+- Rejected autoplay, unavailable media and startup-stall recovery; Save-Data and reduced-motion bypass; readable no-JavaScript fallback.
+- No runtime JavaScript errors, failed assets or external runtime dependencies in the main user journey.
 
-axe-core 4.10.3 reported no WCAG 2 A/AA or WCAG 2.1 AA violations for all three Studio+ states, the mobile memo, investor enquiry dialog and paused opening-film dialog.
+Automated WCAG 2 A/AA and WCAG 2.1 AA scans reported no violations across all three Studio+ states, investor enquiry, mobile memo and paused opening-film dialog. Automated scans do not replace a full manual accessibility audit.
 
-JavaScript syntax, whitespace, PDF page count and extracted-content checks passed. The three-page PDF contains only Josephine's founder profile, the intended business facts and no excluded partner branding. Automated accessibility scans are not a full manual audit.
+JavaScript syntax, renderer shell syntax, whitespace, six-page PDF count, PDF content and footer/layout checks passed. The PDF uses Inter, contains the confirmed backer names and model qualifications, and excludes the earlier partner branding and other founder profiles.
 
-## Boundaries
+## Financial and research boundaries
 
-Current production deployment parity is unverified because the live domain is network-blocked. All product rendering evidence was captured from the exact public source identified by the website's deployment integration. The portal was validated locally and was not deployed. Company financial claims remain unverified; target margins and illustrative scale cases remain labelled.
+- US$300K project value is historical company-reported project value, not revenue.
+- US$5,000/US$3,500/US$1,500 and 30% margin are designed target economics, not realised results.
+- National and Greater Jakarta eligible annual job counts are explicit planning assumptions, not externally validated market research. The sizing model is annual project value, not revenue or a forecast.
+- Acquisition/support/overhead/deposit inputs are underwriting assumptions. No actual subcategory fulfilment costs are invented.
+- Growth volumes are proposed gates, not achieved traction or committed pipeline.
+- Backer names are founder-confirmed; awards/media/programme participation are not counted as funding events.
+- LinkedIn was network-blocked. The profile is linked, but unseen education/employer information was not inferred.

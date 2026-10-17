@@ -49,13 +49,46 @@ with sync_playwright() as p:
     assert page.goto(base, wait_until="networkidle").status == 200
     expect(page.locator("#opening")).not_to_be_visible()
     assert not page.locator("#opening-video").get_attribute("src")
-    assert "Better spaces." in page.locator("h1").inner_text()
+    assert "Make renovation" in page.locator("h1").inner_text()
     body = page.locator("body").inner_text()
     for excluded in ["Leonardi", "Co-Founder", "NTT", "RenovaCredit", "Living OS"]:
         assert excluded not in body, excluded
     assert page.locator("#founder h2").inner_text().replace("\n"," ") == "Josephine Lovensa."
     expect(page.locator("#manifesto")).to_contain_text("Freedom in the choices.")
     passed("Memo, manifesto, Josephine-only founder and reduced-motion bypass")
+
+    assert page.locator("body").evaluate("(el)=>getComputedStyle(el).fontFamily.startsWith('Inter')")
+    assert page.locator("h1 em").evaluate("(el)=>getComputedStyle(el).fontFamily.startsWith('Inter')")
+    for name in ["Antler", "Startupbootcamp", "BonBillo"]:
+        expect(page.locator(".backer-strip")).to_contain_text(name)
+    assert page.locator(".founder-profile-link").get_attribute("href") == "https://www.linkedin.com/in/josephinepetralovensa/"
+    for section in ["market","promised-land","growth"]:
+        expect(page.locator("#"+section)).to_be_visible()
+    expect(page.locator(".market-sizing")).to_contain_text("PLANNING ASSUMPTIONS")
+    expect(page.locator(".market-sizing")).to_contain_text("not independently researched TAM/SAM")
+    passed("Inter, SECHA brand, founder-confirmed backers, market assumptions and growth case")
+    expect(page.locator("#contribution")).to_have_text("US$1,200")
+    expect(page.locator("#break-even")).to_have_text("17 jobs / month")
+    expect(page.locator("#cash-gap")).to_have_text("US$1,000")
+    expect(page.locator("#concurrent-gap")).to_have_text("US$10,000")
+    page.locator("#cac").fill("500")
+    page.locator("#support").fill("200")
+    page.locator("#fixed-opex").fill("24000")
+    page.locator("#deposit").fill("70")
+    expect(page.locator("#contribution")).to_have_text("US$800")
+    expect(page.locator("#break-even")).to_have_text("30 jobs / month")
+    expect(page.locator("#cash-gap")).to_have_text("US$0")
+    page.locator("#cac").fill("1500")
+    page.locator("#support").fill("0")
+    expect(page.locator("#break-even")).to_have_text("Not reached")
+    page.locator("#cac").fill("2000")
+    expect(page.locator("#contribution")).to_have_text("-US$500")
+    expect(page.locator("#break-even")).to_have_text("Not reached")
+    for field,value in [("cac","200"),("support","100"),("fixed-opex","20000"),("deposit","50")]:
+        page.locator("#"+field).fill(value)
+    page.locator(".cost-scope summary").click()
+    expect(page.locator(".cost-scope")).to_have_attribute("open","")
+    passed("Detailed unit economics: defaults, sensitivity, cash coverage, zero/negative contribution and cost scope")
 
     for anchor in page.locator('a[href^="#"]').all():
         assert page.locator(anchor.get_attribute("href")).count() == 1
@@ -112,9 +145,9 @@ with sync_playwright() as p:
     page.set_viewport_size({"width":390,"height":844})
     page.locator(".menu-toggle").click()
     expect(page.locator(".menu-toggle")).to_have_attribute("aria-expanded", "true")
-    page.locator('#main-nav a[href="#manifesto"]').click()
+    page.locator('#main-nav a[href="#market"]').click()
     expect(page.locator(".menu-toggle")).to_have_attribute("aria-expanded", "false")
-    assert page.url.endswith("#manifesto")
+    assert page.url.endswith("#market")
     audit(page, "Mobile memo")
     passed("Six responsive widths and mobile chapter navigation")
     page.evaluate("document.activeElement.blur(); window.scrollTo(0,0)")

@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#141713" />
-    <title>SECHA — Investment Memo 2026</title>
+    <meta name="theme-color" content="#162638" />
+    <title>SECHA — Invest in the renovation upgrade</title>
     <meta
       name="description"
-      content="SECHA is the renovation interface for Asia. Read the manifesto, explore the actual Studio+ playground, and understand the GX-100 model and US$1M raise."
+      content="SECHA is the renovation interface for Asia. Read the investment case, explore the actual Studio+ playground, and understand the GX-100 model and US$1M raise."
     />
     <link rel="icon" href="data:," />
     <link
       rel="preload"
-      href="assets/manrope.woff2"
+      href="assets/fonts/inter-400-latin.woff2"
       as="font"
       type="font/woff2"
       crossorigin
@@ -30,9 +30,9 @@
     >
       <div class="opening-top">
         <span class="wordmark">SECHA<span>HOME</span></span
-        ><span class="mono">INVESTMENT MEMO / 2026</span
+        ><span class="mono">THE RENOVATION UPGRADE / INVESTMENT MEMO 2026</span
         ><button id="opening-skip">
-          Skip intro
+          Skip film
           <img
             class="icon"
             src="assets/icons/arrow-right.svg"
@@ -42,41 +42,54 @@
           />
         </button>
       </div>
-      <div class="opening-stage">
-        <video
-          id="opening-video"
-          data-src="assets/film/opening.mp4"
-          poster="assets/film/opening-poster.jpg"
-          muted
-          playsinline
-          preload="none"
-          aria-label="Silent modular furniture assembly film"
-        ></video>
-      </div>
-      <div class="opening-caption">
-        <div>
+      <div class="opening-composition">
+        <div class="opening-story">
           <span class="eyebrow">PEOPLE MAKE SPACE.</span>
           <h2 id="opening-title">
-            Better spaces begin<br />with a better system.
+            Choose it.<br />Build it.<br /><em>Repeat it.</em>
           </h2>
           <p id="opening-description">
-            A short, silent film from SECHA. A foundation, a set of parts, a
-            place to live.
+            A better space begins with a better system. A short film on the idea
+            behind SECHA.
           </p>
+          <div class="opening-thesis">
+            <span>SOFTWARE DEFINES THE PROMISE.</span
+            ><strong>GX-100 DELIVERS IT.</strong>
+          </div>
         </div>
-        <button id="opening-pause" aria-label="Pause opening film">
-          Pause film
-        </button>
+        <div class="opening-exhibit">
+          <div class="opening-frame-label mono">
+            <span>THE PHYSICAL ENGINE</span
+            ><span>GX–100 / A MATERIAL STUDY</span>
+          </div>
+          <div class="opening-stage">
+            <video
+              id="opening-video"
+              data-src="assets/film/opening.mp4"
+              poster="assets/film/opening-poster.jpg"
+              muted
+              playsinline
+              preload="none"
+              aria-label="Silent SECHA modular furniture assembly film"
+            ></video>
+          </div>
+          <div class="opening-exhibit-footer">
+            <span id="opening-phase">01 / DEFINE THE PARTS</span
+            ><button id="opening-pause" aria-label="Pause opening film">
+              Pause film
+            </button>
+          </div>
+        </div>
       </div>
       <div class="opening-bottom">
-        <span id="opening-phase" class="mono">01 / SET THE FOUNDATION</span
+        <span class="opening-counter">SECHA / <strong>THE UPGRADE</strong></span
         ><progress
           id="opening-progress"
           max="1"
           value="0"
           aria-label="Opening film playback"
         ></progress
-        ><span id="opening-time" class="mono">00:00 / 00:05</span>
+        ><span id="opening-time">00:00 / 00:06</span>
       </div>
     </dialog>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -86,7 +99,7 @@
       >
       <nav aria-label="Main navigation" id="main-nav">
         <a href="#overview" aria-current="location">The memo</a
-        ><a href="#manifesto">Manifesto</a><a href="#platform">Studio+</a
+        ><a href="#market">Market</a><a href="#platform">Studio+</a
         ><a href="#economics">Economics</a><a href="#founder">Founder</a>
       </nav>
       <button class="header-contact" data-contact>
@@ -117,19 +130,24 @@
           </div>
           <div class="memo-cover-grid">
             <div class="memo-cover-copy">
-              <span class="eyebrow">OUR CONVICTION</span>
+              <span class="eyebrow">THE INVESTMENT THESIS</span>
               <h1 id="hero-title">
-                Better spaces.<br />A repeatable<br /><em>business.</em>
+                Make renovation<br />repeatable.<br /><em
+                  >Build the category.</em
+                >
               </h1>
-              <p class="memo-deck">The renovation interface for Asia.</p>
+              <p class="memo-deck">
+                A software-led renovation business.<br />A physical engine built
+                to deliver.
+              </p>
               <p class="memo-intro">
-                SECHA turns renovation from a one-off project into a product
-                customers can choose, shape and bring to life—with a physical
-                system designed to deliver the promise.
+                Start with a repeatable US$5,000 package in Jakarta. Connect
+                customer choice, project control and GX-100 delivery. Build the
+                city playbook that can travel across Asia.
               </p>
               <div class="hero-actions">
-                <a class="button button-dark" href="#manifesto"
-                  >Read the manifesto
+                <a class="button button-dark" href="#market"
+                  >Read the investment case
                   <img
                     class="icon"
                     src="assets/icons/arrow-down.svg"
@@ -173,27 +191,34 @@
               <h2 id="memo-index-title" class="mono">IN THIS MEMO</h2>
               <ol class="memo-index">
                 <li>
-                  <a href="#manifesto"><span>01</span> The manifesto</a>
+                  <a href="#manifesto"><span>01</span> The conviction</a>
                 </li>
                 <li>
-                  <a href="#platform"><span>02</span> Studio+ & the product</a>
+                  <a href="#promised-land"><span>02</span> The promised land</a>
                 </li>
                 <li>
-                  <a href="#delivery"><span>03</span> The physical engine</a>
+                  <a href="#market"><span>03</span> Market & beachhead</a>
                 </li>
                 <li>
-                  <a href="#economics"><span>04</span> The economics</a>
+                  <a href="#platform"><span>04</span> The working product</a>
                 </li>
                 <li>
-                  <a href="#distribution"
-                    ><span>05</span> The route to market</a
-                  >
+                  <a href="#delivery"><span>05</span> The delivery engine</a>
                 </li>
                 <li>
-                  <a href="#founder"><span>06</span> The founder</a>
+                  <a href="#economics"><span>06</span> Unit economics</a>
                 </li>
                 <li>
-                  <a href="#investment"><span>07</span> The capital</a>
+                  <a href="#growth"><span>07</span> Path to growth</a>
+                </li>
+                <li>
+                  <a href="#founder"><span>08</span> Founder & pedigree</a>
+                </li>
+                <li>
+                  <a href="#backing"><span>09</span> Origins & backing</a>
+                </li>
+                <li>
+                  <a href="#investment"><span>10</span> The capital</a>
                 </li>
               </ol>
               <a
@@ -315,6 +340,61 @@
       </section>
 
       <section
+        class="promised-land light-section"
+        id="promised-land"
+        aria-labelledby="land-title"
+      >
+        <div class="container section-space">
+          <div class="section-kicker mono">
+            <span>02 / THE PROMISED LAND</span
+            ><span>A NEW CATEGORY, BUILT ONE CITY AT A TIME</span>
+          </div>
+          <div class="section-heading">
+            <h2 id="land-title">
+              A better home.<br />A more investable<br />way to build it.
+            </h2>
+            <p>
+              The ambition is the transaction and delivery layer for renovation
+              in Asia: a place where a customer can see the outcome, understand
+              the commitment and trust the process behind it.
+            </p>
+          </div>
+          <div class="possibility-grid">
+            <article>
+              <span class="mono">FOR THE CUSTOMER</span>
+              <h3>Confidence before commitment.</h3>
+              <p>
+                A visible layout, material direction, defined package and
+                accountable delivery path. Financing can support affordability
+                through qualified partners.
+              </p>
+            </article>
+            <article>
+              <span class="mono">FOR THE INDUSTRY</span>
+              <h3>A job that starts with a system.</h3>
+              <p>
+                A common brief, materials list and installation sequence replace
+                the repeated work of rebuilding scope for every site.
+              </p>
+            </article>
+            <article>
+              <span class="mono">FOR THE BUSINESS</span>
+              <h3>Repeat the economics.</h3>
+              <p>
+                Turn one proven package into a library, one local delivery
+                network into a city engine, and one city playbook into the next
+                market.
+              </p>
+            </article>
+          </div>
+          <p class="section-note">
+            This is the strategic destination. Quoting, financing and delivery
+            integrations are development objectives, not capabilities implied by
+            the current design playground.
+          </p>
+        </div>
+      </section>
+      <section
         class="light-section"
         id="opportunity"
         aria-labelledby="opportunity-title"
@@ -397,12 +477,120 @@
       </section>
 
       <section
+        class="container section-space market-section"
+        id="market"
+        aria-labelledby="market-title"
+      >
+        <div class="section-kicker mono">
+          <span>03 / MARKET & BEACHHEAD</span
+          ><span>START NARROW. EARN THE RIGHT TO EXPAND.</span>
+        </div>
+        <div class="section-heading">
+          <h2 id="market-title">
+            Existing homes.<br />Visible intent.<br />A focused first market.
+          </h2>
+          <p>
+            SECHA does not need to create the desire for a better space. Its
+            first job is to convert renovation intent into a standard package,
+            within a delivery radius where service quality and margins can be
+            controlled.
+          </p>
+        </div>
+        <div class="beachhead">
+          <div>
+            <span class="eyebrow">PROPOSED BEACHHEAD / GREATER JAKARTA</span>
+            <h3>Owner-occupiers upgrading<br />a room or compact home.</h3>
+            <p>
+              A US$5,000 target package, a constrained scope, and customers
+              reached at an existing property or financing decision.
+            </p>
+          </div>
+          <dl>
+            <div>
+              <dt>Customer trigger</dt>
+              <dd>Purchase, move-in or a defined room upgrade</dd>
+            </div>
+            <div>
+              <dt>Acquisition wedge</dt>
+              <dd>Property agents + qualified bank referrals</dd>
+            </div>
+            <div>
+              <dt>Delivery advantage</dt>
+              <dd>Local crew density and repeatable GX-100 scope</dd>
+            </div>
+            <div>
+              <dt>What proves the wedge</dt>
+              <dd>Conversion, contribution and referral after delivery</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="market-sizing">
+          <div class="card-heading">
+            <span class="mono">BOTTOM-UP MARKET MODEL</span
+            ><span class="scenario-badge">PLANNING ASSUMPTIONS</span>
+          </div>
+          <div class="market-tier-grid">
+            <article>
+              <span class="mono">INDONESIA / BROADER OPPORTUNITY</span
+              ><strong>US$5B</strong>
+              <p>
+                1,000,000 eligible package jobs / year<br />× US$5,000 per
+                package
+              </p>
+              <span class="assumption-label"
+                >ASSUMED ANNUAL ELIGIBLE VOLUME</span
+              >
+            </article>
+            <article>
+              <span class="mono">GREATER JAKARTA / SERVICEABLE CASE</span
+              ><strong>US$250M</strong>
+              <p>
+                50,000 eligible package jobs / year<br />× US$5,000 per package
+              </p>
+              <span class="assumption-label"
+                >ASSUMED ANNUAL ELIGIBLE VOLUME</span
+              >
+            </article>
+            <article>
+              <span class="mono">INITIAL BEACHHEAD / EXECUTION CASE</span
+              ><strong>US$5M</strong>
+              <p>1,000 SECHA packages / year<br />× US$5,000 per package</p>
+              <span class="assumption-label"
+                >PROPOSED CAPTURE CASE / 2% OF MODELLED SAM</span
+              >
+            </article>
+          </div>
+          <p class="fine-print">
+            Annual project value, not SECHA revenue or a market forecast. The
+            eligible-job volumes are explicit planning assumptions, not
+            independently researched TAM/SAM figures. They require local demand
+            validation; the US$5,000 package value comes from the company
+            business update.
+          </p>
+        </div>
+        <div class="market-proof">
+          <div>
+            <strong>82.38%</strong
+            ><span>of households occupy an owned dwelling</span>
+          </div>
+          <div>
+            <strong>68.72%</strong
+            ><span>of urban households have adequate housing</span>
+          </div>
+          <p>
+            Housing context cited in SECHA’s business update. It supports the
+            existing-home thesis; these percentages are not used to calculate
+            the market model and have not been independently verified here.
+          </p>
+        </div>
+      </section>
+      <section
         class="container section-space memo-product"
         id="platform"
         aria-labelledby="platform-title"
       >
         <div class="section-kicker mono">
-          <span>02 / THE PRODUCT</span
+          <span>04 / THE PRODUCT</span
           ><span>STUDIO+ / THE RENOVATION PLAYGROUND</span>
         </div>
         <div class="section-heading">
@@ -573,7 +761,7 @@
           /><span class="mono">GX–100 / FACTORY-PREPARED. SITE-READY.</span>
         </div>
         <div class="delivery-copy">
-          <span class="eyebrow">03 / THE PHYSICAL OPERATING SYSTEM</span>
+          <span class="eyebrow">05 / THE PHYSICAL ENGINE</span>
           <h2 id="delivery-title">
             The promise is digital.<br />The proof is physical.
           </h2>
@@ -604,22 +792,24 @@
       >
         <div class="container section-space">
           <div class="section-kicker mono">
-            <span>04 / THE ECONOMICS</span
-            ><span>DELIVERY EARNS. FINANCING CONVERTS.</span>
+            <span>06 / DETAILED UNIT ECONOMICS</span
+            ><span>GROSS PROFIT IS THE START. CONTRIBUTION IS THE TEST.</span>
           </div>
           <div class="section-heading">
-            <h2 id="economics-title">Good economics.<br />Before checkout.</h2>
+            <h2 id="economics-title">
+              Design the margin.<br />Prove the cash engine.
+            </h2>
             <p>
-              A US$5,000 package is designed to generate US$1,500 in gross
-              profit. Renovation delivery is the business; financing supports
-              affordability and conversion.
+              The business update designs a US$5,000 package around US$3,500 in
+              fulfilment and US$1,500 gross profit. The investment case must
+              then survive acquisition costs, operating support and cash timing.
             </p>
           </div>
           <div class="economics-grid">
             <div class="package-economics">
               <div class="card-heading">
-                <span class="mono">TARGET UNIT ECONOMICS</span
-                ><span>PER PACKAGE</span>
+                <span class="mono">COMPANY TARGET / PER PACKAGE</span
+                ><span>US DOLLARS</span>
               </div>
               <div class="package-total">
                 US$5,000<span>Package value</span>
@@ -629,27 +819,42 @@
                 role="img"
                 aria-label="70 percent fulfilment cost, 30 percent target gross profit"
               >
-                <div>70%</div>
-                <div>30%</div>
+                <div>70% / DELIVERY</div>
+                <div>30% / GROSS PROFIT</div>
               </div>
-              <div class="margin-legend">
+              <dl class="unit-ledger">
                 <div>
-                  <span class="legend-dot cost"></span
-                  ><span>Fulfilment cost<strong>US$3,500</strong></span>
+                  <dt>Customer package value</dt>
+                  <dd>US$5,000</dd>
                 </div>
                 <div>
-                  <span class="legend-dot profit"></span
-                  ><span>Target gross profit<strong>US$1,500</strong></span>
+                  <dt>Fulfilment cost envelope</dt>
+                  <dd>− US$3,500</dd>
                 </div>
-              </div>
+                <div class="ledger-total">
+                  <dt>Target gross profit</dt>
+                  <dd>US$1,500 / 30%</dd>
+                </div>
+              </dl>
+              <details class="cost-scope">
+                <summary>What the fulfilment ledger needs to prove</summary>
+                <p>
+                  Materials and modules, factory preparation, installation
+                  labour, freight and site handling, quality checks and
+                  rework/warranty costs must reconcile to the US$3,500 envelope.
+                  Actual category-level costs were not supplied; no invented
+                  allocation is presented.
+                </p>
+              </details>
               <p class="fine-print">
-                Designed package economics, not a statement of realised margins.
-                Gross profit excludes operating expenses.
+                Target package economics, not realised margins. The source does
+                not provide actual CAC, operating expenses, tax treatment or
+                payment terms.
               </p>
             </div>
             <div class="scale-model">
               <div class="card-heading">
-                <span class="mono">EXPLORE THE MODEL</span
+                <span class="mono">PACKAGE THROUGHPUT</span
                 ><span class="scenario-badge">ILLUSTRATIVE</span>
               </div>
               <label for="packages"
@@ -678,71 +883,221 @@
                 </div>
               </div>
               <p class="fine-print" id="scale-disclaimer">
-                An illustrative scale case, not a forecast. Assumes US$5,000 per
-                package and a 30% gross margin at every volume.
+                A scale case, not a forecast or current revenue. Assumes the
+                US$5,000 package value and 30% target gross margin hold at every
+                volume. Operating expenses are excluded.
               </p>
             </div>
           </div>
-          <div class="economics-controls mono">
-            <span>FIXED SCOPE <b>CONTROLS PRICE</b></span
-            ><span>GX–100 <b>CONTROLS TIME</b></span
-            ><span>THE INTERFACE <b>CONTROLS CHANGES</b></span>
+          <div class="contribution-model">
+            <div class="model-intro">
+              <span class="eyebrow">TEST THE INVESTMENT CASE</span>
+              <h3>What remains after<br />winning and serving the job?</h3>
+              <p>
+                Change the underwriting assumptions. The model shows
+                first-package contribution, operating break-even and the
+                pre-final-payment delivery gap.
+              </p>
+              <span class="scenario-badge"
+                >ASSUMPTIONS / NOT REPORTED ACTUALS</span
+              >
+            </div>
+            <div class="model-controls">
+              <label for="cac"
+                >Acquisition cost / package <span>US$</span
+                ><input
+                  id="cac"
+                  type="number"
+                  min="0"
+                  max="5000"
+                  step="50"
+                  value="200"
+                  aria-describedby="unit-model-note" /></label
+              ><label for="support"
+                >Incremental sales & support / package <span>US$</span
+                ><input
+                  id="support"
+                  type="number"
+                  min="0"
+                  max="5000"
+                  step="50"
+                  value="100"
+                  aria-describedby="unit-model-note" /></label
+              ><label for="fixed-opex"
+                >Fixed operating expense / month <span>US$</span
+                ><input
+                  id="fixed-opex"
+                  type="number"
+                  min="0"
+                  max="1000000"
+                  step="1000"
+                  value="20000"
+                  aria-describedby="unit-model-note" /></label
+              ><label for="deposit"
+                >Customer deposit <span>%</span
+                ><input
+                  id="deposit"
+                  type="number"
+                  min="0"
+                  max="100"
+                  step="5"
+                  value="50"
+                  aria-describedby="unit-model-note"
+              /></label>
+            </div>
+            <div
+              class="contribution-results"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              <div>
+                <span>Contribution / package</span
+                ><strong id="contribution">US$1,200</strong
+                ><small id="contribution-margin">24.0% of package value</small>
+              </div>
+              <div>
+                <span>Operating break-even</span
+                ><strong id="break-even">17 jobs / month</strong
+                ><small id="break-even-note"
+                  >Before tax, financing and exceptional costs</small
+                >
+              </div>
+              <div>
+                <span>Delivery cash gap / package</span
+                ><strong id="cash-gap">US$1,000</strong
+                ><small
+                  >Fulfilment less customer deposit, floored at zero</small
+                >
+              </div>
+              <div>
+                <span>Gap at 10 concurrent jobs</span
+                ><strong id="concurrent-gap">US$10,000</strong
+                ><small>Before acquisition costs and fixed overhead</small>
+              </div>
+            </div>
+            <p id="unit-model-note" class="fine-print">
+              Illustrative defaults: US$200 CAC, US$100 incremental
+              sales/support, US$20,000 fixed monthly overhead, 50% deposit.
+              Contribution = US$1,500 target gross profit − CAC − incremental
+              support. Break-even = ceiling(fixed overhead ÷ positive
+              contribution). Cash gap assumes all US$3,500 fulfilment cost is
+              paid before final collection, with no supplier credit. Taxes,
+              financing fees, cancellations and other unprovided costs are
+              excluded. A zero delivery gap does not imply zero working-capital
+              need.
+            </p>
           </div>
         </div>
       </section>
 
       <section
         class="container section-space"
-        id="distribution"
-        aria-labelledby="distribution-title"
+        id="growth"
+        aria-labelledby="growth-title"
       >
         <div class="section-kicker mono">
-          <span>05 / THE ROUTE TO MARKET</span
-          ><span>START WITH VISIBLE RENOVATION INTENT</span>
+          <span>07 / PATH TO GROWTH</span
+          ><span>GROW THROUGH OPERATING PROOF, NOT GEOGRAPHY ALONE</span>
         </div>
         <div class="section-heading">
-          <h2 id="distribution-title">
-            Meet demand<br />where it already lives.
+          <h2 id="growth-title">
+            Win a package.<br />Win a city.<br />Repeat the playbook.
           </h2>
           <p>
-            Property agents bring listings and buyers. Banks bring qualified
-            borrowers. SECHA converts that intent into a standard package,
-            fulfilled through the GX-100 network.
+            A narrow beachhead creates the conditions for repeatability: similar
+            scopes, local supply density and measurable channel conversion. Each
+            expansion gate should improve the evidence behind the next one.
           </p>
         </div>
-        <div class="channel-flow">
+        <div class="growth-roadmap">
           <article>
-            <span class="mono">01 / DISCOVER</span>
-            <h3>Property agents</h3>
-            <p>Listings + buyers</p>
+            <span class="mono">01 / VALIDATE</span><strong>25</strong
+            ><span class="growth-unit">standardised packages / cumulative</span>
+            <h3>Make the package work.</h3>
+            <p>
+              Reconcile scope, actual job costs and rework. Measure
+              quote-to-confirmation, cycle time and customer referrals.
+            </p>
+            <div class="growth-gate">
+              <b>ADVANCE WHEN</b> The target margin is supported by
+              completed-job evidence.
+            </div>
           </article>
           <article>
-            <span class="mono">02 / QUALIFY</span>
-            <h3>Banks</h3>
-            <p>Qualified borrowers</p>
-          </article>
-          <article class="channel-highlight">
-            <span class="mono">03 / CONVERT</span>
-            <h3>SECHA menu</h3>
-            <p>One conversion layer</p>
+            <span class="mono">02 / BUILD CITY DENSITY</span><strong>250</strong
+            ><span class="growth-unit">packages / annual pace</span>
+            <h3>Make the channel work.</h3>
+            <p>
+              Develop a repeatable agent and qualified-bank referral loop inside
+              a controlled delivery radius.
+            </p>
+            <div class="growth-gate">
+              <b>ADVANCE WHEN</b> Contribution stays positive after acquisition
+              and support costs.
+            </div>
           </article>
           <article>
-            <span class="mono">04 / FULFIL</span>
-            <h3>GX-100 network</h3>
-            <p>Repeatable delivery</p>
+            <span class="mono">03 / PROVE THE BEACHHEAD</span
+            ><strong>1,000</strong
+            ><span class="growth-unit">packages / year</span>
+            <h3>Make the city work.</h3>
+            <p>
+              A proposed US$5M annual project-value case, with US$1.5M gross
+              profit if the 30% target margin holds.
+            </p>
+            <div class="growth-gate">
+              <b>ADVANCE WHEN</b> Crew capacity, quality and cash collection
+              hold at higher throughput.
+            </div>
+          </article>
+          <article>
+            <span class="mono">04 / REPLICATE</span><strong>10,000</strong
+            ><span class="growth-unit">packages / year across the network</span>
+            <h3>Make the system travel.</h3>
+            <p>
+              The supplied US$50M project-value scale case becomes a multi-city
+              operating question, not a promise.
+            </p>
+            <div class="growth-gate">
+              <b>ADVANCE WHEN</b> A new city can reproduce the package, channel
+              and delivery economics.
+            </div>
           </article>
         </div>
-        <div class="measurement">
+        <p class="section-note">
+          Proposed underwriting milestones and illustrative volume cases. They
+          are not completed traction, a dated forecast or a committed pipeline.
+        </p>
+        <div class="defensibility">
           <div>
-            <span class="eyebrow">THE NEXT OPERATING MILESTONE</span>
+            <span class="eyebrow">THE COMPOUNDING ADVANTAGE</span>
             <h3>
-              From founder-led projects<br />to measurable package throughput.
+              Every completed job should<br />make the next one less bespoke.
             </h3>
           </div>
-          <p>
-            Quote velocity <span>/</span> Conversion <span>/</span> Cycle time
-            <span>/</span> Gross margin <span>/</span> Referral
-          </p>
+          <ol>
+            <li>
+              <strong>Package intelligence</strong
+              ><span
+                >Actual material usage, cost variance, changes and delivery
+                proof inform the next scope.</span
+              >
+            </li>
+            <li>
+              <strong>Local operating density</strong
+              ><span
+                >Repeated supplier and installer coordination can improve
+                scheduling and consistency.</span
+              >
+            </li>
+            <li>
+              <strong>Distribution memory</strong
+              ><span
+                >Agent conversion and customer referrals reveal where the next
+                package is cheapest to win.</span
+              >
+            </li>
+          </ol>
         </div>
       </section>
 
@@ -753,7 +1108,7 @@
       >
         <div class="container section-space">
           <div class="section-kicker mono">
-            <span>06 / THE FOUNDER</span
+            <span>08 / THE FOUNDER</span
             ><span>OPERATOR EXPERIENCE. A CLEAR CONVICTION.</span>
           </div>
           <div class="founder-memo-grid">
@@ -769,8 +1124,14 @@
                   alt=""
                   width="16"
                   height="16"
-                />
-              </button>
+                /></button
+              ><a
+                class="founder-profile-link"
+                href="https://www.linkedin.com/in/josephinepetralovensa/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Josephine’s LinkedIn profile</a
+              >
             </div>
             <div>
               <p class="founder-statement">
@@ -811,22 +1172,123 @@
       </section>
 
       <section
+        class="container section-space backing-section"
+        id="backing"
+        aria-labelledby="backing-title"
+      >
+        <div class="section-kicker mono">
+          <span>09 / ORIGINS, BACKING & PEDIGREE</span
+          ><span>CREDIBILITY WITH CLEAR PROVENANCE</span>
+        </div>
+        <div class="section-heading">
+          <h2 id="backing-title">
+            An operator’s background.<br />A documented founding journey.
+          </h2>
+          <p>
+            Josephine combines repeat-founder experience, infrastructure
+            consulting and delivered renovation work. The available public
+            profile and recognition add context; they are separate from the
+            financial record.
+          </p>
+        </div>
+        <div
+          class="backer-strip"
+          aria-label="Founder-confirmed previous backers"
+        >
+          <span>Antler</span><span>Startupbootcamp</span><span>BonBillo</span>
+        </div>
+        <div class="pedigree-grid">
+          <article>
+            <span class="eyebrow">FOUNDING ECOSYSTEM</span>
+            <h3>Antler journey.</h3>
+            <p>
+              GrowthMentor profiles SECHA’s founding journey with Antler. This
+              documents the founder ecosystem; it is not a statement of cheque
+              size or current ownership.
+            </p>
+            <a
+              href="https://www.growthmentor.com/startup-accelerators/antler/secha-home/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-link"
+              >Read the founding profile
+              <img
+                class="icon"
+                src="assets/icons/arrow-up-right.svg"
+                alt=""
+                width="16"
+                height="16"
+            /></a>
+          </article>
+          <article>
+            <span class="eyebrow">COMPANY RECOGNITION</span>
+            <h3>DGEMS 2024.</h3>
+            <p>
+              SECHA’s Select 200 profile is listed by Forbes India / DGEMS and D
+              Globalist. These describe the same recognition, not two funding
+              events.
+            </p>
+            <a
+              href="https://www.dglobalist.com/dgems-2024-s200-cohort?4311a1a2_page=4"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-link"
+              >View the company listing
+              <img
+                class="icon"
+                src="assets/icons/arrow-up-right.svg"
+                alt=""
+                width="16"
+                height="16"
+            /></a>
+          </article>
+          <article id="previous-backers">
+            <span class="eyebrow">PREVIOUS BACKING</span>
+            <h3>Previous support.<br />Next chapter.</h3>
+            <p>
+              Previous backers and support programmes confirmed by the founder.
+              Investment amounts, individual instruments and round terms are not
+              disclosed in the supplied material.
+            </p>
+            <button class="text-link" data-contact>
+              Discuss previous backing
+              <img
+                class="icon"
+                src="assets/icons/arrow-up-right.svg"
+                alt=""
+                width="16"
+                height="16"
+              />
+            </button>
+          </article>
+        </div>
+        <p class="section-note">
+          Previous backer names are founder-confirmed. Public-profile and
+          recognition links come from SECHA’s website catalogue; these links
+          were not independently re-verified here. Awards and media recognition
+          are distinct from financial backing.
+        </p>
+      </section>
+      <section
         class="container section-space raise-section"
         id="investment"
         aria-labelledby="raise-title"
       >
         <div class="section-kicker mono">
-          <span>07 / THE CAPITAL</span
+          <span>10 / THE CAPITAL</span
           ><span>PRODUCT. DELIVERY. DISTRIBUTION.</span>
         </div>
         <div class="raise-grid">
           <div>
             <span class="eyebrow">RAISING US$1M</span>
-            <h2 id="raise-title">Build the system.<br />Repeat the outcome.</h2>
+            <h2 id="raise-title">
+              Fund the proof.<br />Build the city engine.
+            </h2>
             <p>
-              The next chapter is productising a service that already works: a
-              stronger interface, a repeatable physical system, and channels
-              that turn intent into packages.
+              The US$1M raise is intended to turn a founder-led service into a
+              repeatable operating model: connect the customer interface to job
+              control, prove package economics, and establish a measurable
+              Jakarta distribution engine.
             </p>
             <button class="button button-accent" data-contact>
               Start a conversation
@@ -860,7 +1322,7 @@
               <strong>45<span>%</span></strong>
               <div>
                 <h3>Product</h3>
-                <p>Package interface + job-file control</p>
+                <p>Connect Studio+ intent to controlled job files</p>
               </div>
               <span class="allocation-value mono">US$450K</span>
             </div>
@@ -868,7 +1330,7 @@
               <strong>35<span>%</span></strong>
               <div>
                 <h3>GX-100</h3>
-                <p>Standardised modular delivery</p>
+                <p>Validate scope, cost and delivery consistency</p>
               </div>
               <span class="allocation-value mono">US$350K</span>
             </div>
@@ -876,7 +1338,7 @@
               <strong>20<span>%</span></strong>
               <div>
                 <h3>Distribution</h3>
-                <p>Agent + bank acquisition channels</p>
+                <p>Prove agent + qualified-bank conversion</p>
               </div>
               <span class="allocation-value mono">US$200K</span>
             </div>

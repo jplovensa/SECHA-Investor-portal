@@ -165,3 +165,48 @@ document
         "Copy is unavailable. Select the email address above to copy it, or use Open email.";
     }
   });
+
+// Underwriting sensitivities. These values are assumptions, not reported costs.
+const unitInputs = ["cac", "support", "fixed-opex", "deposit"].map((id) =>
+  document.getElementById(id),
+);
+const usd = (value) =>
+  new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  })
+    .format(value)
+    .replace("$", "US$");
+function modelValue(id, maximum) {
+  const value = document.getElementById(id).valueAsNumber;
+  return Number.isFinite(value) ? Math.min(maximum, Math.max(0, value)) : 0;
+}
+function updateContribution() {
+  const cac = modelValue("cac", 5000);
+  const support = modelValue("support", 5000);
+  const fixed = modelValue("fixed-opex", 1000000);
+  const deposit = modelValue("deposit", 100);
+  const contribution = 1500 - cac - support;
+  const cashGap = Math.max(3500 - (5000 * deposit) / 100, 0);
+  const contributionOutput = document.getElementById("contribution");
+  contributionOutput.textContent = usd(contribution);
+  contributionOutput.classList.toggle("negative", contribution <= 0);
+  document.getElementById("contribution-margin").textContent =
+    ((contribution / 5000) * 100).toFixed(1) + "% of package value";
+  document.getElementById("break-even").textContent =
+    contribution > 0
+      ? Math.ceil(fixed / contribution).toLocaleString("en-US") +
+        " jobs / month"
+      : "Not reached";
+  document.getElementById("break-even-note").textContent =
+    contribution > 0
+      ? "Before tax, financing and exceptional costs"
+      : "Positive contribution is required before fixed-cost break-even";
+  document.getElementById("cash-gap").textContent = usd(cashGap);
+  document.getElementById("concurrent-gap").textContent = usd(cashGap * 10);
+}
+unitInputs.forEach((input) =>
+  input.addEventListener("input", updateContribution),
+);
+updateContribution();

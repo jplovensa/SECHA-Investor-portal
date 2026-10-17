@@ -3,30 +3,45 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SECHA Investment Memo 2026</title>
+    <title>SECHA — Investment Memo 2026</title>
     <style>
       @font-face {
-        font-family: Manrope;
-        src: url("../assets/manrope.woff2");
-        font-weight: 200 800;
+        font-family: Inter;
+        src: url("../assets/fonts/inter-400-latin.woff2");
+        font-weight: 400;
+      }
+      @font-face {
+        font-family: Inter;
+        src: url("../assets/fonts/inter-500-latin.woff2");
+        font-weight: 500;
+      }
+      @font-face {
+        font-family: Inter;
+        src: url("../assets/fonts/inter-600-latin.woff2");
+        font-weight: 600;
+      }
+      @font-face {
+        font-family: Inter;
+        src: url("../assets/fonts/inter-700-latin.woff2");
+        font-weight: 700;
       }
       * {
         box-sizing: border-box;
       }
       body {
+        margin: 0;
+        background: #f4efe4;
+        color: #162638;
         font:
-          12px/1.65 Manrope,
+          12px/1.7 Inter,
           Arial,
           sans-serif;
-        color: #20261f;
-        margin: 0;
-        background: #f0eee7;
       }
       article {
-        padding: 42px 50px 65px;
-        break-after: page;
         height: 1122px;
+        padding: 43px 50px 65px;
         position: relative;
+        break-after: page;
       }
       article:last-child {
         break-after: auto;
@@ -34,182 +49,196 @@
       header {
         display: flex;
         justify-content: space-between;
-        border-bottom: 1px solid #cbd0c2;
+        border-bottom: 1px solid #dcd5c8;
         padding-bottom: 18px;
         margin-bottom: 32px;
       }
       .brand {
-        font-size: 23px;
-        font-weight: 800;
-        letter-spacing: -1px;
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: -1.5px;
       }
       .label,
       .eyebrow {
         font-size: 9px;
-        letter-spacing: 1px;
-        color: #4e6141;
+        letter-spacing: 0.9px;
+        color: #806847;
       }
       .eyebrow {
+        display: block;
         margin-bottom: 15px;
       }
       h1 {
-        font-size: 65px;
-        line-height: 1.04;
-        font-weight: 500;
-        letter-spacing: -3.5px;
-        margin: 20px 0 26px;
+        font-size: 59px;
+        line-height: 1.08;
+        letter-spacing: -4px;
+        font-weight: 600;
+        margin: 23px 0 30px;
       }
       h1 em {
-        font:
-          italic 1.1em Georgia,
-          serif;
-        color: #48613c;
-        letter-spacing: -4px;
+        font: inherit;
+        color: #806847;
       }
       h2 {
-        font-size: 31px;
+        font-size: 33px;
         line-height: 1.2;
+        letter-spacing: -1.6px;
         font-weight: 500;
-        letter-spacing: -1.2px;
-        margin: 0 0 18px;
+        margin: 0 0 22px;
       }
       h3 {
-        font-size: 15px;
-        margin: 0 0 9px;
+        font-size: 16px;
+        line-height: 1.5;
+        font-weight: 600;
+        letter-spacing: -0.4px;
+        margin: 0 0 12px;
       }
       p {
-        margin: 0 0 15px;
+        margin: 0 0 16px;
       }
       .intro {
         font-size: 17px;
         line-height: 1.6;
-        max-width: 580px;
+        letter-spacing: -0.3px;
       }
-      blockquote {
-        font:
-          italic 27px/1.35 Georgia,
-          serif;
-        margin: 25px 0;
-        color: #48613c;
+      .small {
+        font-size: 10px;
+        line-height: 1.8;
+        color: #53616e;
+      }
+      .rule {
+        border-top: 1px solid #dcd5c8;
+        padding-top: 23px;
+        margin-top: 25px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 35px;
+        margin-bottom: 24px;
       }
       .stats {
         display: flex;
-        border-top: 1px solid #cbd0c2;
-        border-bottom: 1px solid #cbd0c2;
-        margin: 28px 0 20px;
-        padding: 19px 0;
+        border-top: 1px solid #dcd5c8;
+        border-bottom: 1px solid #dcd5c8;
+        padding: 22px 0;
+        margin: 30px 0 22px;
       }
       .stats > div {
         flex: 1;
       }
       .stats strong {
         display: block;
-        font-size: 27px;
+        font-size: 28px;
         font-weight: 500;
-        letter-spacing: -1px;
+        letter-spacing: -1.3px;
       }
       .stats span {
         font-size: 10px;
       }
-      .small {
-        font-size: 10px;
-        color: #4e6141;
-        line-height: 1.7;
-      }
-      .rule {
-        border-top: 1px solid #cbd0c2;
-        padding-top: 22px;
-        margin-top: 22px;
-      }
-      .grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 35px;
-        margin-bottom: 23px;
+      .quote {
+        font-size: 25px;
+        line-height: 1.4;
+        letter-spacing: -0.8px;
+        color: #806847;
       }
       .capture {
         display: block;
         width: 100%;
-        height: auto;
-        margin: 20px 0 10px;
+        max-height: 410px;
+        object-fit: contain;
+        margin: 20px 0 13px;
       }
       table {
         width: 100%;
         border-collapse: collapse;
-        margin: 18px 0;
+        margin: 20px 0;
+        font-size: 11px;
       }
-      td,
-      th {
+      th,
+      td {
         text-align: left;
-        border-bottom: 1px solid #cbd0c2;
-        padding: 9px 0;
+        border-bottom: 1px solid #dcd5c8;
         font-weight: 400;
+        padding: 10px 0;
+        vertical-align: top;
+      }
+      th {
+        font-weight: 600;
+        color: #806847;
       }
       td:last-child,
       th:last-child {
         text-align: right;
       }
-      footer {
-        position: absolute;
-        bottom: 28px;
-        left: 50px;
-        right: 50px;
-        font-size: 9px;
-        color: #4e6141;
-        border-top: 1px solid #cbd0c2;
-        padding-top: 12px;
+      td:first-child {
+        padding-right: 20px;
+      }
+      .row-strong td {
+        font-weight: 600;
+      }
+      .case {
+        padding: 22px;
+        background: #e9e1d3;
+        margin: 20px 0;
+      }
+      .case p:last-child {
+        margin-bottom: 0;
+      }
+      .milestone {
+        display: grid;
+        grid-template-columns: 75px 1fr;
+        gap: 25px;
+        border-top: 1px solid #dcd5c8;
+        padding: 21px 0;
+      }
+      .milestone > strong {
+        font-size: 30px;
+        font-weight: 500;
+        letter-spacing: -1px;
+        color: #806847;
+      }
+      .milestone p {
+        font-size: 11px;
+        line-height: 1.85;
+        margin: 8px 0 0;
+      }
+      .backers {
         display: flex;
+        gap: 30px;
         justify-content: space-between;
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: -0.8px;
+        padding: 20px 0;
+        border-top: 1px solid #dcd5c8;
+        border-bottom: 1px solid #dcd5c8;
+        margin: 23px 0;
+      }
+      .links {
+        font-size: 9px;
+        line-height: 1.9;
       }
       a {
-        color: #32482b;
+        color: #715b3d;
+        text-underline-offset: 3px;
       }
-      .founder {
-        font-size: 36px;
-        font-weight: 500;
-        letter-spacing: -1.7px;
-        margin-bottom: 5px;
+      footer {
+        position: absolute;
+        bottom: 29px;
+        left: 50px;
+        right: 50px;
+        border-top: 1px solid #dcd5c8;
+        padding-top: 13px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 8px;
+        letter-spacing: 0.6px;
+        color: #53616e;
       }
       @page {
         size: A4;
         margin: 0;
-      }
-
-      .capture {
-        max-height: 410px;
-        object-fit: contain;
-      }
-      article:last-child {
-        font-size: 11px;
-        line-height: 1.5;
-      }
-      article:last-child h2 {
-        font-size: 28px;
-        margin-bottom: 14px;
-      }
-      article:last-child p {
-        margin-bottom: 12px;
-      }
-      article:last-child table {
-        margin: 14px 0;
-      }
-      article:last-child td,
-      article:last-child th {
-        padding: 7px 0;
-      }
-      article:last-child .rule {
-        margin-top: 18px;
-        padding-top: 18px;
-      }
-      article:last-child .grid {
-        margin-bottom: 18px;
-      }
-      article:last-child .founder {
-        font-size: 30px;
-        margin-bottom: 5px;
-      }
-      article:last-child .small {
-        font-size: 9.5px;
       }
     </style>
   </head>
@@ -219,119 +248,196 @@
         <span class="brand">SECHA</span
         ><span class="label">INVESTMENT MEMO / 2026</span>
       </header>
-      <div class="eyebrow">THE RENOVATION INTERFACE FOR ASIA</div>
-      <h1>Better spaces.<br />A repeatable<br /><em>business.</em></h1>
+      <span class="eyebrow">THE RENOVATION UPGRADE</span>
+      <h1>
+        Make renovation<br />repeatable.<br /><em>Build the category.</em>
+      </h1>
       <p class="intro">
-        SECHA turns renovation from a one-off project into a product customers
-        can choose, shape and bring to life.
+        A software-led renovation business.<br />A physical engine built to
+        deliver.
       </p>
-      <div class="rule">
-        <div class="eyebrow">01 / THE MANIFESTO</div>
-        <blockquote>
-          The world doesn’t just need more space.<br />It needs better ways to
-          make it.
-        </blockquote>
-        <p>
-          Making a space should be considered, personal and clear. Today,
-          renovation asks customers to buy uncertainty: an evolving brief, a
-          moving price and a finish line that keeps changing.
-        </p>
-        <p>
-          We believe in freedom in the choices, clarity in the commitment and
-          discipline in the delivery. The ambition is not to make every space
-          the same. It is to make the system behind each space repeatable.
-        </p>
-      </div>
+      <p>
+        Start with a repeatable US$5,000 package in Jakarta. Connect customer
+        choice, project control and GX-100 delivery. Build the city playbook
+        that can travel across Asia.
+      </p>
       <div class="stats">
         <div>
           <strong>US$300K</strong><span>Project value served to date</span>
         </div>
         <div><strong>30%</strong><span>Target package gross margin</span></div>
         <div>
-          <strong>40%</strong><span>Faster modular delivery, reported</span>
+          <strong>40%</strong><span>Reported faster modular delivery</span>
         </div>
       </div>
-      <p class="small">
-        Company-reported figures from SECHA’s 2026 business update. Project
-        value is not recognised revenue. The 30% margin is a target, not
-        realised performance. The delivery improvement has not been
-        independently verified; its underlying measurement baseline was not
-        supplied.
+      <div class="rule">
+        <span class="eyebrow">THE MANIFESTO</span>
+        <p class="quote">
+          The world doesn’t just need more space.<br />It needs better ways to
+          make it.
+        </p>
+        <p>
+          Freedom in the choices. Clarity in the commitment. Discipline in the
+          delivery. The ambition is not to make every space the same, but to
+          make the system behind each space repeatable.
+        </p>
+      </div>
+      <p>
+        <strong>Capital sought: US$1M</strong><br />45% Product · 35% GX-100 ·
+        20% Distribution
       </p>
       <p>
-        <strong>Josephine Lovensa</strong><br /><span class="small"
-          >Founder & CEO / SECHA · Jakarta, Indonesia</span
-        >
+        <strong>Josephine Lovensa</strong><br />Founder & CEO / Jakarta,
+        Indonesia
+      </p>
+      <p class="small">
+        Company-reported figures. Project value is not recognised revenue. Gross
+        margin is a target, not realised performance. The 40% improvement is not
+        independently verified and its baseline was not supplied. Strategic
+        expansion is an ambition, not a current regional operating footprint.
       </p>
       <footer>
-        <span>SECHA HOME · PEOPLE MAKE SPACE.</span><span>01 / 03</span>
+        <span>SECHA HOME · PEOPLE MAKE SPACE.</span><span>01 / 06</span>
       </footer>
     </article>
     <article>
       <header>
         <span class="brand">SECHA</span
-        ><span class="label">02 / PRODUCT & OPERATING MODEL</span>
+        ><span class="label">MARKET & BEACHHEAD</span>
       </header>
-      <h2>The interface is already taking shape.</h2>
+      <h2>Start narrow.<br />Earn the right to expand.</h2>
+      <span class="eyebrow">PROPOSED BEACHHEAD / GREATER JAKARTA</span>
+      <p class="intro">Owner-occupiers upgrading a room or compact home.</p>
       <p>
-        Studio+ lets customers explore a room, change material directions, place
-        furniture and walk through their ideas. The public playground supports
-        studio, residential and commercial spaces, floor controls, saved layouts
-        and export.
+        A US$5,000 target package, a constrained scope and a customer at an
+        existing property or financing decision. Property-agent and
+        qualified-bank referrals are the proposed acquisition wedge; local
+        supply density is the delivery advantage.
+      </p>
+      <div class="case">
+        <h3>Bottom-up market model / planning assumptions</h3>
+        <table>
+          <tr>
+            <th>Annual eligible jobs × US$5,000</th>
+            <th>Annual project value</th>
+          </tr>
+          <tr>
+            <td>Indonesia / assumed 1,000,000 package jobs</td>
+            <td>US$5B</td>
+          </tr>
+          <tr>
+            <td>Greater Jakarta / assumed 50,000 package jobs</td>
+            <td>US$250M</td>
+          </tr>
+          <tr>
+            <td>Initial SECHA execution case / proposed 1,000 jobs</td>
+            <td>US$5M</td>
+          </tr>
+        </table>
+        <p class="small">
+          The annual eligible-job volumes are explicit planning assumptions, not
+          independently researched TAM/SAM figures. The execution case is 2% of
+          the modelled Greater Jakarta volume. These figures are project value,
+          not revenue or a market forecast, and require local demand validation.
+        </p>
+      </div>
+      <div class="grid rule">
+        <div>
+          <h3>Why this customer?</h3>
+          <p>
+            Renovation intent already exists. A contained upgrade is easier to
+            scope and repeat than an open-ended bespoke project.
+          </p>
+        </div>
+        <div>
+          <h3>Why this geography?</h3>
+          <p>
+            A controlled delivery radius makes crew scheduling, supplier
+            coordination, quality checks and referrals easier to measure.
+          </p>
+        </div>
+      </div>
+      <h3>Existing-home context</h3>
+      <p>
+        The company update cites 82.38% household owner-occupancy and 68.72%
+        adequate housing among urban households. They are contextual figures,
+        not multipliers used to calculate the sizing model.
+      </p>
+      <p class="small">
+        Source: supplied SECHA 2026 business update. The underlying statistical
+        publications were not supplied or independently verified. No assumption
+        is made that every inadequately housed household is a renovation
+        customer.
+      </p>
+      <footer>
+        <span>SECHA HOME · VISIBLE INTENT, CONTROLLED FIRST MARKET</span
+        ><span>02 / 06</span>
+      </footer>
+    </article>
+    <article>
+      <header>
+        <span class="brand">SECHA</span
+        ><span class="label">THE PRODUCT & PHYSICAL ENGINE</span>
+      </header>
+      <h2>
+        The interface is taking shape.<br />The delivery system completes it.
+      </h2>
+      <p>
+        Studio+ supports 3D room exploration, furniture placement, material
+        directions, floor controls, saved layouts and export. The next operating
+        step is to connect that visible intent to a controlled job file.
       </p>
       <img
         class="capture"
         src="../assets/studio/playground-studio.webp"
-        alt="Studio+ playground source capture with a 3D studio apartment, furniture controls and concept budget"
+        alt="Actual Studio+ source capture: 3D studio apartment, furniture controls and concept budget"
       />
       <p class="small">
-        Actual public Studio+ source rendered locally. Concept layouts and
-        budgets are illustrative. This is a design tool, not evidence of live
-        quotation, financing or fulfilment integrations.
+        Actual public Studio+ source rendered locally. Layouts and budgets are
+        illustrative. The playground does not demonstrate live quoting, lending
+        or fulfilment integrations.
       </p>
       <div class="grid rule">
         <div>
-          <h3>The operating thesis</h3>
+          <h3>The job file</h3>
           <p>
-            Turn customer intent into one controlled job file: scope, bill of
-            materials, supplier allocation, installer sequence and quality
-            proof.
+            Package scope, bill of materials, supplier allocation and installer
+            sequence connect the decision to milestones, quality proof and
+            margin control.
           </p>
         </div>
         <div>
-          <h3>The physical engine</h3>
+          <h3>GX-100</h3>
           <p>
-            GX-100 factory-prepared snap panels standardise the shell, furniture
-            and installation sequence. Software defines the promise; the
-            physical system fulfils it.
+            Factory-prepared snap panels standardise the shell, furniture and
+            installation sequence. Software defines the promise; the physical
+            system is designed to fulfil it.
           </p>
         </div>
       </div>
       <p>
-        <strong>Explore Studio+</strong><br /><a
-          href="https://www.sechahome.com/studio/playground.html"
-          >www.sechahome.com/studio/playground.html</a
+        <a href="https://www.sechahome.com/studio/playground.html"
+          >Explore Studio+ / www.sechahome.com/studio/playground.html</a
         >
       </p>
       <footer>
-        <span>SECHA HOME · FROM CUSTOMER CHOICE TO CONTROLLED DELIVERY</span
-        ><span>02 / 03</span>
+        <span>SECHA HOME · FROM VISIBLE CHOICE TO ACCOUNTABLE DELIVERY</span
+        ><span>03 / 06</span>
       </footer>
     </article>
     <article>
       <header>
         <span class="brand">SECHA</span
-        ><span class="label">03 / ECONOMICS, FOUNDER & CAPITAL</span>
+        ><span class="label">DETAILED UNIT ECONOMICS</span>
       </header>
-      <h2>Earn on delivery. Repeat the outcome.</h2>
+      <h2>Design the margin.<br />Prove the cash engine.</h2>
       <p>
-        A US$5,000 package is designed to produce US$1,500 in gross profit.
-        Fixed scope controls price, GX-100 controls time, and the interface
-        controls changes. Financing supports affordability and conversion.
+        Renovation delivery is the business. Financing supports affordability
+        and conversion; no lending income is assumed in this model.
       </p>
       <table>
         <tr>
-          <th>Target unit economics / per package</th>
+          <th>Company target / per package</th>
           <th>US$</th>
         </tr>
         <tr>
@@ -339,78 +445,220 @@
           <td>5,000</td>
         </tr>
         <tr>
-          <td>Fulfilment cost / 70%</td>
-          <td>3,500</td>
+          <td>Fulfilment envelope</td>
+          <td>− 3,500</td>
         </tr>
-        <tr>
+        <tr class="row-strong">
           <td>Target gross profit / 30%</td>
           <td>1,500</td>
         </tr>
       </table>
       <p class="small">
-        Illustrative scale case, not a forecast: 10,000 annual packages at
-        US$5,000 = US$50M project value and US$15M gross profit if the 30%
-        target margin is achieved. Gross profit excludes operating expenses.
+        The fulfilment ledger needs to reconcile materials/modules, factory
+        preparation, installation, freight, quality and rework to the US$3,500
+        envelope. No category-level actuals were supplied.
       </p>
+      <h3>Contribution sensitivity / illustrative defaults</h3>
+      <table>
+        <tr>
+          <td>Assumed acquisition cost / package</td>
+          <td>US$200</td>
+        </tr>
+        <tr>
+          <td>Assumed incremental sales/support / package</td>
+          <td>US$100</td>
+        </tr>
+        <tr class="row-strong">
+          <td>First-package contribution / 24%</td>
+          <td>US$1,200</td>
+        </tr>
+        <tr>
+          <td>Assumed fixed operating expense / month</td>
+          <td>US$20,000</td>
+        </tr>
+        <tr class="row-strong">
+          <td>Operating break-even</td>
+          <td>17 jobs / month</td>
+        </tr>
+      </table>
       <div class="grid rule">
         <div>
-          <h3>Distribution</h3>
+          <h3>Cash timing</h3>
           <p>
-            Property agents and banks are the proposed demand channels. The
-            SECHA menu converts intent into packages, fulfilled through the
-            GX-100 network.
+            At a 50% deposit, US$2,500 is collected against US$3,500 fulfilment
+            cost: a US$1,000 pre-final-payment delivery gap per package, or
+            US$10,000 at ten concurrent jobs.
           </p>
         </div>
         <div>
-          <h3>The next milestone</h3>
+          <h3>What has to hold</h3>
           <p>
-            Productise founder-led projects into measurable package throughput:
-            quote velocity, conversion, cycle time, gross margin and referral.
+            Acquisition, support and rework must leave positive contribution.
+            Deposits and supplier terms must support throughput without
+            uncontrolled cash consumption.
           </p>
         </div>
       </div>
-      <h2>Raising US$1M.</h2>
+      <p class="small">
+        All CAC, support, overhead and deposit figures above are modelling
+        assumptions, not operating actuals. Contribution = US$1,500 − CAC −
+        incremental support. Break-even = ceiling(fixed overhead ÷ positive
+        contribution). Cash gap assumes all fulfilment is paid before final
+        collection and no supplier credit; it excludes acquisition costs,
+        overhead, taxes, financing, cancellations and other unprovided costs.
+      </p>
+      <footer>
+        <span
+          >SECHA HOME · GROSS PROFIT IS THE START, CONTRIBUTION IS THE
+          TEST</span
+        ><span>04 / 06</span>
+      </footer>
+    </article>
+    <article>
+      <header>
+        <span class="brand">SECHA</span
+        ><span class="label">PATH TO GROWTH & THE PROMISED LAND</span>
+      </header>
+      <h2>Win a package. Win a city.<br />Repeat the playbook.</h2>
+      <div class="milestone">
+        <strong>25</strong>
+        <div>
+          <h3>Standardised packages / cumulative validation</h3>
+          <p>
+            Prove scope, actual completed-job margin, rework, cycle time and
+            customer referrals. Advance when the package economics are supported
+            by evidence.
+          </p>
+        </div>
+      </div>
+      <div class="milestone">
+        <strong>250</strong>
+        <div>
+          <h3>Packages / annual city-building pace</h3>
+          <p>
+            Build local crew density and a repeatable agent/bank referral loop.
+            Advance when contribution stays positive after acquisition and
+            support.
+          </p>
+        </div>
+      </div>
+      <div class="milestone">
+        <strong>1,000</strong>
+        <div>
+          <h3>Packages / annual beachhead case</h3>
+          <p>
+            US$5M project value and US$1.5M gross profit if the 30% target
+            margin holds. Prove capacity, quality and cash collection at higher
+            throughput.
+          </p>
+        </div>
+      </div>
+      <div class="milestone">
+        <strong>10,000</strong>
+        <div>
+          <h3>Packages / annual network scale case</h3>
+          <p>
+            The supplied US$50M project-value / US$15M gross-profit
+            illustration. Expand only when the next city can reproduce the
+            package, channel and delivery economics.
+          </p>
+        </div>
+      </div>
+      <p class="small">
+        Proposed underwriting gates and illustrative volume cases, not completed
+        traction, dated forecasts or committed pipeline.
+      </p>
+      <div class="rule">
+        <h3>What compounds</h3>
+        <p>
+          Package intelligence improves the next scope. Local operating density
+          improves coordination. Channel conversion and referrals reveal where
+          the next job is cheapest to win.
+        </p>
+        <h3>The promised land</h3>
+        <p>
+          A regional renovation transaction and delivery layer: customers can
+          see the outcome, understand the commitment and trust the process; the
+          business can repeat its economics across packages and cities.
+        </p>
+      </div>
+      <footer>
+        <span>SECHA HOME · GROW THROUGH OPERATING PROOF</span
+        ><span>05 / 06</span>
+      </footer>
+    </article>
+    <article>
+      <header>
+        <span class="brand">SECHA</span
+        ><span class="label">FOUNDER, PREVIOUS BACKING & THE RAISE</span>
+      </header>
+      <h2>Josephine Lovensa.</h2>
+      <p class="intro">Founder & CEO / SECHA</p>
+      <p>
+        Second-time founder with scale-up experience and an exit. More than five
+        years consulting on infrastructure projects across APAC. PropTech CEO of
+        the Year 2026 — APAC Insider; Emerging Woman CEO in Real Estate 2024 —
+        The Woman’s Tabloid.
+      </p>
+      <div class="backers">
+        <span>Antler</span><span>Startupbootcamp</span><span>BonBillo</span>
+      </div>
+      <p class="small">
+        Previous backers and support programmes confirmed by the founder. Cheque
+        sizes, individual instruments and round terms were not supplied. Company
+        recognition: DGEMS 2024 Select 200; the Forbes India / DGEMS profile and
+        D Globalist listing concern the same recognition, not two funding
+        events.
+      </p>
+      <h2 class="rule">Raising US$1M.</h2>
+      <p>
+        Turn the founder-led service into a repeatable city operating model:
+        connect Studio+ intent to job control, validate package economics and
+        establish measurable distribution.
+      </p>
       <table>
         <tr>
           <th>Planned use of funds</th>
           <th>Allocation</th>
         </tr>
         <tr>
-          <td>Product / interface + job-file control</td>
+          <td>Product / customer interface + controlled job files</td>
           <td>45% · US$450K</td>
         </tr>
         <tr>
-          <td>GX-100 / modular delivery</td>
+          <td>GX-100 / scope, cost and delivery consistency</td>
           <td>35% · US$350K</td>
         </tr>
         <tr>
-          <td>Distribution / agent + bank channels</td>
+          <td>Distribution / agent + qualified-bank conversion</td>
           <td>20% · US$200K</td>
         </tr>
       </table>
-      <div class="rule">
-        <div class="eyebrow">THE FOUNDER</div>
-        <p class="founder">Josephine Lovensa</p>
-        <p class="small">Founder & CEO / SECHA</p>
-        <p>
-          Second-time founder with scale-up experience and an exit. More than
-          five years consulting on infrastructure projects across APAC. PropTech
-          CEO of the Year 2026 — APAC Insider.
-        </p>
-      </div>
       <p>
         <strong>Investor enquiries</strong><br /><a
           href="mailto:jplovensa@sechahome.com"
           >jplovensa@sechahome.com</a
         >
       </p>
+      <div class="links rule">
+        <a href="https://www.linkedin.com/in/josephinepetralovensa/"
+          >Josephine’s LinkedIn profile</a
+        ><br /><a
+          href="https://www.growthmentor.com/startup-accelerators/antler/secha-home/"
+          >GrowthMentor / SECHA’s founding journey with Antler</a
+        ><br /><a
+          href="https://www.dglobalist.com/dgems-2024-s200-cohort?4311a1a2_page=4"
+          >D Globalist / DGEMS 2024 Select 200 listing</a
+        >
+      </div>
       <p class="small">
-        This memo summarises the supplied business update and public product
-        source. No valuation, investment terms, committed pipeline or
-        independent financial verification was provided.
+        Business figures are company-reported. Backer names are
+        founder-confirmed. External profiles were not independently re-verified
+        in this environment. No valuation, securities terms or funding
+        commitments are stated.
       </p>
       <footer>
-        <span>SECHA HOME · INVESTMENT MEMO 2026</span><span>03 / 03</span>
+        <span>SECHA HOME · INVESTMENT MEMO 2026</span><span>06 / 06</span>
       </footer>
     </article>
   </body>
