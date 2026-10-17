@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#141713" />
-    <title>SECHA — Renovation, made repeatable.</title>
+    <title>SECHA — Investment Memo 2026</title>
     <meta
       name="description"
-      content="SECHA is the renovation interface for Asia. Explore the package model, GX-100 delivery system, traction and US$1M investment opportunity."
+      content="SECHA is the renovation interface for Asia. Read the manifesto, explore the actual Studio+ playground, and understand the GX-100 model and US$1M raise."
     />
     <link rel="icon" href="data:," />
     <link
@@ -18,18 +18,76 @@
       crossorigin
     />
     <link rel="stylesheet" href="styles.css" />
+    <script src="opening.js" defer></script>
     <script src="app.js" defer></script>
   </head>
   <body>
+    <dialog
+      id="opening"
+      class="opening"
+      aria-labelledby="opening-title"
+      aria-describedby="opening-description"
+    >
+      <div class="opening-top">
+        <span class="wordmark">SECHA<span>HOME</span></span
+        ><span class="mono">INVESTMENT MEMO / 2026</span
+        ><button id="opening-skip">
+          Skip intro
+          <img
+            class="icon"
+            src="assets/icons/arrow-right.svg"
+            alt=""
+            width="16"
+            height="16"
+          />
+        </button>
+      </div>
+      <div class="opening-stage">
+        <video
+          id="opening-video"
+          data-src="assets/film/opening.mp4"
+          poster="assets/film/opening-poster.jpg"
+          muted
+          playsinline
+          preload="none"
+          aria-label="Silent modular furniture assembly film"
+        ></video>
+      </div>
+      <div class="opening-caption">
+        <div>
+          <span class="eyebrow">PEOPLE MAKE SPACE.</span>
+          <h2 id="opening-title">
+            Better spaces begin<br />with a better system.
+          </h2>
+          <p id="opening-description">
+            A short, silent film from SECHA. A foundation, a set of parts, a
+            place to live.
+          </p>
+        </div>
+        <button id="opening-pause" aria-label="Pause opening film">
+          Pause film
+        </button>
+      </div>
+      <div class="opening-bottom">
+        <span id="opening-phase" class="mono">01 / SET THE FOUNDATION</span
+        ><progress
+          id="opening-progress"
+          max="1"
+          value="0"
+          aria-label="Opening film playback"
+        ></progress
+        ><span id="opening-time" class="mono">00:00 / 00:05</span>
+      </div>
+    </dialog>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <a href="#overview" class="wordmark" aria-label="SECHA home"
         >SECHA<span>HOME</span></a
       >
       <nav aria-label="Main navigation" id="main-nav">
-        <a href="#overview" aria-current="location">Overview</a
-        ><a href="#platform">The platform</a><a href="#economics">Economics</a
-        ><a href="#team">The team</a>
+        <a href="#overview" aria-current="location">The memo</a
+        ><a href="#manifesto">Manifesto</a><a href="#platform">Studio+</a
+        ><a href="#economics">Economics</a><a href="#founder">Founder</a>
       </nav>
       <button class="header-contact" data-contact>
         Let’s talk
@@ -50,122 +108,210 @@
         Menu
       </button>
     </header>
-    <main id="main">
-      <section
-        class="hero container"
-        id="overview"
-        aria-labelledby="hero-title"
-      >
-        <div class="hero-topline mono">
-          <span>THE RENOVATION INTERFACE FOR ASIA</span
-          ><span>INVESTOR OVERVIEW / 2026</span>
-        </div>
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <div class="eyebrow">
-              <span class="status-dot" aria-hidden="true"></span> BUILT IN
-              JAKARTA. DESIGNED TO REPEAT.
-            </div>
-            <h1 id="hero-title">
-              Renovation,<br />made<br /><em>repeatable.</em>
-            </h1>
-            <p class="hero-description">
-              A renovation shouldn’t start from zero.<br />SECHA turns it into a
-              product customers can choose, finance and track.
-            </p>
-            <div class="hero-actions">
-              <a class="button button-accent" href="#platform"
-                >Explore the business
-                <span aria-hidden="true"
-                  ><img
-                    class="icon"
-                    src="assets/icons/arrow-up-right.svg"
-                    alt=""
-                    width="16"
-                    height="16" /></span></a
-              ><a
-                class="text-link"
-                href="assets/secha-investor-overview.pdf"
-                download
-                >Investor brief
-                <span aria-hidden="true"
-                  ><img
+    <main id="main" tabindex="-1">
+      <section class="memo-cover" id="overview" aria-labelledby="hero-title">
+        <div class="container">
+          <div class="memo-topline mono">
+            <span>SECHA HOME / INVESTMENT MEMO</span
+            ><span>JAKARTA, INDONESIA · 2026</span>
+          </div>
+          <div class="memo-cover-grid">
+            <div class="memo-cover-copy">
+              <span class="eyebrow">OUR CONVICTION</span>
+              <h1 id="hero-title">
+                Better spaces.<br />A repeatable<br /><em>business.</em>
+              </h1>
+              <p class="memo-deck">The renovation interface for Asia.</p>
+              <p class="memo-intro">
+                SECHA turns renovation from a one-off project into a product
+                customers can choose, shape and bring to life—with a physical
+                system designed to deliver the promise.
+              </p>
+              <div class="hero-actions">
+                <a class="button button-dark" href="#manifesto"
+                  >Read the manifesto
+                  <img
                     class="icon"
                     src="assets/icons/arrow-down.svg"
                     alt=""
                     width="16"
-                    height="16" /></span
-              ></a>
+                    height="16" /></a
+                ><button class="film-replay text-link" data-replay-opening>
+                  Watch the opening film
+                  <img
+                    class="icon"
+                    src="assets/icons/arrow-up-right.svg"
+                    alt=""
+                    width="16"
+                    height="16"
+                  />
+                </button>
+              </div>
             </div>
-            <div class="hero-footnote mono">
-              ONE INTERFACE. ONE JOB FILE. REPEATABLE DELIVERY.
-            </div>
-          </div>
-          <figure class="hero-visual">
-            <img
-              src="assets/gx100-delivery.jpg"
-              alt="GX-100 modular panels being assembled into a warm, finished living space"
-              width="1672"
-              height="941"
-              fetchpriority="high"
-            />
-            <div class="image-label mono">
-              <span>GX–100 / THE PHYSICAL ENGINE</span><span>01 — 03</span>
-            </div>
-            <figcaption>
-              <span
-                >Software defines the promise.<br /><strong
-                  >GX-100 delivers it.</strong
-                ></span
-              ><a
-                href="#delivery"
-                aria-label="Explore the GX-100 delivery system"
-                ><img
+            <aside class="memo-summary" aria-labelledby="memo-index-title">
+              <div class="memo-edition mono">
+                <span>SECHA / 2026</span><span>MEMO № 01</span>
+              </div>
+              <p class="memo-abstract">
+                Productise the service.<br />Standardise the delivery.<br />Repeat
+                the outcome.
+              </p>
+              <dl class="memo-data">
+                <div>
+                  <dt>Founder</dt>
+                  <dd>Josephine Lovensa</dd>
+                </div>
+                <div>
+                  <dt>Starting point</dt>
+                  <dd>Jakarta, Indonesia</dd>
+                </div>
+                <div>
+                  <dt>Capital sought</dt>
+                  <dd>US$1M</dd>
+                </div>
+              </dl>
+              <h2 id="memo-index-title" class="mono">IN THIS MEMO</h2>
+              <ol class="memo-index">
+                <li>
+                  <a href="#manifesto"><span>01</span> The manifesto</a>
+                </li>
+                <li>
+                  <a href="#platform"><span>02</span> Studio+ & the product</a>
+                </li>
+                <li>
+                  <a href="#delivery"><span>03</span> The physical engine</a>
+                </li>
+                <li>
+                  <a href="#economics"><span>04</span> The economics</a>
+                </li>
+                <li>
+                  <a href="#distribution"
+                    ><span>05</span> The route to market</a
+                  >
+                </li>
+                <li>
+                  <a href="#founder"><span>06</span> The founder</a>
+                </li>
+                <li>
+                  <a href="#investment"><span>07</span> The capital</a>
+                </li>
+              </ol>
+              <a
+                href="assets/secha-investment-memo.pdf"
+                class="memo-download"
+                download
+                >Download the investment memo
+                <img
                   class="icon"
-                  src="assets/icons/arrow-up-right.svg"
+                  src="assets/icons/arrow-down.svg"
                   alt=""
                   width="16"
                   height="16"
               /></a>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="traction-strip" aria-label="Business highlights">
-          <div>
-            <span class="metric">US$300K</span
-            ><span>Project value served to date</span
-            ><span class="metric-note mono">EXISTING SERVICE TRACTION</span>
+            </aside>
           </div>
-          <div>
-            <span class="metric">30<span>%</span></span
-            ><span>Target package gross margin</span
-            ><span class="metric-note mono">DESIGNED INTO THE PACKAGE</span>
+          <div class="traction-strip" aria-label="Business highlights">
+            <div>
+              <span class="metric">US$300K</span
+              ><span>Project value served to date</span
+              ><span class="metric-note mono">HISTORICAL PROJECT VALUE</span>
+            </div>
+            <div>
+              <span class="metric">30<span>%</span></span
+              ><span>Target package gross margin</span
+              ><span class="metric-note mono">DESIGNED UNIT ECONOMICS</span>
+            </div>
+            <div>
+              <span class="metric">40<span>%</span></span
+              ><span>Faster modular delivery</span
+              ><span class="metric-note mono"
+                >COMPANY-REPORTED IMPROVEMENT</span
+              >
+            </div>
+            <p>
+              Service proven.<br /><strong
+                >The next step:<br />productise the system.</strong
+              >
+            </p>
           </div>
-          <div>
-            <span class="metric">40<span>%</span></span
-            ><span>Faster modular delivery</span
-            ><span class="metric-note mono">COMPANY-REPORTED IMPROVEMENT</span>
-          </div>
-          <p>
-            Service proven.<br /><strong
-              >Now productising<br />the system.</strong
-            ><a href="#opportunity"
-              >The investment thesis
-              <span aria-hidden="true"
-                ><img
-                  class="icon"
-                  src="assets/icons/arrow-up-right.svg"
-                  alt=""
-                  width="16"
-                  height="16" /></span
-            ></a>
+          <p class="source-note">
+            Company-reported figures. Project value is not recognised revenue.
+            Gross margin is a target; delivery improvement has not been
+            independently verified.
           </p>
         </div>
-        <p class="source-note">
-          Company-reported figures. Project value is not recognised revenue.
-          Gross margin is a target; delivery improvement has not been
-          independently verified.
-        </p>
+      </section>
+      <section
+        class="manifesto-section"
+        id="manifesto"
+        aria-labelledby="manifesto-title"
+      >
+        <div class="container section-space">
+          <div class="section-kicker mono">
+            <span>01 / THE MANIFESTO</span><span>PEOPLE MAKE SPACE.</span>
+          </div>
+          <div class="manifesto-grid">
+            <div class="manifesto-title-block">
+              <span class="eyebrow">OUR POINT OF VIEW</span>
+              <h2 id="manifesto-title">
+                The world doesn’t<br />just need more space.<br /><em
+                  >It needs better<br />ways to make it.</em
+                >
+              </h2>
+              <p class="manifesto-signature">
+                A conviction behind SECHA.<br /><strong
+                  >Josephine Lovensa</strong
+                ><span class="mono">FOUNDER & CEO</span>
+              </p>
+            </div>
+            <div class="manifesto-body">
+              <p class="manifesto-lead">
+                A home is lived in. A space is made personal. The process of
+                making it should feel just as considered.
+              </p>
+              <p>
+                Today, renovation asks customers to buy uncertainty: an evolving
+                brief, a moving price and a finish line that keeps changing.
+                Every new project asks the business to start again.
+              </p>
+              <p>
+                We believe the next renovation business will make choice simpler
+                and delivery more disciplined. Not by making every space the
+                same, but by making the system behind each space repeatable.
+              </p>
+              <div class="conviction">
+                <span class="mono">I.</span>
+                <div>
+                  <h3>Freedom in the choices.</h3>
+                  <p>
+                    A customer should be able to see, explore and shape a space
+                    before committing to it.
+                  </p>
+                </div>
+              </div>
+              <div class="conviction">
+                <span class="mono">II.</span>
+                <div>
+                  <h3>Clarity in the commitment.</h3>
+                  <p>
+                    Scope, materials, price and sequence belong in one
+                    controlled job file.
+                  </p>
+                </div>
+              </div>
+              <div class="conviction">
+                <span class="mono">III.</span>
+                <div>
+                  <h3>Discipline in the delivery.</h3>
+                  <p>
+                    The physical system should fulfil what the interface
+                    promises.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section
@@ -175,7 +321,7 @@
       >
         <div class="container section-space">
           <div class="section-kicker mono">
-            <span>01 / THE OPPORTUNITY</span
+            <span>THE THESIS / WHY THE SYSTEM MATTERS</span
             ><span>FROM ONE-OFF TO REPEATABLE</span>
           </div>
           <div class="section-heading">
@@ -251,113 +397,137 @@
       </section>
 
       <section
-        class="container section-space"
+        class="container section-space memo-product"
         id="platform"
         aria-labelledby="platform-title"
       >
         <div class="section-kicker mono">
-          <span>02 / THE INTERFACE</span
-          ><span>SIMPLICITY UP FRONT. CONTROL BEHIND IT.</span>
+          <span>02 / THE PRODUCT</span
+          ><span>STUDIO+ / THE RENOVATION PLAYGROUND</span>
         </div>
         <div class="section-heading">
           <h2 id="platform-title">
-            Choose a renovation.<br />Not a thousand decisions.
+            The interface is<br />already taking shape.
           </h2>
           <p>
-            One connected flow takes a customer from package selection to
-            delivery proof. The interface doesn’t just sell the job. It defines
-            how the job runs.
+            Studio+ gives customers a place to explore a room, change finishes,
+            arrange furniture and walk through their ideas. It makes renovation
+            intent visible before it becomes a delivery commitment.
           </p>
         </div>
-        <div class="platform-showcase">
-          <div
-            class="platform-tabs"
-            role="tablist"
-            aria-label="Customer journey"
-          >
-            <button
-              id="tab-choose"
-              role="tab"
-              aria-selected="true"
-              aria-controls="journey-panel"
-              data-step="choose"
-            >
-              <span class="mono">01</span> Choose
-            </button>
-            <button
-              id="tab-personalise"
-              role="tab"
-              aria-selected="false"
-              aria-controls="journey-panel"
-              tabindex="-1"
-              data-step="personalise"
-            >
-              <span class="mono">02</span> Personalise
-            </button>
-            <button
-              id="tab-finance"
-              role="tab"
-              aria-selected="false"
-              aria-controls="journey-panel"
-              tabindex="-1"
-              data-step="finance"
-            >
-              <span class="mono">03</span> Finance
-            </button>
-            <button
-              id="tab-track"
-              role="tab"
-              aria-selected="false"
-              aria-controls="journey-panel"
-              tabindex="-1"
-              data-step="track"
-            >
-              <span class="mono">04</span> Track
-            </button>
+        <div class="studio-evidence">
+          <div class="studio-evidence-header">
+            <div>
+              <span class="studio-wordmark">SECHA<span>+</span></span
+              ><span class="mono">STUDIO+ / PLAYGROUND</span>
+            </div>
+            <a
+              href="https://www.sechahome.com/studio/playground.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Open the playground
+              <img
+                class="icon"
+                src="assets/icons/arrow-up-right.svg"
+                alt=""
+                width="16"
+                height="16"
+            /></a>
           </div>
           <div
-            id="journey-panel"
-            class="journey-panel"
+            class="studio-tabs"
+            role="tablist"
+            aria-label="Studio+ product captures"
+          >
+            <button
+              role="tab"
+              id="studio-tab-studio"
+              aria-controls="studio-capture-panel"
+              aria-selected="true"
+              data-studio="studio"
+            >
+              <span class="mono">01</span> Studio apartment</button
+            ><button
+              role="tab"
+              id="studio-tab-residence"
+              aria-controls="studio-capture-panel"
+              aria-selected="false"
+              tabindex="-1"
+              data-studio="residence"
+            >
+              <span class="mono">02</span> Residence</button
+            ><button
+              role="tab"
+              id="studio-tab-commercial"
+              aria-controls="studio-capture-panel"
+              aria-selected="false"
+              tabindex="-1"
+              data-studio="commercial"
+            >
+              <span class="mono">03</span> Commercial
+            </button>
+          </div>
+          <figure
+            id="studio-capture-panel"
             role="tabpanel"
-            aria-labelledby="tab-choose"
+            aria-labelledby="studio-tab-studio"
             tabindex="0"
           >
-            <div class="journey-text">
-              <span class="eyebrow" id="journey-eyebrow"
-                >A MENU, NOT A BLANK CANVAS</span
-              >
-              <h3 id="journey-title">
-                The scope is clear.<br />The choice is yours.
-              </h3>
-              <p id="journey-description">
-                Customers select a package with a visible outcome, price and
-                timeline. Standard choices make demand easier to fulfil.
-              </p>
-              <ul id="journey-points">
-                <li>Defined package inclusions</li>
-                <li>Transparent pricing and timelines</li>
-                <li>One consistent customer experience</li>
-              </ul>
-              <span class="demo-note mono"
-                >PRODUCT CONCEPT / FROM THE SECHA BUSINESS UPDATE</span
-              >
-            </div>
-            <div class="journey-media" id="journey-media">
-              <img
-                src="assets/package-interface.jpg"
-                alt="SECHA package selection interface showing Essential, Plus and Signature packages"
-                width="1257"
-                height="618"
+            <a
+              id="studio-capture-link"
+              href="assets/studio/playground-studio.webp"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View the full-size Studio+ studio apartment capture"
+              ><img
+                id="studio-capture"
+                src="assets/studio/playground-studio.webp"
+                alt="Studio+ playground: 48 square metre studio apartment with editable 3D furniture, material controls and an illustrative budget"
+                width="1440"
+                height="1000"
                 loading="lazy"
-              />
-            </div>
+            /></a>
+            <figcaption>
+              <span id="studio-capture-description"
+                >48 m² studio · editable furniture · moodboards & finishes ·
+                concept budget</span
+              ><span class="mono"
+                >SOURCE CAPTURE / SELECT TO VIEW FULL SIZE</span
+              >
+            </figcaption>
+          </figure>
+        </div>
+        <div class="product-observations">
+          <div>
+            <span class="eyebrow">WHAT WORKS TODAY</span>
+            <h3>A space to explore.<br />A clearer starting brief.</h3>
+            <p>
+              The playground supports multiple space types, material directions,
+              furniture placement, plan and walkthrough modes, saved layouts and
+              export.
+            </p>
+          </div>
+          <div>
+            <span class="eyebrow">THE OPERATING THESIS</span>
+            <h3>Turn a visible choice<br />into a controlled job.</h3>
+            <p>
+              The next step is to connect customer intent to package scope,
+              bills of materials, supplier allocation, installation sequence and
+              delivery proof.
+            </p>
           </div>
         </div>
+        <p class="product-disclosure">
+          These are captures of the actual public Studio+ source, rendered
+          locally. Layouts and budgets are illustrative. The playground is a
+          design tool; these captures do not demonstrate live quotation, lending
+          or fulfilment integrations.
+        </p>
         <div class="job-flow">
           <div>
-            <span class="mono">INPUT / PACKAGE</span>
-            <h3>One customer decision.</h3>
-            <p>Outcome · scope · finish</p>
+            <span class="mono">CUSTOMER / STUDIO+</span>
+            <h3>Explore the space.</h3>
+            <p>Layout · furniture · finish</p>
           </div>
           <span class="flow-arrow" aria-hidden="true"
             ><img
@@ -369,8 +539,8 @@
           /></span>
           <div>
             <span class="mono">CONTROL / JOB FILE</span>
-            <h3>One source of truth.</h3>
-            <p>Materials · suppliers · installer sequence</p>
+            <h3>Define the commitment.</h3>
+            <p>Scope · materials · sequence</p>
           </div>
           <span class="flow-arrow" aria-hidden="true"
             ><img
@@ -381,9 +551,9 @@
               height="16"
           /></span>
           <div>
-            <span class="mono">OUTPUT / DELIVERY</span>
-            <h3>One accountable job.</h3>
-            <p>Milestones · quality proof · margin</p>
+            <span class="mono">FULFILMENT / GX-100</span>
+            <h3>Deliver the promise.</h3>
+            <p>Milestones · quality · margin</p>
           </div>
         </div>
       </section>
@@ -576,64 +746,66 @@
         </div>
       </section>
 
-      <section class="light-section" id="team" aria-labelledby="team-title">
+      <section
+        class="light-section founder-section"
+        id="founder"
+        aria-labelledby="founder-title"
+      >
         <div class="container section-space">
           <div class="section-kicker mono">
-            <span>06 / THE FOUNDERS</span
-            ><span>OPERATOR EXPERIENCE. FINANCIAL DISCIPLINE.</span>
+            <span>06 / THE FOUNDER</span
+            ><span>OPERATOR EXPERIENCE. A CLEAR CONVICTION.</span>
           </div>
-          <div class="section-heading">
-            <h2 id="team-title">Built by people<br />who know the work.</h2>
-            <p>
-              Founder experience, financial discipline and real renovation
-              delivery come together in one team.
-            </p>
-          </div>
-          <div class="team-grid">
-            <article>
-              <div class="founder-heading">
-                <span class="founder-index mono">01 /</span>
-                <div>
-                  <h3>Josephine Lovensa</h3>
-                  <span class="founder-role mono">FOUNDER & CEO</span>
-                </div>
-              </div>
-              <p class="founder-intro">
-                Second-time founder with scale-up experience and an exit.
+          <div class="founder-memo-grid">
+            <div>
+              <span class="eyebrow">THE PERSON BEHIND THE THESIS</span>
+              <h2 id="founder-title">Josephine<br />Lovensa.</h2>
+              <span class="founder-role mono">FOUNDER & CEO / SECHA</span
+              ><button class="founder-contact text-link" data-contact>
+                Connect with Josephine
+                <img
+                  class="icon"
+                  src="assets/icons/arrow-up-right.svg"
+                  alt=""
+                  width="16"
+                  height="16"
+                />
+              </button>
+            </div>
+            <div>
+              <p class="founder-statement">
+                The opportunity is to turn real renovation experience into a
+                business that can repeat its best outcomes.
               </p>
-              <ul>
-                <li>
-                  5+ years consulting on infrastructure projects across APAC
-                </li>
-                <li>PropTech CEO of the Year 2026 — APAC Insider</li>
-                <li>
-                  Emerging Woman CEO in Real Estate 2024 — The Woman’s Tabloid
-                </li>
-              </ul>
-            </article>
-            <article>
-              <div class="founder-heading">
-                <span class="founder-index mono">02 /</span>
-                <div>
-                  <h3>Leonardi Ryan Andika</h3>
-                  <span class="founder-role mono">CO-FOUNDER & CFO</span>
-                </div>
-              </div>
-              <p class="founder-intro">
-                Former management consultant at Boston Consulting Group.
+              <p class="founder-bio">
+                Josephine is a second-time founder with scale-up experience and
+                an exit. Her background includes more than five years consulting
+                on infrastructure projects across APAC.
               </p>
-              <ul>
-                <li>
-                  5+ years in management consulting and investment banking in
-                  Southeast Asia
-                </li>
-                <li>Financial advisor at HELP for Refugees</li>
-                <li>
-                  HELP for Refugees is supported by the US and Netherlands
-                  embassies
-                </li>
-              </ul>
-            </article>
+              <dl class="founder-credentials">
+                <div>
+                  <dt class="mono">EXPERIENCE</dt>
+                  <dd>
+                    Second-time founder<br />Infrastructure consulting across
+                    APAC
+                  </dd>
+                </div>
+                <div>
+                  <dt class="mono">2026</dt>
+                  <dd>
+                    PropTech CEO of the Year<br /><span>APAC Insider</span>
+                  </dd>
+                </div>
+                <div>
+                  <dt class="mono">2024</dt>
+                  <dd>
+                    Emerging Woman CEO in Real Estate<br /><span
+                      >The Woman’s Tabloid</span
+                    >
+                  </dd>
+                </div>
+              </dl>
+            </div>
           </div>
         </div>
       </section>
@@ -644,7 +816,7 @@
         aria-labelledby="raise-title"
       >
         <div class="section-kicker mono">
-          <span>07 / THE NEXT CHAPTER</span
+          <span>07 / THE CAPITAL</span
           ><span>PRODUCT. DELIVERY. DISTRIBUTION.</span>
         </div>
         <div class="raise-grid">
@@ -668,9 +840,9 @@
               /></span></button
             ><a
               class="raise-download text-link"
-              href="assets/secha-investor-overview.pdf"
+              href="assets/secha-investment-memo.pdf"
               download
-              >Download investor brief
+              >Download investment memo
               <span aria-hidden="true"
                 ><img
                   class="icon"
@@ -774,7 +946,7 @@
       </div>
       <div class="footer-bottom">
         <span>© 2026 SECHA HOME</span><span>JAKARTA, INDONESIA</span
-        ><span>INVESTOR OVERVIEW · 2026 BUSINESS UPDATE</span>
+        ><span>INVESTMENT MEMO · 2026</span>
       </div>
     </footer>
     <dialog id="contact-dialog" aria-labelledby="contact-title">

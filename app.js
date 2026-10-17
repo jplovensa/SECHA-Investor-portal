@@ -46,97 +46,65 @@ const observer = new IntersectionObserver(
 );
 links.forEach((link) => observer.observe(document.querySelector(link.hash)));
 
-const journey = {
-  choose: {
-    eyebrow: "A MENU, NOT A BLANK CANVAS",
-    title: "The scope is clear.<br>The choice is yours.",
+const studioViews = {
+  studio: {
+    image: "assets/studio/playground-studio.webp",
+    alt: "Studio+ playground: 48 square metre studio apartment with editable 3D furniture, material controls and an illustrative budget",
     description:
-      "Customers select a package with a visible outcome, price and timeline. Standard choices make demand easier to fulfil.",
-    points: [
-      "Defined package inclusions",
-      "Transparent pricing and timelines",
-      "One consistent customer experience",
-    ],
-    media:
-      '<img src="assets/package-interface.jpg" alt="SECHA package selection interface showing Essential, Plus and Signature packages" width="1257" height="618">',
+      "48 m² studio · editable furniture · moodboards & finishes · concept budget",
   },
-  personalise: {
-    eyebrow: "CURATED CHOICES. CONTROLLED SCOPE.",
-    title: "Make it personal.<br>Keep it repeatable.",
+  residence: {
+    image: "assets/studio/playground-residence.webp",
+    alt: "Studio+ playground: residence with a room divider, living and bedroom furniture, floor controls and an illustrative budget",
     description:
-      "Customers choose finishes and GX-100 modules within a defined package. The price and timeline stay visible as choices are made.",
-    points: [
-      "Curated finish palettes",
-      "Visible package inclusions",
-      "Choices feed the controlled job file",
-    ],
-    media:
-      '<img src="assets/personalisation-interface.jpg" alt="SECHA personalisation interface with a room preview, finish palette and package summary" width="1920" height="1080">',
+      "Residence · room planning · floor controls · material directions",
   },
-  finance: {
-    eyebrow: "AFFORDABILITY INSIDE THE FLOW",
-    title: "A clearer path<br>from intent to yes.",
+  commercial: {
+    image: "assets/studio/playground-commercial.webp",
+    alt: "Studio+ playground: Café Sol commercial layout with café counters, dining tables, furniture schedule and an illustrative budget",
     description:
-      "Financing supports package affordability and conversion. Renovation delivery remains the core of the business model.",
-    points: [
-      "Package cost stays visible",
-      "Down payment and term inform affordability",
-      "Final terms depend on lender approval",
-    ],
-    media:
-      '<div class="finance-preview"><span class="eyebrow">FINANCING / CUSTOMER FLOW</span><h4>Understand the commitment.</h4><div class="finance-step"><span>01</span> Choose a renovation package</div><div class="finance-step"><span>02</span> Explore down payment and term</div><div class="finance-step"><span>03</span> Confirm terms with lending partners</div><p>More accessible packages. The same controlled delivery.</p><small>Product concept. No credit application or financing offer is made on this investor website.</small></div>',
-  },
-  track: {
-    eyebrow: "ONE JOB FILE. VISIBLE ACCOUNTABILITY.",
-    title: "From a customer choice<br>to delivery proof.",
-    description:
-      "The package becomes a controlled job file: materials, supplier allocation and installer sequence, connected to milestones and quality evidence.",
-    points: [
-      "Milestone visibility",
-      "Quality proof tied to the job",
-      "Margin control through delivery",
-    ],
-    media:
-      '<div class="job-file"><div class="card-heading mono"><span>JOB FILE / DELIVERY MODEL</span><span>CONCEPT</span></div><h4>The package becomes the plan.</h4><div class="job-file-row"><span>Scope</span><strong>Package-defined</strong></div><div class="job-file-row"><span>Materials</span><strong>Bill of materials</strong></div><div class="job-file-row"><span>Fulfilment</span><strong>Supplier + installer sequence</strong></div><div class="job-file-row"><span>Delivery</span><strong>Milestones + quality proof</strong></div></div>',
+      "Café Sol · commercial layout · furniture schedule · concept budget",
   },
 };
-const tabs = [...document.querySelectorAll("[data-step]")];
-function selectStep(tab) {
-  const step = journey[tab.dataset.step];
-  tabs.forEach((item) => {
+const studioTabs = [...document.querySelectorAll("[data-studio]")];
+function selectStudio(tab) {
+  const view = studioViews[tab.dataset.studio];
+  studioTabs.forEach((item) => {
     const selected = item === tab;
     item.setAttribute("aria-selected", String(selected));
     item.tabIndex = selected ? 0 : -1;
   });
-  document
-    .getElementById("journey-panel")
-    .setAttribute("aria-labelledby", tab.id);
-  document.getElementById("journey-eyebrow").textContent = step.eyebrow;
-  document.getElementById("journey-title").innerHTML = step.title;
-  document.getElementById("journey-description").textContent = step.description;
-  const points = document.getElementById("journey-points");
-  points.replaceChildren(
-    ...step.points.map((text) => {
-      const item = document.createElement("li");
-      item.textContent = text;
-      return item;
-    }),
+  const image = document.getElementById("studio-capture");
+  image.src = view.image;
+  image.alt = view.alt;
+  const link = document.getElementById("studio-capture-link");
+  link.href = view.image;
+  link.setAttribute(
+    "aria-label",
+    "View full-size " +
+      tab.textContent.trim().replace(/^0[123]\s*/, "") +
+      " source capture",
   );
-  document.getElementById("journey-media").innerHTML = step.media;
+  document.getElementById("studio-capture-description").textContent =
+    view.description;
+  document
+    .getElementById("studio-capture-panel")
+    .setAttribute("aria-labelledby", tab.id);
 }
-tabs.forEach((tab, index) => {
-  tab.addEventListener("click", () => selectStep(tab));
+studioTabs.forEach((tab, index) => {
+  tab.addEventListener("click", () => selectStudio(tab));
   tab.addEventListener("keydown", (event) => {
-    let target;
-    if (event.key === "ArrowRight") target = tabs[(index + 1) % tabs.length];
+    let next;
+    if (event.key === "ArrowRight")
+      next = studioTabs[(index + 1) % studioTabs.length];
     if (event.key === "ArrowLeft")
-      target = tabs[(index + tabs.length - 1) % tabs.length];
-    if (event.key === "Home") target = tabs[0];
-    if (event.key === "End") target = tabs[tabs.length - 1];
-    if (target) {
+      next = studioTabs[(index + studioTabs.length - 1) % studioTabs.length];
+    if (event.key === "Home") next = studioTabs[0];
+    if (event.key === "End") next = studioTabs.at(-1);
+    if (next) {
       event.preventDefault();
-      selectStep(target);
-      target.focus();
+      selectStudio(next);
+      next.focus();
     }
   });
 });

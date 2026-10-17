@@ -2350,3 +2350,1092 @@ dialog .fine-print {
     font-size: 21px;
   }
 }
+
+/* Investment memo: paper, chapters and a founder's point of view. */
+.memo-cover {
+  background: var(--cream);
+  color: var(--ink);
+}
+.memo-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 30px 0;
+  border-bottom: 1px solid #c7ccbd;
+  color: #526347;
+  font-size: 9px;
+}
+.memo-cover-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.8fr;
+  gap: 100px;
+  padding: 65px 0 60px;
+}
+.memo-cover .eyebrow {
+  color: #4c6040;
+}
+.memo-cover h1 {
+  font-size: clamp(60px, 6.4vw, 94px);
+  line-height: 1.02;
+  letter-spacing: -0.065em;
+  margin: 27px 0 28px;
+  font-weight: 500;
+}
+.memo-cover h1 em {
+  font:
+    italic 1.12em/0.95 Georgia,
+    "Times New Roman",
+    serif;
+  letter-spacing: -0.075em;
+  color: #48613c;
+}
+.memo-deck {
+  font-size: 20px;
+  letter-spacing: -0.025em;
+  margin-bottom: 14px;
+}
+.memo-intro {
+  font-size: 14px;
+  line-height: 1.9;
+  max-width: 460px;
+  color: #59644f;
+}
+.memo-cover .hero-actions {
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+.button-dark {
+  background: #263e2c;
+  color: #f4f0e6;
+}
+.button-dark:hover {
+  background: #385336;
+}
+.button-dark .icon {
+  filter: invert(100%);
+}
+.film-replay {
+  border: 0;
+  border-bottom: 1px solid #8d9d7d;
+  background: none;
+  color: #3b5030;
+  padding: 0 0 4px;
+  font-size: 11px;
+}
+.memo-cover .text-link .icon {
+  filter: none;
+  width: 13px;
+  height: 13px;
+}
+.memo-summary {
+  border-left: 1px solid #c7ccbd;
+  padding-left: 35px;
+  align-self: start;
+  margin-top: 3px;
+}
+.memo-edition {
+  display: flex;
+  justify-content: space-between;
+  color: #56684a;
+  font-size: 9px;
+}
+.memo-abstract {
+  font-size: 21px;
+  line-height: 1.55;
+  letter-spacing: -0.03em;
+  margin: 26px 0;
+}
+.memo-data {
+  margin: 0 0 28px;
+}
+.memo-data > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid #c7ccbd;
+  padding: 9px 0;
+  font-size: 10px;
+}
+.memo-data dt {
+  color: #586c49;
+}
+.memo-data dd {
+  margin: 0;
+  font-weight: 600;
+}
+.memo-summary h2 {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  color: #526347;
+}
+.memo-index {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 11px;
+}
+.memo-index a {
+  display: flex;
+  gap: 18px;
+  padding: 6px 0;
+}
+.memo-index a:hover {
+  color: #45672e;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.memo-index span {
+  font: 9px var(--mono);
+  color: #596e4a;
+  width: 14px;
+  padding-top: 4px;
+}
+.memo-download {
+  font-size: 10px;
+  border-top: 1px solid #c7ccbd;
+  padding-top: 16px;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.memo-cover .traction-strip {
+  border-color: #c7ccbd;
+  padding: 30px 0;
+}
+.memo-cover .traction-strip > div {
+  border-color: #c7ccbd;
+}
+.memo-cover .traction-strip > div > span:not(.metric):not(.metric-note) {
+  color: #4e6042;
+}
+.memo-cover .metric-note {
+  color: #58684b;
+}
+.memo-cover .traction-strip > p {
+  color: #607150;
+}
+.memo-cover .traction-strip > p strong {
+  color: #283b21;
+}
+.memo-cover .source-note {
+  color: #56664b;
+  margin-bottom: 0;
+  padding-bottom: 27px;
+}
+.manifesto-section {
+  background: #1d3026;
+}
+.manifesto-section .section-kicker {
+  color: #b2baa7;
+}
+.manifesto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+}
+.manifesto-title-block h2 {
+  font-size: 49px;
+  line-height: 1.16;
+  margin: 27px 0 35px;
+  letter-spacing: -0.05em;
+}
+.manifesto-title-block h2 em {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: -0.04em;
+}
+.manifesto-signature {
+  color: #b7c1ae;
+  font-size: 11px;
+  line-height: 1.8;
+}
+.manifesto-signature strong {
+  color: #efeee6;
+  font-weight: 500;
+  display: block;
+  font-size: 17px;
+  margin-top: 12px;
+}
+.manifesto-signature .mono {
+  display: block;
+  font-size: 8px;
+  margin-top: 5px;
+}
+.manifesto-body > p {
+  color: #b9c5b2;
+  font-size: 13px;
+  line-height: 1.95;
+  margin: 0 0 21px;
+}
+.manifesto-body .manifesto-lead {
+  font-size: 21px;
+  line-height: 1.65;
+  color: #f0eee7;
+  letter-spacing: -0.02em;
+}
+.conviction {
+  border-top: 1px solid #4c604f;
+  padding: 19px 0;
+  display: flex;
+  gap: 22px;
+}
+.conviction > .mono {
+  color: var(--accent);
+  padding-top: 3px;
+  min-width: 17px;
+}
+.conviction h3 {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.conviction p {
+  font-size: 11px;
+  line-height: 1.8;
+  color: #bac7b2;
+  margin-top: 5px;
+}
+.studio-evidence {
+  background: #f8f7f1;
+  color: #233d31;
+}
+.studio-evidence-header {
+  padding: 20px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  border-bottom: 1px solid #d2d7c7;
+}
+.studio-evidence-header > div {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+.studio-wordmark {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+.studio-wordmark > span {
+  color: #6d814e;
+}
+.studio-evidence-header .mono {
+  font-size: 9px;
+  color: #4c6340;
+}
+.studio-evidence-header > a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 11px;
+}
+.studio-tabs {
+  display: flex;
+  padding: 0 25px;
+  gap: 35px;
+  border-bottom: 1px solid #d2d7c7;
+}
+.studio-tabs button {
+  color: #4d6142;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  padding: 17px 0;
+  font-size: 12px;
+}
+.studio-tabs .mono {
+  font-size: 9px;
+  margin-right: 9px;
+}
+.studio-tabs button[aria-selected="true"] {
+  color: #223d2b;
+  border-color: #466435;
+  font-weight: 600;
+}
+.studio-tabs button:hover {
+  color: #213c29;
+}
+.studio-evidence a:focus-visible,
+.studio-tabs button:focus-visible {
+  outline-color: #466435;
+}
+#studio-capture-link {
+  display: block;
+  cursor: zoom-in;
+}
+#studio-capture {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.44;
+  object-fit: contain;
+}
+.studio-evidence figcaption {
+  border-top: 1px solid #d2d7c7;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 15px 25px;
+  font-size: 10px;
+  color: #435a38;
+}
+.studio-evidence figcaption .mono {
+  font-size: 8px;
+}
+.product-observations {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  border-bottom: 1px solid var(--line);
+  padding: 35px 0 30px;
+}
+.product-observations .eyebrow {
+  font-size: 9px;
+}
+.product-observations h3 {
+  font-size: 24px;
+  line-height: 1.35;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  margin: 14px 0;
+}
+.product-observations p {
+  font-size: 12px;
+  color: #b1bba5;
+  line-height: 1.9;
+  max-width: 440px;
+}
+.product-disclosure {
+  font-size: 10px;
+  color: #abb69e;
+  line-height: 1.85;
+  max-width: 1000px;
+  margin-top: 17px;
+}
+.founder-memo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+}
+.founder-memo-grid .eyebrow {
+  color: #4f6540;
+  font-size: 9px;
+}
+.founder-memo-grid h2 {
+  font-size: 72px;
+  line-height: 1.05;
+  margin: 25px 0 20px;
+  letter-spacing: -0.065em;
+}
+.founder-memo-grid .founder-role {
+  font-size: 10px;
+  color: #4f6540;
+}
+.founder-contact {
+  margin-top: 35px;
+  background: none;
+  color: #334b27;
+  border: 0;
+  border-bottom: 1px solid #7d916a;
+  padding: 0 0 6px;
+}
+.founder-contact .icon {
+  filter: none;
+}
+.founder-statement {
+  font-size: 25px;
+  letter-spacing: -0.035em;
+  line-height: 1.55;
+}
+.founder-bio {
+  font-size: 13px;
+  color: #56674a;
+  line-height: 1.9;
+  margin: 25px 0;
+}
+.founder-credentials {
+  margin: 30px 0 0;
+}
+.founder-credentials > div {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 20px;
+  border-top: 1px solid #c7ccbd;
+  padding: 18px 0;
+}
+.founder-credentials dt {
+  font-size: 9px;
+  color: #4f6540;
+  padding-top: 2px;
+}
+.founder-credentials dd {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.85;
+}
+.founder-credentials dd > span {
+  font-size: 10px;
+  color: #5b6e4e;
+}
+
+/* The video is a skippable opening, not a dependency gate. Native dialog
+   provides focus containment and makes the memo inert only while open. */
+body.opening-active {
+  overflow: hidden;
+}
+dialog.opening {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  border: 0;
+  padding: 0 48px;
+  background: #f4efe4;
+  color: #243627;
+  overflow: auto;
+}
+.opening::backdrop {
+  background: #f4efe4;
+  backdrop-filter: none;
+}
+.opening-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  height: 88px;
+  border-bottom: 1px solid #c3cbb7;
+}
+.opening-top .mono {
+  font-size: 9px;
+  color: #4d6041;
+}
+.opening-top button {
+  border: 1px solid #8e9f7d;
+  background: none;
+  font-size: 11px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 11px 15px;
+}
+.opening-stage {
+  max-width: 960px;
+  margin: 0 auto;
+  height: calc(100dvh - 320px);
+  min-height: 220px;
+}
+.opening-stage video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: normal;
+}
+.opening-caption {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 25px;
+  padding: 5px 0 25px;
+}
+.opening-caption h2 {
+  font-size: 35px;
+  line-height: 1.12;
+  margin: 12px 0;
+  letter-spacing: -0.05em;
+}
+.opening-caption .eyebrow {
+  color: #4d6041;
+  font-size: 9px;
+}
+.opening-caption p {
+  font-size: 11px;
+  color: #526347;
+}
+.opening-caption button {
+  background: none;
+  border: 0;
+  border-bottom: 1px solid #7b9069;
+  padding: 7px 0;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.opening-bottom {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  border-top: 1px solid #c3cbb7;
+  padding: 20px 0;
+}
+.opening-bottom .mono {
+  font-size: 9px;
+  color: #435c34;
+}
+.opening-bottom > span:first-child {
+  min-width: 220px;
+}
+.opening-bottom > span:last-child {
+  min-width: 110px;
+  text-align: right;
+}
+.opening-bottom progress {
+  flex: 1;
+  height: 3px;
+  appearance: none;
+  border: 0;
+  color: #476435;
+  background: #d2d8c6;
+}
+.opening-bottom progress::-webkit-progress-bar {
+  background: #d2d8c6;
+}
+.opening-bottom progress::-webkit-progress-value {
+  background: #476435;
+}
+.opening-bottom progress::-moz-progress-bar {
+  background: #476435;
+}
+.opening :focus-visible {
+  outline-color: #466435;
+}
+
+@media (max-width: 1150px) {
+  .memo-cover-grid {
+    gap: 60px;
+  }
+  .memo-summary {
+    padding-left: 27px;
+  }
+  .memo-abstract {
+    font-size: 19px;
+  }
+  .memo-cover h1 {
+    font-size: 7.3vw;
+  }
+  .memo-intro {
+    font-size: 13px;
+  }
+  .memo-cover .hero-actions {
+    gap: 20px;
+  }
+  .manifesto-grid,
+  .founder-memo-grid {
+    gap: 65px;
+  }
+  .manifesto-title-block h2 {
+    font-size: 43px;
+  }
+  .founder-memo-grid h2 {
+    font-size: 65px;
+  }
+}
+@media (max-width: 800px) {
+  .site-header nav {
+    gap: 16px;
+  }
+  .site-header nav a {
+    font-size: 9px;
+  }
+  .memo-cover-grid {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 35px;
+    padding: 45px 0;
+  }
+  .memo-cover h1 {
+    font-size: 8vw;
+  }
+  .memo-deck {
+    font-size: 16px;
+  }
+  .memo-intro {
+    font-size: 12px;
+  }
+  .memo-summary {
+    padding-left: 22px;
+  }
+  .memo-abstract {
+    font-size: 17px;
+  }
+  .memo-edition {
+    font-size: 7px;
+  }
+  .memo-data > div {
+    font-size: 9px;
+    gap: 8px;
+  }
+  .memo-index {
+    font-size: 10px;
+  }
+  .memo-index a {
+    padding: 5px 0;
+  }
+  .memo-download {
+    font-size: 9px;
+  }
+  .memo-cover .hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .memo-cover .traction-strip {
+    padding: 25px 0;
+  }
+  .memo-cover .metric-note {
+    font-size: 7px;
+  }
+  .manifesto-grid {
+    gap: 40px;
+  }
+  .manifesto-title-block h2 {
+    font-size: 34px;
+  }
+  .manifesto-body .manifesto-lead {
+    font-size: 18px;
+  }
+  .manifesto-body > p {
+    font-size: 12px;
+  }
+  .manifesto-signature {
+    font-size: 10px;
+  }
+  .conviction {
+    gap: 14px;
+  }
+  .conviction h3 {
+    font-size: 14px;
+  }
+  .conviction p {
+    font-size: 10px;
+  }
+  .studio-evidence-header {
+    padding: 17px 20px;
+  }
+  .studio-evidence-header .mono {
+    font-size: 7px;
+  }
+  .studio-evidence-header > a {
+    font-size: 9px;
+    gap: 10px;
+  }
+  .studio-tabs {
+    gap: 27px;
+    padding: 0 20px;
+  }
+  .studio-tabs button {
+    font-size: 11px;
+  }
+  .studio-evidence figcaption {
+    padding: 13px 20px;
+    font-size: 9px;
+  }
+  .studio-evidence figcaption .mono {
+    font-size: 7px;
+  }
+  .product-observations {
+    gap: 35px;
+  }
+  .product-observations h3 {
+    font-size: 21px;
+  }
+  .product-observations p {
+    font-size: 11px;
+  }
+  .founder-memo-grid {
+    gap: 40px;
+  }
+  .founder-memo-grid h2 {
+    font-size: 56px;
+  }
+  .founder-statement {
+    font-size: 21px;
+  }
+  .founder-bio {
+    font-size: 12px;
+  }
+  .founder-credentials > div {
+    grid-template-columns: 70px 1fr;
+    gap: 12px;
+  }
+  .founder-credentials dd {
+    font-size: 11px;
+  }
+  .opening-top {
+    height: 78px;
+  }
+  .opening-caption h2 {
+    font-size: 29px;
+  }
+  .opening-caption p {
+    font-size: 10px;
+  }
+  .opening-bottom > span:first-child {
+    min-width: 185px;
+  }
+  .opening-bottom .mono {
+    font-size: 8px;
+  }
+  .opening-bottom {
+    gap: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .memo-topline {
+    padding: 22px 0;
+    font-size: 7px;
+    gap: 10px;
+  }
+  .memo-topline > span:last-child {
+    max-width: 120px;
+    text-align: right;
+  }
+  .memo-cover-grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+    padding: 38px 0;
+  }
+  .memo-cover .eyebrow {
+    font-size: 9px;
+  }
+  .memo-cover h1 {
+    font-size: clamp(56px, 15vw, 88px);
+    margin: 23px 0 28px;
+    line-height: 1.04;
+  }
+  .memo-cover h1 em {
+    font-size: 1.08em;
+  }
+  .memo-deck {
+    font-size: 18px;
+  }
+  .memo-intro {
+    font-size: 13px;
+    max-width: none;
+  }
+  .memo-cover .hero-actions {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+  .memo-cover .hero-actions .button {
+    font-size: 11px;
+    padding: 15px 17px;
+    gap: 12px;
+  }
+  .memo-cover .film-replay {
+    font-size: 10px;
+    gap: 10px;
+  }
+  .memo-summary {
+    border-left: 0;
+    padding: 25px 0 0;
+    border-top: 1px solid #c7ccbd;
+    margin: 0;
+  }
+  .memo-edition {
+    font-size: 9px;
+  }
+  .memo-abstract {
+    font-size: 22px;
+    margin: 20px 0;
+  }
+  .memo-data {
+    margin-bottom: 22px;
+  }
+  .memo-data > div {
+    font-size: 11px;
+    padding: 11px 0;
+  }
+  .memo-index {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px 15px;
+    font-size: 10px;
+  }
+  .memo-index a {
+    gap: 10px;
+    padding: 7px 0;
+  }
+  .memo-summary h2 {
+    font-size: 9px;
+  }
+  .memo-download {
+    font-size: 11px;
+    margin-top: 23px;
+    padding-top: 19px;
+  }
+  .memo-cover .traction-strip {
+    gap: 12px;
+  }
+  .memo-cover .metric-note {
+    font-size: 7px;
+    line-height: 1.7;
+  }
+  .memo-cover .metric {
+    font-size: 25px;
+  }
+  .memo-cover .metric > span {
+    font-size: 17px;
+  }
+  .memo-cover .source-note {
+    font-size: 9px;
+    line-height: 1.8;
+    padding-bottom: 25px;
+  }
+  .manifesto-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .manifesto-title-block h2 {
+    font-size: 39px;
+    line-height: 1.2;
+    margin: 23px 0 27px;
+  }
+  .manifesto-signature strong {
+    font-size: 16px;
+  }
+  .manifesto-signature .mono {
+    font-size: 8px;
+  }
+  .manifesto-body .manifesto-lead {
+    font-size: 20px;
+  }
+  .manifesto-body > p {
+    font-size: 13px;
+  }
+  .conviction {
+    gap: 18px;
+    padding: 18px 0;
+  }
+  .conviction h3 {
+    font-size: 16px;
+  }
+  .conviction p {
+    font-size: 12px;
+  }
+  .studio-evidence-header {
+    padding: 17px 15px;
+    gap: 15px;
+    align-items: start;
+  }
+  .studio-evidence-header > div {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .studio-evidence-header .mono {
+    font-size: 7px;
+  }
+  .studio-evidence-header > a {
+    font-size: 9px;
+    max-width: 110px;
+    gap: 8px;
+  }
+  .studio-wordmark {
+    font-size: 23px;
+  }
+  .studio-tabs {
+    gap: 0;
+    padding: 0;
+    justify-content: space-around;
+  }
+  .studio-tabs button {
+    font-size: 10px;
+    padding: 15px 7px;
+  }
+  .studio-tabs .mono {
+    display: block;
+    font-size: 8px;
+    margin: 0 0 5px;
+  }
+  .studio-evidence figcaption {
+    padding: 14px 15px;
+    display: block;
+    font-size: 10px;
+    line-height: 1.8;
+  }
+  .studio-evidence figcaption .mono {
+    display: block;
+    font-size: 7px;
+    margin-top: 7px;
+  }
+  .product-observations {
+    grid-template-columns: 1fr;
+    gap: 27px;
+    padding: 28px 0;
+  }
+  .product-observations .eyebrow {
+    font-size: 8px;
+  }
+  .product-observations h3 {
+    font-size: 23px;
+  }
+  .product-observations p {
+    font-size: 12px;
+  }
+  .product-disclosure {
+    font-size: 10px;
+    margin-top: 18px;
+  }
+  .founder-memo-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .founder-memo-grid h2 {
+    font-size: 65px;
+    margin: 24px 0 20px;
+  }
+  .founder-memo-grid .eyebrow {
+    font-size: 8px;
+  }
+  .founder-contact {
+    margin-top: 26px;
+    font-size: 12px;
+  }
+  .founder-statement {
+    font-size: 23px;
+  }
+  .founder-bio {
+    font-size: 13px;
+  }
+  .founder-credentials > div {
+    grid-template-columns: 80px 1fr;
+    gap: 20px;
+  }
+  .founder-credentials dd {
+    font-size: 12px;
+  }
+  .founder-credentials dt {
+    font-size: 8px;
+  }
+  .founder-credentials dd > span {
+    font-size: 10px;
+  }
+  .opening {
+    padding: 0 20px !important;
+  }
+  .opening-top {
+    height: 75px;
+    gap: 15px;
+  }
+  .opening-top > .mono {
+    display: none;
+  }
+  .opening-top button {
+    font-size: 10px;
+    padding: 10px 12px;
+  }
+  .opening-stage {
+    height: calc(100dvh - 365px);
+    min-height: 190px;
+    margin: 0 -20px;
+  }
+  .opening-caption {
+    padding: 0 0 25px;
+    align-items: end;
+    gap: 20px;
+  }
+  .opening-caption h2 {
+    font-size: 29px;
+    margin: 14px 0;
+  }
+  .opening-caption .eyebrow {
+    font-size: 8px;
+  }
+  .opening-caption p {
+    font-size: 10px;
+    max-width: 230px;
+  }
+  .opening-caption button {
+    font-size: 10px;
+  }
+  .opening-bottom {
+    gap: 15px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 17px 0;
+  }
+  .opening-bottom > span:first-child {
+    min-width: 0;
+    font-size: 8px;
+  }
+  .opening-bottom > span:last-child {
+    min-width: 0;
+    font-size: 8px;
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .opening-bottom progress {
+    width: 100%;
+    grid-column: 1/-1;
+    grid-row: 2;
+  }
+}
+@media (max-width: 360px) {
+  .memo-cover .hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .memo-cover h1 {
+    font-size: 17vw;
+  }
+  .memo-cover .metric {
+    font-size: 21px;
+  }
+  .memo-cover .metric > span {
+    font-size: 15px;
+  }
+  .memo-cover .metric-note {
+    font-size: 6px;
+  }
+  .manifesto-title-block h2 {
+    font-size: 34px;
+  }
+  .founder-memo-grid h2 {
+    font-size: 58px;
+  }
+  .opening-caption h2 {
+    font-size: 25px;
+  }
+  .opening-caption button {
+    font-size: 9px;
+  }
+  .studio-tabs button {
+    font-size: 9px;
+  }
+}
+@media (max-height: 600px) and (orientation: landscape) {
+  .opening-stage {
+    height: 160px;
+    min-height: 120px;
+  }
+  .opening-top {
+    height: 60px;
+  }
+  .opening-caption h2 {
+    font-size: 23px;
+  }
+  .opening-caption p {
+    display: none;
+  }
+  .opening-caption {
+    padding-bottom: 14px;
+  }
+  .opening-bottom {
+    padding: 12px 0;
+  }
+  .opening-caption .eyebrow {
+    font-size: 7px;
+  }
+}

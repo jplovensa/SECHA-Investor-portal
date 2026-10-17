@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>SECHA Investor Overview 2026</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SECHA Investment Memo 2026</title>
     <style>
       @font-face {
         font-family: Manrope;
@@ -22,75 +23,81 @@
         background: #f0eee7;
       }
       article {
-        padding: 45px 50px;
-        page-break-after: always;
+        padding: 42px 50px 65px;
+        break-after: page;
         height: 1122px;
         position: relative;
       }
       article:last-child {
-        page-break-after: auto;
+        break-after: auto;
       }
       header {
         display: flex;
         justify-content: space-between;
         border-bottom: 1px solid #cbd0c2;
         padding-bottom: 18px;
-        margin-bottom: 35px;
+        margin-bottom: 32px;
       }
       .brand {
         font-size: 23px;
         font-weight: 800;
         letter-spacing: -1px;
       }
-      .label {
+      .label,
+      .eyebrow {
         font-size: 9px;
         letter-spacing: 1px;
-        color: #68725d;
+        color: #4e6141;
       }
       .eyebrow {
-        font-size: 10px;
-        letter-spacing: 1px;
-        color: #657650;
-        margin-bottom: 14px;
+        margin-bottom: 15px;
       }
       h1 {
-        font-size: 57px;
-        line-height: 1.07;
+        font-size: 65px;
+        line-height: 1.04;
         font-weight: 500;
-        letter-spacing: -3px;
-        margin: 0 0 22px;
+        letter-spacing: -3.5px;
+        margin: 20px 0 26px;
+      }
+      h1 em {
+        font:
+          italic 1.1em Georgia,
+          serif;
+        color: #48613c;
+        letter-spacing: -4px;
       }
       h2 {
-        font-size: 27px;
-        line-height: 1.25;
+        font-size: 31px;
+        line-height: 1.2;
         font-weight: 500;
-        letter-spacing: -1px;
+        letter-spacing: -1.2px;
         margin: 0 0 18px;
       }
       h3 {
         font-size: 15px;
-        margin: 0 0 8px;
+        margin: 0 0 9px;
       }
       p {
         margin: 0 0 15px;
       }
       .intro {
-        font-size: 16px;
-        max-width: 540px;
+        font-size: 17px;
+        line-height: 1.6;
+        max-width: 580px;
       }
-      img {
-        width: 100%;
-        height: 245px;
-        object-fit: cover;
-        object-position: 50% 43%;
-        margin: 12px 0 23px;
+      blockquote {
+        font:
+          italic 27px/1.35 Georgia,
+          serif;
+        margin: 25px 0;
+        color: #48613c;
       }
       .stats {
         display: flex;
         border-top: 1px solid #cbd0c2;
         border-bottom: 1px solid #cbd0c2;
-        margin: 20px 0 28px;
-        padding: 20px 0;
+        margin: 28px 0 20px;
+        padding: 19px 0;
       }
       .stats > div {
         flex: 1;
@@ -104,32 +111,38 @@
       .stats span {
         font-size: 10px;
       }
+      .small {
+        font-size: 10px;
+        color: #4e6141;
+        line-height: 1.7;
+      }
+      .rule {
+        border-top: 1px solid #cbd0c2;
+        padding-top: 22px;
+        margin-top: 22px;
+      }
       .grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 35px;
-        margin-bottom: 28px;
+        margin-bottom: 23px;
       }
-      .small {
-        font-size: 10px;
-        color: #647057;
-        line-height: 1.65;
-      }
-      .rule {
-        border-top: 1px solid #cbd0c2;
-        padding-top: 23px;
-        margin-top: 23px;
+      .capture {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin: 20px 0 10px;
       }
       table {
         width: 100%;
         border-collapse: collapse;
-        margin: 20px 0;
+        margin: 18px 0;
       }
       td,
       th {
         text-align: left;
         border-bottom: 1px solid #cbd0c2;
-        padding: 10px 0;
+        padding: 9px 0;
         font-weight: 400;
       }
       td:last-child,
@@ -138,39 +151,40 @@
       }
       footer {
         position: absolute;
-        bottom: 32px;
+        bottom: 28px;
         left: 50px;
         right: 50px;
         font-size: 9px;
-        color: #68725d;
+        color: #4e6141;
         border-top: 1px solid #cbd0c2;
         padding-top: 12px;
         display: flex;
         justify-content: space-between;
       }
-      ul {
-        padding-left: 17px;
-        margin: 10px 0;
-      }
-      li {
-        padding: 3px 0;
-      }
       a {
         color: #32482b;
+      }
+      .founder {
+        font-size: 36px;
+        font-weight: 500;
+        letter-spacing: -1.7px;
+        margin-bottom: 5px;
       }
       @page {
         size: A4;
         margin: 0;
       }
+
+      .capture {
+        max-height: 410px;
+        object-fit: contain;
+      }
       article:last-child {
         font-size: 11px;
         line-height: 1.5;
       }
-      article:last-child header {
-        margin-bottom: 24px;
-      }
       article:last-child h2 {
-        font-size: 26px;
+        font-size: 28px;
         margin-bottom: 14px;
       }
       article:last-child p {
@@ -181,14 +195,21 @@
       }
       article:last-child td,
       article:last-child th {
-        padding: 8px 0;
-      }
-      article:last-child .grid {
-        margin-bottom: 20px;
+        padding: 7px 0;
       }
       article:last-child .rule {
-        padding-top: 18px;
         margin-top: 18px;
+        padding-top: 18px;
+      }
+      article:last-child .grid {
+        margin-bottom: 18px;
+      }
+      article:last-child .founder {
+        font-size: 30px;
+        margin-bottom: 5px;
+      }
+      article:last-child .small {
+        font-size: 9.5px;
       }
     </style>
   </head>
@@ -196,18 +217,31 @@
     <article>
       <header>
         <span class="brand">SECHA</span
-        ><span class="label">INVESTOR OVERVIEW / 2026</span>
+        ><span class="label">INVESTMENT MEMO / 2026</span>
       </header>
       <div class="eyebrow">THE RENOVATION INTERFACE FOR ASIA</div>
-      <h1>Renovation,<br />made repeatable.</h1>
+      <h1>Better spaces.<br />A repeatable<br /><em>business.</em></h1>
       <p class="intro">
-        SECHA turns renovation into a product customers can choose, finance and
-        track.
+        SECHA turns renovation from a one-off project into a product customers
+        can choose, shape and bring to life.
       </p>
-      <img
-        src="../assets/gx100-delivery.jpg"
-        alt="GX-100 modular installation concept"
-      />
+      <div class="rule">
+        <div class="eyebrow">01 / THE MANIFESTO</div>
+        <blockquote>
+          The world doesn’t just need more space.<br />It needs better ways to
+          make it.
+        </blockquote>
+        <p>
+          Making a space should be considered, personal and clear. Today,
+          renovation asks customers to buy uncertainty: an evolving brief, a
+          moving price and a finish line that keeps changing.
+        </p>
+        <p>
+          We believe in freedom in the choices, clarity in the commitment and
+          discipline in the delivery. The ambition is not to make every space
+          the same. It is to make the system behind each space repeatable.
+        </p>
+      </div>
       <div class="stats">
         <div>
           <strong>US$300K</strong><span>Project value served to date</span>
@@ -217,46 +251,79 @@
           <strong>40%</strong><span>Faster modular delivery, reported</span>
         </div>
       </div>
-      <div class="grid">
-        <div>
-          <h3>The problem</h3>
-          <p>
-            Every renovation brief restarts scope, pricing and delivery.
-            Customers buy uncertainty; contractors inherit variance.
-          </p>
-        </div>
-        <div>
-          <h3>The operating model</h3>
-          <p>
-            One package becomes one controlled job file: a bill of materials,
-            supplier allocation, installer sequence, milestones and quality
-            proof.
-          </p>
-        </div>
-      </div>
-      <h3>Software standardises demand. GX-100 standardises delivery.</h3>
-      <p>
-        Factory-prepared snap panels standardise the shell, furniture and
-        installation sequence. The interface defines the promise; the physical
-        system delivers it.
-      </p>
       <p class="small">
         Company-reported figures from SECHA’s 2026 business update. Project
-        value is not recognised revenue. The 30% margin is a target, not a
-        reported realised result. The 40% delivery improvement has not been
-        independently verified; the underlying measurement baseline was not
+        value is not recognised revenue. The 30% margin is a target, not
+        realised performance. The delivery improvement has not been
+        independently verified; its underlying measurement baseline was not
         supplied.
       </p>
+      <p>
+        <strong>Josephine Lovensa</strong><br /><span class="small"
+          >Founder & CEO / SECHA · Jakarta, Indonesia</span
+        >
+      </p>
       <footer>
-        <span>SECHA HOME · JAKARTA, INDONESIA</span><span>01 / 02</span>
+        <span>SECHA HOME · PEOPLE MAKE SPACE.</span><span>01 / 03</span>
       </footer>
     </article>
     <article>
       <header>
         <span class="brand">SECHA</span
-        ><span class="label">THE BUSINESS & THE NEXT CHAPTER</span>
+        ><span class="label">02 / PRODUCT & OPERATING MODEL</span>
       </header>
-      <h2>Designed to earn on delivery.</h2>
+      <h2>The interface is already taking shape.</h2>
+      <p>
+        Studio+ lets customers explore a room, change material directions, place
+        furniture and walk through their ideas. The public playground supports
+        studio, residential and commercial spaces, floor controls, saved layouts
+        and export.
+      </p>
+      <img
+        class="capture"
+        src="../assets/studio/playground-studio.webp"
+        alt="Studio+ playground source capture with a 3D studio apartment, furniture controls and concept budget"
+      />
+      <p class="small">
+        Actual public Studio+ source rendered locally. Concept layouts and
+        budgets are illustrative. This is a design tool, not evidence of live
+        quotation, financing or fulfilment integrations.
+      </p>
+      <div class="grid rule">
+        <div>
+          <h3>The operating thesis</h3>
+          <p>
+            Turn customer intent into one controlled job file: scope, bill of
+            materials, supplier allocation, installer sequence and quality
+            proof.
+          </p>
+        </div>
+        <div>
+          <h3>The physical engine</h3>
+          <p>
+            GX-100 factory-prepared snap panels standardise the shell, furniture
+            and installation sequence. Software defines the promise; the
+            physical system fulfils it.
+          </p>
+        </div>
+      </div>
+      <p>
+        <strong>Explore Studio+</strong><br /><a
+          href="https://www.sechahome.com/studio/playground.html"
+          >www.sechahome.com/studio/playground.html</a
+        >
+      </p>
+      <footer>
+        <span>SECHA HOME · FROM CUSTOMER CHOICE TO CONTROLLED DELIVERY</span
+        ><span>02 / 03</span>
+      </footer>
+    </article>
+    <article>
+      <header>
+        <span class="brand">SECHA</span
+        ><span class="label">03 / ECONOMICS, FOUNDER & CAPITAL</span>
+      </header>
+      <h2>Earn on delivery. Repeat the outcome.</h2>
       <p>
         A US$5,000 package is designed to produce US$1,500 in gross profit.
         Fixed scope controls price, GX-100 controls time, and the interface
@@ -289,9 +356,9 @@
         <div>
           <h3>Distribution</h3>
           <p>
-            Property agents bring listings and buyers; banks bring qualified
-            borrowers. The SECHA menu converts that intent into packages,
-            fulfilled through the GX-100 network.
+            Property agents and banks are the proposed demand channels. The
+            SECHA menu converts intent into packages, fulfilled through the
+            GX-100 network.
           </p>
         </div>
         <div>
@@ -321,23 +388,15 @@
           <td>20% · US$200K</td>
         </tr>
       </table>
-      <div class="grid rule">
-        <div>
-          <h3>Josephine Lovensa</h3>
-          <p class="small">Founder & CEO</p>
-          <p>
-            Second-time founder with scale-up experience and an exit. 5+ years
-            consulting on infrastructure projects in APAC.
-          </p>
-        </div>
-        <div>
-          <h3>Leonardi Ryan Andika</h3>
-          <p class="small">Co-Founder & CFO</p>
-          <p>
-            Former BCG management consultant. 5+ years in management consulting
-            and investment banking in Southeast Asia.
-          </p>
-        </div>
+      <div class="rule">
+        <div class="eyebrow">THE FOUNDER</div>
+        <p class="founder">Josephine Lovensa</p>
+        <p class="small">Founder & CEO / SECHA</p>
+        <p>
+          Second-time founder with scale-up experience and an exit. More than
+          five years consulting on infrastructure projects across APAC. PropTech
+          CEO of the Year 2026 — APAC Insider.
+        </p>
       </div>
       <p>
         <strong>Investor enquiries</strong><br /><a
@@ -346,12 +405,12 @@
         >
       </p>
       <p class="small">
-        This overview summarises the supplied business update. No valuation,
-        investment terms, committed pipeline or independent financial
-        verification was provided.
+        This memo summarises the supplied business update and public product
+        source. No valuation, investment terms, committed pipeline or
+        independent financial verification was provided.
       </p>
       <footer>
-        <span>SECHA HOME · INVESTOR OVERVIEW 2026</span><span>02 / 02</span>
+        <span>SECHA HOME · INVESTMENT MEMO 2026</span><span>03 / 03</span>
       </footer>
     </article>
   </body>
