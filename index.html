@@ -1,1131 +1,816 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SECHA HOME | The Future of Home</title>
-    <meta name="description" content="Invest in the future of home. SECHA HOME combines living hardware, intelligent software, and renovation finance.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;800&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
-    <style>
-        :root {
-            --bronze-light: #E0AA77;
-            --bronze-main: #CD7F32;
-            --bronze-deep: #8B4513;
-            --black-main: #050505;
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --glass-bg: rgba(20, 20, 20, 0.6);
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--black-main);
-            color: white;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #000;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--bronze-main);
-        }
-
-        /* Cinematic Background */
-        #canvas-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: -1;
-            opacity: 0.6;
-            pointer-events: none;
-        }
-
-        /* Text Gradients */
-        .text-gradient-bronze {
-            background: linear-gradient(135deg, #FFF 0%, var(--bronze-light) 50%, var(--bronze-main) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .text-gradient-dark {
-            background: linear-gradient(to bottom, #ffffff, #666666);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Glassmorphism Cards */
-        .glass-panel {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.27), border-color 0.3s ease;
-        }
-
-        .glass-panel:hover {
-            border-color: var(--bronze-main);
-            box-shadow: 0 25px 50px -12px rgba(205, 127, 50, 0.15);
-        }
-
-        /* Apple-style Buttons */
-        .btn-glow {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-glow::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
-        }
-        
-        .btn-glow:hover::after {
-            left: 100%;
-        }
-
-        /* Floating Animation */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        /* NEW: 3D Layer Animations for Vision Section */
-        .vision-perspective {
-            perspective: 2500px;
-        }
-        
-        .vision-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-            transform: rotateX(25deg) rotateY(-25deg) rotateZ(5deg);
-            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-            animation: float-3d 10s ease-in-out infinite;
-        }
-
-        .vision-layer {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 280px;
-            height: 340px;
-            margin-left: -140px;
-            margin-top: -170px;
-            background: linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(10, 10, 10, 0.95));
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 24px;
-            transform-style: preserve-3d;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        /* Layer Specifics - Transformation Theme */
-        .layer-bottom { 
-            transform: translateZ(-80px); 
-            opacity: 0.5; 
-            border: 1px dashed rgba(255,255,255,0.1);
-        }
-        
-        .layer-middle { 
-            transform: translateZ(20px); 
-            background: rgba(15, 10, 5, 0.9);
-            border: 1px solid rgba(205, 127, 50, 0.3);
-            box-shadow: 0 0 30px rgba(205, 127, 50, 0.1);
-        }
-        
-        .layer-top { 
-            transform: translateZ(120px); 
-            background: rgba(30, 30, 30, 0.6); 
-            border: 1px solid rgba(255, 255, 255, 0.2); 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.1) inset; 
-        }
-
-        /* Hover Effect: Expand Layers dramatically */
-        .vision-card-wrapper:hover .vision-container {
-            transform: rotateX(15deg) rotateY(-15deg);
-        }
-        .vision-card-wrapper:hover .layer-bottom { transform: translateZ(-160px); opacity: 0.7; }
-        .vision-card-wrapper:hover .layer-middle { transform: translateZ(20px); box-shadow: 0 0 50px rgba(205, 127, 50, 0.3); }
-        .vision-card-wrapper:hover .layer-top { transform: translateZ(200px); }
-
-        /* Grid Background for Layers */
-        .grid-bg {
-            background-size: 30px 30px;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-        }
-
-        @keyframes float-3d {
-            0%, 100% { transform: rotateX(25deg) rotateY(-25deg) rotateZ(5deg) translateY(0); }
-            50% { transform: rotateX(20deg) rotateY(-20deg) rotateZ(2deg) translateY(-20px); }
-        }
-
-        @keyframes energy-pulse {
-            0% { opacity: 0.3; transform: scale(0.95); }
-            50% { opacity: 1; transform: scale(1.05); }
-            100% { opacity: 0.3; transform: scale(0.95); }
-        }
-
-        /* Loader */
-        #loader {
-            position: fixed;
-            inset: 0;
-            background: #000;
-            z-index: 100;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.8s ease-out;
-        }
-        
-        .loader-line {
-            width: 0%;
-            height: 2px;
-            background: var(--bronze-main);
-            transition: width 1s ease-in-out;
-        }
-
-        /* NEW: Icon Drawing Animation */
-        .dash-draw {
-            stroke-dasharray: 120;
-            stroke-dashoffset: 120;
-            animation: draw-icon 2s ease-out forwards;
-        }
-        
-        @keyframes draw-icon {
-            to { stroke-dashoffset: 0; }
-        }
-
-    </style>
-</head>
-<body class="selection:bg-orange-900 selection:text-white">
-
-    <!-- Loading Screen -->
-    <div id="loader">
-        <div class="flex flex-col items-center justify-center">
-            <!-- JL Monogram Icon -->
-            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="mb-6">
-                <defs>
-                    <linearGradient id="bronze-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#E0AA77" />
-                        <stop offset="100%" style="stop-color:#CD7F32" />
-                    </linearGradient>
-                    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                        <feGaussianBlur stdDeviation="2" result="blur" />
-                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                    </filter>
-                </defs>
-                
-                <!-- J Path -->
-                <path d="M40 25V60C40 75 30 75 25 75" 
-                      stroke="url(#bronze-grad)" 
-                      stroke-width="6" 
-                      stroke-linecap="round" 
-                      class="dash-draw"
-                      filter="url(#glow)" />
-                
-                <!-- L Path -->
-                <path d="M60 25V75H85" 
-                      stroke="url(#bronze-grad)" 
-                      stroke-width="6" 
-                      stroke-linecap="round" 
-                      class="dash-draw" 
-                      style="animation-delay: 0.4s"
-                      filter="url(#glow)" />
-            </svg>
-            
-            <!-- Minimal Progress Bar -->
-            <div class="w-24 h-0.5 bg-gray-900 relative overflow-hidden rounded-full">
-                <div id="loader-bar" class="absolute top-0 left-0 h-full bg-[#CD7F32] w-0 transition-all duration-[1000ms] ease-out"></div>
-            </div>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#141713" />
+    <title>SECHA — Renovation, made repeatable.</title>
+    <meta
+      name="description"
+      content="SECHA is the renovation interface for Asia. Explore the package model, GX-100 delivery system, traction and US$1M investment opportunity."
+    />
+    <link rel="icon" href="data:," />
+    <link
+      rel="preload"
+      href="assets/manrope.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a href="#overview" class="wordmark" aria-label="SECHA home"
+        >SECHA<span>HOME</span></a
+      >
+      <nav aria-label="Main navigation" id="main-nav">
+        <a href="#overview" aria-current="location">Overview</a
+        ><a href="#platform">The platform</a><a href="#economics">Economics</a
+        ><a href="#team">The team</a>
+      </nav>
+      <button class="header-contact" data-contact>
+        Let’s talk
+        <span aria-hidden="true"
+          ><img
+            class="icon"
+            src="assets/icons/arrow-up-right.svg"
+            alt=""
+            width="16"
+            height="16"
+        /></span>
+      </button>
+      <button
+        class="menu-toggle"
+        aria-expanded="false"
+        aria-controls="main-nav"
+      >
+        Menu
+      </button>
+    </header>
+    <main id="main">
+      <section
+        class="hero container"
+        id="overview"
+        aria-labelledby="hero-title"
+      >
+        <div class="hero-topline mono">
+          <span>THE RENOVATION INTERFACE FOR ASIA</span
+          ><span>INVESTOR OVERVIEW / 2026</span>
         </div>
-    </div>
-
-    <!-- Cinematic Background -->
-    <canvas id="canvas-container"></canvas>
-
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 transition-all duration-300 p-6" id="navbar">
-        <div class="max-w-7xl mx-auto flex justify-between items-center glass-panel rounded-full px-8 py-4">
-            <a href="#" class="text-2xl font-bold tracking-tighter text-white">SECHA<span class="text-[#CD7F32]">.</span></a>
-            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
-                <a href="#vision" class="hover:text-white transition-colors">The Vision</a>
-                <a href="#hub" class="hover:text-white transition-colors">Living OS</a>
-                <a href="#renova" class="hover:text-white transition-colors">RenovaCredit</a>
-                <a href="#journey" class="hover:text-white transition-colors">The Journey</a>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">
+              <span class="status-dot" aria-hidden="true"></span> BUILT IN
+              JAKARTA. DESIGNED TO REPEAT.
             </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#050505] z-0"></div>
-        
-        <div class="relative z-10 text-center max-w-5xl mx-auto">
-            <div class="mb-6 opacity-0 translate-y-10" id="hero-tag">
-                <span class="text-[#CD7F32] tracking-[0.3em] text-xs font-bold uppercase border border-[#CD7F32]/30 px-4 py-1 rounded-full bg-[#CD7F32]/5">
-                    Investment Memo 2025
-                </span>
-            </div>
-            <h1 class="text-6xl md:text-9xl font-bold tracking-tighter mb-8 leading-tight opacity-0 translate-y-10" id="hero-title">
-                <span class="block text-gradient-dark">THE FUTURE</span>
-                <span class="block text-gradient-bronze">OF HOME.</span>
+            <h1 id="hero-title">
+              Renovation,<br />made<br /><em>repeatable.</em>
             </h1>
-            <p class="text-gray-400 text-lg md:text-2xl max-w-3xl mx-auto font-light leading-relaxed mb-12 opacity-0 translate-y-10" id="hero-desc">
-                The world doesn't need more houses. It needs better ones.
-                <br>
-                SECHA is the platform for the upgrade. We combine <strong>Living OS</strong> to manage the experience and <strong>RenovaCredit</strong> to finance the transformation.
+            <p class="hero-description">
+              A renovation shouldn’t start from zero.<br />SECHA turns it into a
+              product customers can choose, finance and track.
             </p>
-            <div class="flex flex-col md:flex-row gap-6 justify-center opacity-0 translate-y-10" id="hero-btns">
-                <a href="#vision" class="group bg-[#CD7F32] text-black px-8 py-4 rounded-full text-lg font-semibold transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(205,127,50,0.4)] flex items-center justify-center gap-2">
-                    See The Business Model
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-y-1 transition-transform"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-                </a>
-                <a href="https://jplovensa.github.io/SechaHome-Invest-/" target="_blank" class="glass-panel px-8 py-4 rounded-full text-lg font-medium hover:bg-white/10 transition-all flex items-center justify-center gap-2">
-                    Investment Deck
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
-                </a>
+            <div class="hero-actions">
+              <a class="button button-accent" href="#platform"
+                >Explore the business
+                <span aria-hidden="true"
+                  ><img
+                    class="icon"
+                    src="assets/icons/arrow-up-right.svg"
+                    alt=""
+                    width="16"
+                    height="16" /></span></a
+              ><a
+                class="text-link"
+                href="assets/secha-investor-overview.pdf"
+                download
+                >Investor brief
+                <span aria-hidden="true"
+                  ><img
+                    class="icon"
+                    src="assets/icons/arrow-down.svg"
+                    alt=""
+                    width="16"
+                    height="16" /></span
+              ></a>
             </div>
-        </div>
-    </section>
-
-    <!-- NEW: The Future of Home (Manifesto Section) -->
-    <section id="future" class="py-32 relative z-10 bg-[#050505] border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                <div class="gsap-fade-up">
-                    <span class="text-[#CD7F32] font-bold tracking-[0.3em] text-xs uppercase mb-4 block">The Paradigm Shift</span>
-                    <h2 class="text-4xl md:text-6xl font-bold mb-8 text-white leading-tight">
-                        It's not just a building.<br>
-                        It's a <span class="text-gradient-bronze">Platform.</span>
-                    </h2>
-                    <p class="text-gray-400 text-lg leading-relaxed mb-8">
-                        For 100 years, the home has been a static box. A passive container for life.
-                        <br><br>
-                        <strong>The Future of Home is active.</strong> It learns, it serves, and it earns. We are moving from the era of "Housing as Shelter" to "Housing as Service."
-                    </p>
-                    
-                    <div class="grid grid-cols-2 gap-8 mt-8 border-t border-white/10 pt-8">
-                        <div>
-                            <div class="text-gray-500 text-xs uppercase tracking-widest mb-2">Old Real Estate</div>
-                            <ul class="text-gray-400 text-sm space-y-3">
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> Passive Asset</li>
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> High Friction</li>
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> Debt Driver</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <div class="text-[#CD7F32] text-xs uppercase tracking-widest mb-2">SECHA Home</div>
-                            <ul class="text-white text-sm space-y-3">
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#CD7F32]"></span> Active Platform</li>
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#CD7F32]"></span> Frictionless OS</li>
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-[#CD7F32]"></span> Wealth Engine</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="relative gsap-scale-up">
-                    <div class="aspect-square glass-panel rounded-3xl overflow-hidden relative flex items-center justify-center group">
-                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-60"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                        
-                        <!-- Floating Hologram Element -->
-                        <div class="relative z-10 text-center">
-                            <div class="w-24 h-24 mx-auto mb-6 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex items-center justify-center animate-[spin_10s_linear_infinite]">
-                                <div class="w-16 h-16 rounded-full border border-[#CD7F32] flex items-center justify-center">
-                                    <div class="w-2 h-2 bg-[#CD7F32] rounded-full"></div>
-                                </div>
-                            </div>
-                            <h3 class="text-3xl font-bold text-white mb-2">Hardware 2.0</h3>
-                            <p class="text-sm text-gray-300">Intelligent. Connected. Self-Optimizing.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="hero-footnote mono">
+              ONE INTERFACE. ONE JOB FILE. REPEATABLE DELIVERY.
             </div>
-        </div>
-    </section>
-
-    <!-- The Vision (Recoded: The Transformation Stack) -->
-    <section id="vision" class="py-32 relative z-10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                
-                <!-- Narrative Side -->
-                <div class="gsap-fade-up order-2 lg:order-1">
-                    <h2 class="text-4xl md:text-6xl font-bold mb-8 tracking-tight leading-none">
-                        <span class="text-gray-600">The Alchemy</span><br>
-                        <span class="text-white">of Value.</span>
-                    </h2>
-                    <p class="text-gray-400 text-lg leading-relaxed mb-8">
-                        We don't just stack technology; we transform matter. SECHA acts as a processor that intakes raw, inefficient assets and outputs high-yield, intelligent homes.
-                    </p>
-                    
-                    <div class="space-y-10 relative pl-8 border-l border-white/10">
-                        
-                        <div class="relative group">
-                            <span class="absolute -left-[39px] top-1 w-5 h-5 rounded-full bg-black border border-white/20 flex items-center justify-center text-[10px] text-gray-500 group-hover:border-white group-hover:text-white transition-colors">3</span>
-                            <h3 class="text-white font-bold text-xl mb-1 group-hover:text-white transition-colors">The Product (Living OS)</h3>
-                            <p class="text-sm text-gray-500">The interface. A fully automated, frictionless living experience that commands premium yields.</p>
-                        </div>
-
-                        <div class="relative group">
-                            <span class="absolute -left-[39px] top-1 w-5 h-5 rounded-full bg-black border border-[#CD7F32] flex items-center justify-center text-[10px] text-[#CD7F32] shadow-[0_0_10px_rgba(205,127,50,0.4)]">2</span>
-                            <h3 class="text-[#CD7F32] font-bold text-xl mb-1">The Catalyst (Renova)</h3>
-                            <p class="text-sm text-gray-400">The engine. Intelligence-backed capital that funds the physical transformation of the asset.</p>
-                        </div>
-
-                        <div class="relative group">
-                            <span class="absolute -left-[39px] top-1 w-5 h-5 rounded-full bg-black border border-white/20 flex items-center justify-center text-[10px] text-gray-500 group-hover:border-white group-hover:text-white transition-colors">1</span>
-                            <h3 class="text-gray-400 font-bold text-xl mb-1 group-hover:text-white transition-colors">The Raw Material (Asset)</h3>
-                            <p class="text-sm text-gray-500">The input. Undervalued, aging housing stock ready to be recoded.</p>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- Complete Vision Visual (Transformation Stack) -->
-                <div class="relative gsap-scale-up order-1 lg:order-2 vision-card-wrapper h-[600px] flex items-center justify-center vision-perspective">
-                    
-                    <!-- 3D Container -->
-                    <div class="vision-container">
-                        
-                        <!-- Layer 1: Raw Asset (Bottom) -->
-                        <div class="vision-layer layer-bottom grid-bg">
-                            <div class="absolute inset-0 bg-black/50"></div>
-                            <div class="text-[10px] text-gray-600 tracking-[0.3em] absolute top-6 left-6 font-bold">INPUT: RAW_ASSET</div>
-                            <!-- Wireframe Visual -->
-                            <div class="w-32 h-32 border border-dashed border-gray-700 rounded-lg flex items-center justify-center">
-                                <span class="text-gray-800 text-4xl font-thin">?</span>
-                            </div>
-                            <div class="mt-6 text-gray-700 text-xs font-mono">STATUS: UNOPTIMIZED</div>
-                        </div>
-
-                        <!-- Layer 2: Renova Engine (Middle) -->
-                        <div class="vision-layer layer-middle">
-                            <!-- Glowing Core -->
-                            <div class="absolute w-24 h-24 bg-[#CD7F32] rounded-full blur-[40px] opacity-20 animate-[energy-pulse_3s_ease-in-out_infinite]"></div>
-                            
-                            <div class="text-[10px] text-[#CD7F32] tracking-[0.3em] absolute top-6 left-6 font-bold">PROCESS: RENOVA</div>
-                            
-                            <!-- Circuit Visual -->
-                            <div class="relative w-32 h-32 flex items-center justify-center">
-                                <div class="absolute inset-0 border border-[#CD7F32]/30 rounded-full animate-[spin_10s_linear_infinite]"></div>
-                                <div class="absolute inset-2 border border-[#CD7F32]/20 rounded-full border-dashed animate-[spin_15s_linear_infinite_reverse]"></div>
-                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#CD7F32" stroke-width="1.5">
-                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                                </svg>
-                            </div>
-                            
-                            <div class="mt-6 flex items-center gap-3">
-                                <div class="h-[2px] w-12 bg-gradient-to-r from-transparent via-[#CD7F32] to-transparent"></div>
-                                <div class="text-[#CD7F32] text-xs font-mono">INJECTING CAPITAL</div>
-                                <div class="h-[2px] w-12 bg-gradient-to-r from-transparent via-[#CD7F32] to-transparent"></div>
-                            </div>
-                        </div>
-
-                        <!-- Layer 3: Living OS (Top) -->
-                        <div class="vision-layer layer-top">
-                            <div class="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent rounded-2xl"></div>
-                            <div class="text-[10px] text-white tracking-[0.3em] absolute top-6 left-6 font-bold">OUTPUT: SMART_HOME</div>
-                            
-                            <!-- High Tech UI Visual -->
-                            <div class="w-48 p-4 bg-black/60 border border-white/10 rounded-xl backdrop-blur-xl">
-                                <div class="flex justify-between items-end mb-2">
-                                    <span class="text-gray-400 text-[10px]">YIELD</span>
-                                    <span class="text-green-400 text-xs font-bold">+42%</span>
-                                </div>
-                                <div class="w-full bg-white/10 h-1 rounded-full overflow-hidden">
-                                    <div class="bg-gradient-to-r from-[#CD7F32] to-white h-full w-[85%]"></div>
-                                </div>
-                                <div class="flex justify-between items-center mt-4">
-                                    <div class="flex -space-x-2">
-                                        <div class="w-6 h-6 rounded-full bg-gray-700 border border-black"></div>
-                                        <div class="w-6 h-6 rounded-full bg-gray-600 border border-black"></div>
-                                    </div>
-                                    <div class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]"></div>
-                                </div>
-                            </div>
-                            <div class="mt-6 text-white text-xs font-mono tracking-widest opacity-80">OPTIMIZATION COMPLETE</div>
-                        </div>
-
-                        <!-- Vertical Connectors -->
-                        <div class="absolute left-10 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
-                        <div class="absolute right-10 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
-
-                    </div>
-                </div>
-
+          </div>
+          <figure class="hero-visual">
+            <img
+              src="assets/gx100-delivery.jpg"
+              alt="GX-100 modular panels being assembled into a warm, finished living space"
+              width="1672"
+              height="941"
+              fetchpriority="high"
+            />
+            <div class="image-label mono">
+              <span>GX–100 / THE PHYSICAL ENGINE</span><span>01 — 03</span>
             </div>
+            <figcaption>
+              <span
+                >Software defines the promise.<br /><strong
+                  >GX-100 delivers it.</strong
+                ></span
+              ><a
+                href="#delivery"
+                aria-label="Explore the GX-100 delivery system"
+                ><img
+                  class="icon"
+                  src="assets/icons/arrow-up-right.svg"
+                  alt=""
+                  width="16"
+                  height="16"
+              /></a>
+            </figcaption>
+          </figure>
         </div>
-    </section>
+        <div class="traction-strip" aria-label="Business highlights">
+          <div>
+            <span class="metric">US$300K</span
+            ><span>Project value served to date</span
+            ><span class="metric-note mono">EXISTING SERVICE TRACTION</span>
+          </div>
+          <div>
+            <span class="metric">30<span>%</span></span
+            ><span>Target package gross margin</span
+            ><span class="metric-note mono">DESIGNED INTO THE PACKAGE</span>
+          </div>
+          <div>
+            <span class="metric">40<span>%</span></span
+            ><span>Faster modular delivery</span
+            ><span class="metric-note mono">COMPANY-REPORTED IMPROVEMENT</span>
+          </div>
+          <p>
+            Service proven.<br /><strong
+              >Now productising<br />the system.</strong
+            ><a href="#opportunity"
+              >The investment thesis
+              <span aria-hidden="true"
+                ><img
+                  class="icon"
+                  src="assets/icons/arrow-up-right.svg"
+                  alt=""
+                  width="16"
+                  height="16" /></span
+            ></a>
+          </p>
+        </div>
+        <p class="source-note">
+          Company-reported figures. Project value is not recognised revenue.
+          Gross margin is a target; delivery improvement has not been
+          independently verified.
+        </p>
+      </section>
 
-    <!-- SECHA HUB Living OS Demo (Yield Engine) -->
-    <section id="hub" class="py-32 relative z-10 bg-black/50 backdrop-blur-sm">
-        <div class="max-w-7xl mx-auto px-6 text-center mb-20 gsap-fade-up">
-            <span class="text-[#CD7F32] font-bold tracking-widest text-sm uppercase">Operational Excellence</span>
-            <h2 class="text-5xl md:text-7xl font-bold mt-4 mb-6">The Living OS</h2>
-            <p class="text-gray-400 max-w-2xl mx-auto text-lg">
-                Once a home is upgraded, it needs to be run. SECHA HUB integrates maintenance, payments, and community into a single pane of glass. It is the autopilot for the modern home.
+      <section
+        class="light-section"
+        id="opportunity"
+        aria-labelledby="opportunity-title"
+      >
+        <div class="container section-space">
+          <div class="section-kicker mono">
+            <span>01 / THE OPPORTUNITY</span
+            ><span>FROM ONE-OFF TO REPEATABLE</span>
+          </div>
+          <div class="section-heading">
+            <h2 id="opportunity-title">
+              A new brief shouldn’t<br />mean a new business.
+            </h2>
+            <p>
+              Renovation is still sold as a one-off project. Every job restarts
+              scope, pricing and delivery. SECHA brings the choices up front—and
+              the operating discipline behind them.
             </p>
+          </div>
+          <div class="problem-grid">
+            <article>
+              <span class="small-number mono">01</span>
+              <h3>Scope that stays defined.</h3>
+              <p>
+                Curated packages turn open-ended briefs into visible outcomes,
+                finishes and inclusions.
+              </p>
+              <div class="shift">
+                <span>Bespoke uncertainty</span
+                ><span aria-hidden="true"
+                  ><img
+                    class="icon"
+                    src="assets/icons/arrow-right.svg"
+                    alt=""
+                    width="16"
+                    height="16" /></span
+                ><strong>Product clarity</strong>
+              </div>
+            </article>
+            <article>
+              <span class="small-number mono">02</span>
+              <h3>Margins designed in.</h3>
+              <p>
+                Fixed scope and a bill of materials establish the economics
+                before a job reaches the site.
+              </p>
+              <div class="shift">
+                <span>On-site discovery</span
+                ><span aria-hidden="true"
+                  ><img
+                    class="icon"
+                    src="assets/icons/arrow-right.svg"
+                    alt=""
+                    width="16"
+                    height="16" /></span
+                ><strong>Up-front control</strong>
+              </div>
+            </article>
+            <article>
+              <span class="small-number mono">03</span>
+              <h3>Delivery that repeats.</h3>
+              <p>
+                GX-100 modules and a defined installation sequence make each job
+                part of a system.
+              </p>
+              <div class="shift">
+                <span>Start from zero</span
+                ><span aria-hidden="true"
+                  ><img
+                    class="icon"
+                    src="assets/icons/arrow-right.svg"
+                    alt=""
+                    width="16"
+                    height="16" /></span
+                ><strong>Repeat the playbook</strong>
+              </div>
+            </article>
+          </div>
         </div>
+      </section>
 
-        <div class="max-w-6xl mx-auto px-4 perspective-1000">
-            <div class="glass-panel rounded-2xl p-2 md:p-4 transform transition-transform duration-500 hover:scale-[1.01] hover:rotate-x-2" id="hub-tilt">
-                <div class="bg-black/80 rounded-xl overflow-hidden relative aspect-video border border-white/5">
-                    <!-- Fake UI Browser Header -->
-                    <div class="h-10 border-b border-white/10 flex items-center px-4 gap-2 bg-[#0a0a0a]">
-                        <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
-                        <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                        <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
-                        <div class="ml-4 px-3 py-1 rounded bg-white/5 text-[10px] text-gray-500 font-mono">secha-hub.os</div>
-                    </div>
-                    <!-- UI Content Mockup -->
-                    <div class="p-8 h-full flex flex-col items-center justify-center relative group cursor-pointer" onclick="window.open('https://jplovensa.github.io/SECHA-Hub-Living/', '_blank')">
-                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2301&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
-                        
-                        <div class="relative z-10 text-center">
-                            <div class="w-20 h-20 bg-white/10 backdrop-blur-md rounded-2xl mx-auto mb-6 flex items-center justify-center border border-white/20 group-hover:scale-110 transition-transform duration-300">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                            </div>
-                            <h3 class="text-3xl font-bold text-white mb-2">See the OS in Action</h3>
-                            <p class="text-gray-300 mb-6">Tenant & Asset Management Dashboard</p>
-                            <span class="inline-block px-6 py-2 rounded-full border border-[#CD7F32] text-[#CD7F32] text-sm hover:bg-[#CD7F32] hover:text-black transition-colors">
-                                Launch Living OS Demo
-                            </span>
-                        </div>
-                    </div>
-                </div>
+      <section
+        class="container section-space"
+        id="platform"
+        aria-labelledby="platform-title"
+      >
+        <div class="section-kicker mono">
+          <span>02 / THE INTERFACE</span
+          ><span>SIMPLICITY UP FRONT. CONTROL BEHIND IT.</span>
+        </div>
+        <div class="section-heading">
+          <h2 id="platform-title">
+            Choose a renovation.<br />Not a thousand decisions.
+          </h2>
+          <p>
+            One connected flow takes a customer from package selection to
+            delivery proof. The interface doesn’t just sell the job. It defines
+            how the job runs.
+          </p>
+        </div>
+        <div class="platform-showcase">
+          <div
+            class="platform-tabs"
+            role="tablist"
+            aria-label="Customer journey"
+          >
+            <button
+              id="tab-choose"
+              role="tab"
+              aria-selected="true"
+              aria-controls="journey-panel"
+              data-step="choose"
+            >
+              <span class="mono">01</span> Choose
+            </button>
+            <button
+              id="tab-personalise"
+              role="tab"
+              aria-selected="false"
+              aria-controls="journey-panel"
+              tabindex="-1"
+              data-step="personalise"
+            >
+              <span class="mono">02</span> Personalise
+            </button>
+            <button
+              id="tab-finance"
+              role="tab"
+              aria-selected="false"
+              aria-controls="journey-panel"
+              tabindex="-1"
+              data-step="finance"
+            >
+              <span class="mono">03</span> Finance
+            </button>
+            <button
+              id="tab-track"
+              role="tab"
+              aria-selected="false"
+              aria-controls="journey-panel"
+              tabindex="-1"
+              data-step="track"
+            >
+              <span class="mono">04</span> Track
+            </button>
+          </div>
+          <div
+            id="journey-panel"
+            class="journey-panel"
+            role="tabpanel"
+            aria-labelledby="tab-choose"
+            tabindex="0"
+          >
+            <div class="journey-text">
+              <span class="eyebrow" id="journey-eyebrow"
+                >A MENU, NOT A BLANK CANVAS</span
+              >
+              <h3 id="journey-title">
+                The scope is clear.<br />The choice is yours.
+              </h3>
+              <p id="journey-description">
+                Customers select a package with a visible outcome, price and
+                timeline. Standard choices make demand easier to fulfil.
+              </p>
+              <ul id="journey-points">
+                <li>Defined package inclusions</li>
+                <li>Transparent pricing and timelines</li>
+                <li>One consistent customer experience</li>
+              </ul>
+              <span class="demo-note mono"
+                >PRODUCT CONCEPT / FROM THE SECHA BUSINESS UPDATE</span
+              >
             </div>
-        </div>
-    </section>
-
-    <!-- RenovaCredit Section (Renovation Engine) -->
-    <section id="renova" class="py-32 relative z-10 overflow-hidden">
-        <!-- Background Glow -->
-        <div class="absolute top-1/2 left-0 w-1/2 h-full bg-[#CD7F32] blur-[150px] opacity-10 -translate-y-1/2 pointer-events-none"></div>
-
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-                <div class="order-2 lg:order-1 relative gsap-scale-up">
-                    <div class="glass-panel rounded-3xl p-8 border-l-4 border-l-[#CD7F32]">
-                        <div class="flex justify-between items-center mb-8 border-b border-white/10 pb-4">
-                            <div class="text-sm text-gray-400 font-mono">RENOVA_DUAL_CORE</div>
-                            <div class="flex gap-2">
-                                <span class="block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                                <span class="text-xs text-green-500">ENGINE ACTIVE</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Abstract Graph Visualization -->
-                        <div class="space-y-6">
-                            <!-- Core 1: Asset -->
-                            <div class="space-y-2">
-                                <div class="flex justify-between text-xs text-gray-400">
-                                    <span class="text-[#CD7F32] font-bold">CORE 1: ASSET VALUE</span>
-                                    <span>+35% Uplift</span>
-                                </div>
-                                <div class="h-2 bg-white/5 rounded-full overflow-hidden">
-                                    <div class="h-full bg-gradient-to-r from-[#CD7F32] to-yellow-600 w-[75%]"></div>
-                                </div>
-                                <p class="text-[10px] text-gray-500">Renovation Capital Injection</p>
-                            </div>
-
-                            <!-- Core 2: Human -->
-                            <div class="space-y-2">
-                                <div class="flex justify-between text-xs text-gray-400">
-                                    <span class="text-blue-400 font-bold">CORE 2: TENANT CREDIT</span>
-                                    <span>Score 620 &rarr; 750</span>
-                                </div>
-                                <div class="h-2 bg-white/5 rounded-full overflow-hidden">
-                                    <div class="h-full bg-gradient-to-r from-blue-500 to-blue-300 w-[90%]"></div>
-                                </div>
-                                <p class="text-[10px] text-gray-500">Behavioral Payment Tracking</p>
-                            </div>
-
-                            <!-- Risk Reduction -->
-                            <div class="pt-4 border-t border-white/10">
-                                <div class="flex justify-between items-end">
-                                    <div>
-                                        <div class="text-xs text-gray-400">Net Risk Profile</div>
-                                        <div class="text-2xl font-bold text-white">0.2%</div>
-                                    </div>
-                                    <div class="text-[#CD7F32] text-xs font-bold">-95% vs Market Avg</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-8 pt-6 border-t border-white/10">
-                            <a href="https://jplovensa.github.io/SECHA-Credit-Engine/" target="_blank" class="w-full flex items-center justify-between group">
-                                <span class="text-white font-medium group-hover:text-[#CD7F32] transition-colors">See the Risk Engine Logic</span>
-                                <span class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#CD7F32] group-hover:text-black transition-all">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="order-1 lg:order-2 gsap-fade-up">
-                    <span class="text-[#CD7F32] font-bold tracking-widest text-sm uppercase">The Dual-Core Engine</span>
-                    <h2 class="text-5xl md:text-6xl font-bold mt-4 mb-6">RenovaCredit</h2>
-                    <p class="text-gray-400 text-lg leading-relaxed mb-8">
-                        Why choose between upgrading the building or upgrading the tenant? We do both. RenovaCredit is a dual-core financial engine:
-                        <br><br>
-                        1. <strong>Asset Core:</strong> Provides capital to renovate the home, instantly boosting asset value.<br>
-                        2. <strong>Human Core:</strong> Tracks tenant payment behavior to build their credit score, turning "rent" into "reputation."
-                    </p>
-                    <ul class="space-y-4 text-gray-300">
-                        <li class="flex items-center gap-3">
-                            <svg class="text-[#CD7F32]" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            <strong>Renovation Finance:</strong> Transforming C-grade assets to A-grade.
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <svg class="text-blue-400" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                            <strong>Behavioral Credit:</strong> Reducing default risk by incentivizing payment.
-                        </li>
-                    </ul>
-                </div>
+            <div class="journey-media" id="journey-media">
+              <img
+                src="assets/package-interface.jpg"
+                alt="SECHA package selection interface showing Essential, Plus and Signature packages"
+                width="1257"
+                height="618"
+                loading="lazy"
+              />
             </div>
+          </div>
         </div>
-    </section>
-
-    <!-- NEW: The Tenant Journey (Refined UI/UX - Black & Bronze) -->
-    <section id="journey" class="relative z-10 bg-black overflow-hidden border-t border-white/5">
-        
-        <!-- Background Grid -->
-        <div class="absolute inset-0 z-0 opacity-20 pointer-events-none" 
-             style="background-image: linear-gradient(to right, #333 1px, transparent 1px), linear-gradient(to bottom, #333 1px, transparent 1px); background-size: 40px 40px; mask-image: radial-gradient(circle at center, black, transparent 80%);">
+        <div class="job-flow">
+          <div>
+            <span class="mono">INPUT / PACKAGE</span>
+            <h3>One customer decision.</h3>
+            <p>Outcome · scope · finish</p>
+          </div>
+          <span class="flow-arrow" aria-hidden="true"
+            ><img
+              class="icon"
+              src="assets/icons/arrow-right.svg"
+              alt=""
+              width="16"
+              height="16"
+          /></span>
+          <div>
+            <span class="mono">CONTROL / JOB FILE</span>
+            <h3>One source of truth.</h3>
+            <p>Materials · suppliers · installer sequence</p>
+          </div>
+          <span class="flow-arrow" aria-hidden="true"
+            ><img
+              class="icon"
+              src="assets/icons/arrow-right.svg"
+              alt=""
+              width="16"
+              height="16"
+          /></span>
+          <div>
+            <span class="mono">OUTPUT / DELIVERY</span>
+            <h3>One accountable job.</h3>
+            <p>Milestones · quality proof · margin</p>
+          </div>
         </div>
+      </section>
 
-        <div class="py-32 text-center relative z-20 px-6">
-            <span class="text-[#CD7F32] font-bold tracking-[0.3em] text-sm uppercase glow-text">Living Proof</span>
-            <h2 class="text-5xl md:text-7xl font-bold mt-4 mb-6 text-white tracking-tight">The Human <span class="text-gradient-bronze">Asset</span></h2>
-            <p class="text-gray-400 max-w-2xl mx-auto text-lg font-light">
-                We don't just upgrade buildings. We upgrade lives. Follow the journey of a tenant entering the SECHA ecosystem.
+      <section
+        class="delivery-section"
+        id="delivery"
+        aria-labelledby="delivery-title"
+      >
+        <div class="delivery-image">
+          <img
+            src="assets/gx100-delivery.jpg"
+            alt="Factory-prepared GX-100 panels and modular furniture during installation"
+            width="1672"
+            height="941"
+            loading="lazy"
+          /><span class="mono">GX–100 / FACTORY-PREPARED. SITE-READY.</span>
+        </div>
+        <div class="delivery-copy">
+          <span class="eyebrow">03 / THE PHYSICAL OPERATING SYSTEM</span>
+          <h2 id="delivery-title">
+            The promise is digital.<br />The proof is physical.
+          </h2>
+          <p>
+            GX-100 factory-prepared snap panels standardise the shell, furniture
+            and installation sequence. A consistent delivery system makes the
+            software promise achievable on site.
+          </p>
+          <div class="delivery-stat">
+            <strong>40<span>%</span></strong
+            ><span
+              >faster modular delivery<br /><small
+                >Company-reported improvement</small
+              ></span
+            >
+          </div>
+          <div class="delivery-bottom">
+            <span>Software standardises demand.</span
+            ><strong>GX-100 standardises delivery.</strong>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="light-section"
+        id="economics"
+        aria-labelledby="economics-title"
+      >
+        <div class="container section-space">
+          <div class="section-kicker mono">
+            <span>04 / THE ECONOMICS</span
+            ><span>DELIVERY EARNS. FINANCING CONVERTS.</span>
+          </div>
+          <div class="section-heading">
+            <h2 id="economics-title">Good economics.<br />Before checkout.</h2>
+            <p>
+              A US$5,000 package is designed to generate US$1,500 in gross
+              profit. Renovation delivery is the business; financing supports
+              affordability and conversion.
             </p>
+          </div>
+          <div class="economics-grid">
+            <div class="package-economics">
+              <div class="card-heading">
+                <span class="mono">TARGET UNIT ECONOMICS</span
+                ><span>PER PACKAGE</span>
+              </div>
+              <div class="package-total">
+                US$5,000<span>Package value</span>
+              </div>
+              <div
+                class="margin-bar"
+                role="img"
+                aria-label="70 percent fulfilment cost, 30 percent target gross profit"
+              >
+                <div>70%</div>
+                <div>30%</div>
+              </div>
+              <div class="margin-legend">
+                <div>
+                  <span class="legend-dot cost"></span
+                  ><span>Fulfilment cost<strong>US$3,500</strong></span>
+                </div>
+                <div>
+                  <span class="legend-dot profit"></span
+                  ><span>Target gross profit<strong>US$1,500</strong></span>
+                </div>
+              </div>
+              <p class="fine-print">
+                Designed package economics, not a statement of realised margins.
+                Gross profit excludes operating expenses.
+              </p>
+            </div>
+            <div class="scale-model">
+              <div class="card-heading">
+                <span class="mono">EXPLORE THE MODEL</span
+                ><span class="scenario-badge">ILLUSTRATIVE</span>
+              </div>
+              <label for="packages"
+                >Annual package volume
+                <output id="package-count" for="packages">10,000</output></label
+              ><input
+                type="range"
+                id="packages"
+                min="1000"
+                max="10000"
+                step="500"
+                value="10000"
+                aria-describedby="scale-disclaimer"
+              />
+              <div class="range-labels mono">
+                <span>1,000 PACKAGES</span><span>10,000 PACKAGES</span>
+              </div>
+              <div class="scale-results" aria-live="polite" aria-atomic="true">
+                <div>
+                  <span>Annual project value</span
+                  ><strong id="project-value">US$50M</strong>
+                </div>
+                <div>
+                  <span>Gross profit at 30%</span
+                  ><strong id="gross-profit">US$15M</strong>
+                </div>
+              </div>
+              <p class="fine-print" id="scale-disclaimer">
+                An illustrative scale case, not a forecast. Assumes US$5,000 per
+                package and a 30% gross margin at every volume.
+              </p>
+            </div>
+          </div>
+          <div class="economics-controls mono">
+            <span>FIXED SCOPE <b>CONTROLS PRICE</b></span
+            ><span>GX–100 <b>CONTROLS TIME</b></span
+            ><span>THE INTERFACE <b>CONTROLS CHANGES</b></span>
+          </div>
         </div>
+      </section>
 
-        <div class="max-w-7xl mx-auto px-6 relative pb-32 space-y-32">
-            
-            <!-- Step 1: The Barrier -->
-            <div class="story-step grid grid-cols-1 md:grid-cols-2 gap-16 items-center" data-index="0">
-                <!-- Text -->
-                <div class="order-2 md:order-1">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-500 font-bold font-mono">01</div>
-                        <div class="text-gray-500 font-mono text-xs tracking-widest uppercase">The Barrier</div>
-                    </div>
-                    <h3 class="text-4xl md:text-5xl font-bold mb-6 text-white">Locked Out.</h3>
-                    <p class="text-lg text-gray-400 leading-relaxed font-light mb-6">
-                        Meet <strong>Maya, 29</strong>. Architect. Despite a solid income, she is "Credit Invisible." Rejected by 3 banks for a rental deposit due to lack of history.
-                    </p>
-                    <div class="inline-block px-4 py-2 border border-red-500/20 rounded bg-red-900/10 font-mono text-red-400 text-sm">
-                        "System says No."
-                    </div>
-                </div>
-                <!-- Visual Box -->
-                <div class="order-1 md:order-2">
-                    <div class="visual-box aspect-[4/3] bg-black/60 border border-white/10 rounded-3xl overflow-hidden relative shadow-2xl flex items-center justify-center group backdrop-blur-md">
-                        <!-- Subtle Background Glow -->
-                        <div class="absolute inset-0 bg-gradient-to-tr from-red-900/20 via-transparent to-transparent opacity-50"></div>
-                        
-                        <!-- UI Card -->
-                        <div class="relative z-10 w-full p-8 flex flex-col items-center">
-                            <div class="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center mb-6 bg-black/80 shadow-lg">
-                                <svg class="w-8 h-8 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
-                            </div>
-                            <div class="text-3xl font-bold text-white mb-2 tracking-tight">Access Denied</div>
-                            <div class="text-gray-500 text-sm font-mono tracking-widest mt-2">CREDIT_HISTORY_MISSING</div>
-                            
-                            <!-- Fake Error Lines -->
-                            <div class="mt-8 w-64 space-y-2 opacity-50">
-                                <div class="h-1 w-full bg-red-500/20 rounded-full"></div>
-                                <div class="h-1 w-2/3 bg-red-500/20 rounded-full mx-auto"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 2: The Unlock -->
-            <div class="story-step grid grid-cols-1 md:grid-cols-2 gap-16 items-center" data-index="1">
-                <!-- Visual Box -->
-                <div class="order-1">
-                    <div class="visual-box aspect-[4/3] bg-black/60 border border-[#CD7F32]/30 rounded-3xl overflow-hidden relative shadow-[0_0_50px_rgba(205,127,50,0.1)] flex items-center justify-center group backdrop-blur-md">
-                        <!-- Subtle Background Glow -->
-                        <div class="absolute inset-0 bg-gradient-to-bl from-[#CD7F32]/10 via-transparent to-transparent opacity-50"></div>
-                        
-                        <!-- UI Card -->
-                        <div class="relative z-10 w-3/4 bg-black/80 border border-[#CD7F32]/30 rounded-2xl p-6 shadow-2xl">
-                            <div class="flex justify-between items-center mb-6 border-b border-[#CD7F32]/20 pb-4">
-                                <span class="text-[#CD7F32] font-mono text-xs tracking-widest">RENOVA INTELLIGENCE</span>
-                                <div class="w-1.5 h-1.5 bg-[#CD7F32] rounded-full animate-pulse"></div>
-                            </div>
-                            <div class="space-y-4">
-                                <div class="flex justify-between text-sm items-center">
-                                    <span class="text-gray-500">Cash Flow Analysis</span>
-                                    <span class="text-white font-bold font-mono">$4,250/mo</span>
-                                </div>
-                                <div class="flex justify-between text-sm items-center">
-                                    <span class="text-gray-500">Risk Profile</span>
-                                    <span class="text-[#CD7F32] font-bold font-mono">0.02 (Low)</span>
-                                </div>
-                            </div>
-                            <div class="mt-6 w-full bg-[#CD7F32]/10 border border-[#CD7F32]/50 text-[#CD7F32] text-center font-bold py-2 rounded-lg text-xs tracking-[0.2em] uppercase">
-                                Approved
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Text -->
-                <div class="order-2">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-10 h-10 rounded-full bg-[#CD7F32]/10 border border-[#CD7F32]/30 flex items-center justify-center text-[#CD7F32] font-bold font-mono">02</div>
-                        <div class="text-[#CD7F32] font-mono text-xs tracking-widest uppercase">The Unlock</div>
-                    </div>
-                    <h3 class="text-4xl md:text-5xl font-bold mb-6 text-white">Intelligence Over History.</h3>
-                    <p class="text-lg text-gray-400 leading-relaxed font-light mb-6">
-                        She applies to SECHA. RenovaCredit analyzes her <strong>real-time cash flow</strong>, not her past. It sees stability where banks saw risk.
-                    </p>
-                    <div class="inline-block px-4 py-2 border border-[#CD7F32]/30 rounded bg-[#CD7F32]/5 font-mono text-[#CD7F32] text-sm">
-                        "Data sees Potential."
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 3: The Sanctuary -->
-            <div class="story-step grid grid-cols-1 md:grid-cols-2 gap-16 items-center" data-index="2">
-                <!-- Text -->
-                <div class="order-2 md:order-1">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white font-bold font-mono">03</div>
-                        <div class="text-white font-mono text-xs tracking-widest uppercase">The Sanctuary</div>
-                    </div>
-                    <h3 class="text-4xl md:text-5xl font-bold mb-6 text-white">Peace of Mind.</h3>
-                    <p class="text-lg text-gray-400 leading-relaxed font-light mb-6">
-                        Day 45: The AC malfunctions. With <strong>Living OS</strong>, she taps a button. Service is deployed automatically. Fixed in 3 hours. Zero friction. She focuses on her work, not her walls.
-                    </p>
-                    <div class="inline-block px-4 py-2 border border-white/20 rounded bg-white/5 font-mono text-gray-300 text-sm">
-                        "Living on Autopilot."
-                    </div>
-                </div>
-                <!-- Visual Box -->
-                <div class="order-1 md:order-2">
-                    <div class="visual-box aspect-[4/3] bg-black/60 border border-white/10 rounded-3xl overflow-hidden relative shadow-2xl flex items-center justify-center group backdrop-blur-md">
-                        <!-- Cinematic Background -->
-                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1616486338812-3dadae4b4f9d?q=80&w=2670&auto=format&fit=crop')] bg-cover bg-center opacity-30 grayscale transition-opacity duration-700 group-hover:opacity-50"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
-                        
-                        <!-- UI Card -->
-                        <div class="relative z-10 w-64 bg-black/80 backdrop-blur-xl border border-white/10 p-5 rounded-2xl shadow-xl">
-                            <div class="flex items-center gap-4 mb-5">
-                                <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center border border-white/5">
-                                    <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-                                </div>
-                                <div>
-                                    <div class="text-sm font-bold text-white">Unit 402</div>
-                                    <div class="text-[10px] text-green-400 flex items-center gap-1"><span class="w-1 h-1 bg-green-400 rounded-full"></span> System Online</div>
-                                </div>
-                            </div>
-                            <div class="space-y-3">
-                                <div class="bg-white/5 rounded-lg p-3 flex justify-between items-center border border-white/5">
-                                    <span class="text-xs text-gray-400">Maintenance</span>
-                                    <span class="text-[10px] text-white bg-green-500/20 px-2 py-0.5 rounded border border-green-500/20">RESOLVED</span>
-                                </div>
-                                <div class="bg-white/5 rounded-lg p-3 flex justify-between items-center border border-white/5">
-                                    <span class="text-xs text-gray-400">Rent</span>
-                                    <span class="text-[10px] text-white">AUTO-PAID</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 4: The Growth -->
-            <div class="story-step grid grid-cols-1 md:grid-cols-2 gap-16 items-center" data-index="3">
-                <!-- Visual Box -->
-                <div class="order-1">
-                    <div class="visual-box aspect-[4/3] bg-black/60 border border-white/10 rounded-3xl overflow-hidden relative shadow-2xl flex items-center justify-center group backdrop-blur-md">
-                        <!-- Subtle Background Glow -->
-                        <div class="absolute inset-0 bg-gradient-to-tr from-green-900/10 via-transparent to-transparent opacity-50"></div>
-                        
-                        <!-- UI Schematic -->
-                        <div class="relative z-10 w-full h-full p-12 flex flex-col items-center justify-center">
-                            <div class="relative mb-8">
-                                <!-- Chart Circle -->
-                                <svg class="w-40 h-40 transform -rotate-90">
-                                    <circle cx="80" cy="80" r="70" stroke="rgba(255,255,255,0.05)" stroke-width="6" fill="transparent" />
-                                    <circle cx="80" cy="80" r="70" stroke="#CD7F32" stroke-width="6" fill="transparent" stroke-dasharray="377" stroke-dashoffset="50" stroke-linecap="round" class="filter drop-shadow-[0_0_15px_rgba(205,127,50,0.3)]" />
-                                </svg>
-                                <div class="absolute inset-0 flex flex-col items-center justify-center">
-                                    <span class="text-5xl font-bold text-white tracking-tighter">765</span>
-                                    <span class="text-[10px] text-green-400 font-mono bg-green-900/20 px-2 py-0.5 rounded-full mt-2 border border-green-500/20">▲ +45 PTS</span>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <div class="text-gray-500 text-xs font-bold uppercase tracking-widest mb-1">Financial Health</div>
-                                <div class="text-white text-lg font-light tracking-wide">Excellent</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Text -->
-                <div class="order-2">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-500 font-bold font-mono">04</div>
-                        <div class="text-green-500 font-mono text-xs tracking-widest uppercase">The Growth</div>
-                    </div>
-                    <h3 class="text-4xl md:text-5xl font-bold mb-6 text-white">Rent as Equity.</h3>
-                    <p class="text-lg text-gray-400 leading-relaxed font-light mb-6">
-                        Day 365: Maya isn't just a tenant; she's an investor in her own future. Every on-time rent payment is reported to credit bureaus. Her score jumps 45 points.
-                    </p>
-                    <div class="inline-block px-4 py-2 border border-green-500/20 rounded bg-green-900/10 font-mono text-green-400 text-sm">
-                        "Rent becomes Wealth."
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 5: The Destination -->
-            <div class="story-step grid grid-cols-1 md:grid-cols-2 gap-16 items-center" data-index="4">
-                <!-- Text -->
-                <div class="order-2 md:order-1">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-10 h-10 rounded-full bg-[#CD7F32]/10 border border-[#CD7F32]/30 flex items-center justify-center text-[#CD7F32] font-bold font-mono">05</div>
-                        <div class="text-[#CD7F32] font-mono text-xs tracking-widest uppercase">The Destination</div>
-                    </div>
-                    <h3 class="text-4xl md:text-5xl font-bold mb-6 text-white">The Owner.</h3>
-                    <p class="text-lg text-gray-400 leading-relaxed font-light mb-6">
-                        Year 3. Maya graduates from the system. Using her optimized credit score and accrued SECHA rewards, she secures a mortgage for her own property.
-                    </p>
-                    <div class="inline-block px-4 py-2 border border-[#CD7F32]/30 rounded bg-[#CD7F32]/5 font-mono text-[#CD7F32] text-sm">
-                        "From Locked Out to Key Holder."
-                    </div>
-                </div>
-                <!-- Visual Box -->
-                <div class="order-1 md:order-2">
-                    <div class="visual-box aspect-[4/3] bg-black/60 border border-[#CD7F32]/30 rounded-3xl overflow-hidden relative shadow-[0_0_60px_rgba(205,127,50,0.15)] flex items-center justify-center group backdrop-blur-md">
-                        <!-- Cinematic Background -->
-                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2073&auto=format&fit=crop')] bg-cover bg-center opacity-40 grayscale mix-blend-overlay"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-[#CD7F32]/5"></div>
-                        
-                        <!-- UI Schematic -->
-                        <div class="relative z-10 w-full h-full p-12 flex flex-col items-center justify-center">
-                            <div class="w-24 h-24 rounded-full border border-[#CD7F32] flex items-center justify-center mb-8 bg-[#CD7F32]/5 backdrop-blur-md shadow-[0_0_30px_rgba(205,127,50,0.2)] animate-[pulse_4s_infinite]">
-                                <svg class="w-10 h-10 text-[#CD7F32]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
-                            </div>
-                            <div class="text-center">
-                                <div class="text-white text-3xl font-bold tracking-tight mb-2">Contract Signed</div>
-                                <div class="text-[#CD7F32] text-xs font-mono tracking-[0.3em] uppercase opacity-80">Ownership Transferred</div>
-                            </div>
-                            <div class="mt-10 w-full max-w-xs bg-white/5 border border-white/10 rounded-xl p-4 flex justify-between items-center backdrop-blur-md">
-                                <span class="text-gray-400 text-xs uppercase tracking-wider">Asset Value</span>
-                                <span class="text-white font-bold font-mono text-lg">$350,000</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+      <section
+        class="container section-space"
+        id="distribution"
+        aria-labelledby="distribution-title"
+      >
+        <div class="section-kicker mono">
+          <span>05 / THE ROUTE TO MARKET</span
+          ><span>START WITH VISIBLE RENOVATION INTENT</span>
         </div>
-    </section>
+        <div class="section-heading">
+          <h2 id="distribution-title">
+            Meet demand<br />where it already lives.
+          </h2>
+          <p>
+            Property agents bring listings and buyers. Banks bring qualified
+            borrowers. SECHA converts that intent into a standard package,
+            fulfilled through the GX-100 network.
+          </p>
+        </div>
+        <div class="channel-flow">
+          <article>
+            <span class="mono">01 / DISCOVER</span>
+            <h3>Property agents</h3>
+            <p>Listings + buyers</p>
+          </article>
+          <article>
+            <span class="mono">02 / QUALIFY</span>
+            <h3>Banks</h3>
+            <p>Qualified borrowers</p>
+          </article>
+          <article class="channel-highlight">
+            <span class="mono">03 / CONVERT</span>
+            <h3>SECHA menu</h3>
+            <p>One conversion layer</p>
+          </article>
+          <article>
+            <span class="mono">04 / FULFIL</span>
+            <h3>GX-100 network</h3>
+            <p>Repeatable delivery</p>
+          </article>
+        </div>
+        <div class="measurement">
+          <div>
+            <span class="eyebrow">THE NEXT OPERATING MILESTONE</span>
+            <h3>
+              From founder-led projects<br />to measurable package throughput.
+            </h3>
+          </div>
+          <p>
+            Quote velocity <span>/</span> Conversion <span>/</span> Cycle time
+            <span>/</span> Gross margin <span>/</span> Referral
+          </p>
+        </div>
+      </section>
 
-    <!-- Investment CTA -->
-    <section id="invest" class="py-32 relative z-10 text-center">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#1a0f00] -z-10"></div>
-        <div class="max-w-4xl mx-auto px-6 gsap-fade-up">
-            <h2 class="text-5xl md:text-7xl font-bold mb-8">Invest in the <span class="text-gradient-bronze">Upgrade</span></h2>
-            <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-                We are building the infrastructure for the largest housing upgrade in history. Join us in capitalizing the future of home.
+      <section class="light-section" id="team" aria-labelledby="team-title">
+        <div class="container section-space">
+          <div class="section-kicker mono">
+            <span>06 / THE FOUNDERS</span
+            ><span>OPERATOR EXPERIENCE. FINANCIAL DISCIPLINE.</span>
+          </div>
+          <div class="section-heading">
+            <h2 id="team-title">Built by people<br />who know the work.</h2>
+            <p>
+              Founder experience, financial discipline and real renovation
+              delivery come together in one team.
             </p>
-            
-            <div class="flex justify-center mt-8 relative z-20">
-                <a href="mailto:jplovensa@sechahome.com" target="_blank" rel="noopener noreferrer" class="bg-[#CD7F32] hover:bg-[#b56b26] text-black font-bold py-4 px-12 rounded-xl transition-all transform hover:-translate-y-1 hover:shadow-lg flex items-center justify-center gap-2 text-lg">
-                    Request Access to Deal Room
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEW: Founder CTA (Replaces Quote) -->
-    <section class="py-24 relative z-10 bg-[#050505] border-t border-white/5 overflow-hidden">
-    <!-- Investment CTA & Founder Message (Merged) -->
-    <section id="invest" class="py-32 relative z-10 text-center">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#1a0f00] -z-10"></div>
-        <div class="max-w-4xl mx-auto px-6 gsap-fade-up">
-            
-            <!-- Founder Quote Block -->
-            <div class="relative bg-white/5 border border-white/10 rounded-2xl p-8 md:p-12 mb-12 backdrop-blur-sm">
-                <svg class="w-8 h-8 text-[#CD7F32]/40 absolute top-8 left-8" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 13.1216 16 12.017 16H9.01699V12H14.017V8H9.01699V5H5.01699V21H14.017ZM21.017 21L21.017 18C21.017 16.8954 20.1216 16 19.017 16H16.017V12H21.017V8H16.017V5H12.017V21H21.017Z"/></svg>
-                <blockquote class="text-xl md:text-2xl text-gray-200 font-light leading-relaxed mb-8 italic relative z-10">
-                    "We are not just building a real estate company. We are building an engine for economic mobility. When you invest in SECHA, you are investing in the belief that the path to wealth should be accessible to everyone who works for it."
-                </blockquote>
-                <div class="flex flex-col items-center justify-center border-t border-white/10 pt-6 mx-auto w-fit px-8">
-                    <div class="text-white font-bold tracking-wide text-lg">Josephine Lovensa</div>
-                    <div class="text-[#CD7F32] text-xs font-mono tracking-[0.2em] uppercase mt-1">Founder & CEO</div>
+          </div>
+          <div class="team-grid">
+            <article>
+              <div class="founder-heading">
+                <span class="founder-index mono">01 /</span>
+                <div>
+                  <h3>Josephine Lovensa</h3>
+                  <span class="founder-role mono">FOUNDER & CEO</span>
                 </div>
-            </div>
-
+              </div>
+              <p class="founder-intro">
+                Second-time founder with scale-up experience and an exit.
+              </p>
+              <ul>
+                <li>
+                  5+ years consulting on infrastructure projects across APAC
+                </li>
+                <li>PropTech CEO of the Year 2026 — APAC Insider</li>
+                <li>
+                  Emerging Woman CEO in Real Estate 2024 — The Woman’s Tabloid
+                </li>
+              </ul>
+            </article>
+            <article>
+              <div class="founder-heading">
+                <span class="founder-index mono">02 /</span>
+                <div>
+                  <h3>Leonardi Ryan Andika</h3>
+                  <span class="founder-role mono">CO-FOUNDER & CFO</span>
+                </div>
+              </div>
+              <p class="founder-intro">
+                Former management consultant at Boston Consulting Group.
+              </p>
+              <ul>
+                <li>
+                  5+ years in management consulting and investment banking in
+                  Southeast Asia
+                </li>
+                <li>Financial advisor at HELP for Refugees</li>
+                <li>
+                  HELP for Refugees is supported by the US and Netherlands
+                  embassies
+                </li>
+              </ul>
+            </article>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <footer class="py-12 border-t border-white/5 bg-black text-center text-gray-600 text-sm relative z-10">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-4 md:mb-0">
-                &copy; 2025 SECHA HOME. All rights reserved.
-            </div>
-            <div class="flex space-x-6">
-                <a href="#" class="hover:text-[#CD7F32] transition-colors">Privacy</a>
-                <a href="#" class="hover:text-[#CD7F32] transition-colors">Terms</a>
-                <a href="#" class="hover:text-[#CD7F32] transition-colors">Security</a>
-            </div>
+      <section
+        class="container section-space raise-section"
+        id="investment"
+        aria-labelledby="raise-title"
+      >
+        <div class="section-kicker mono">
+          <span>07 / THE NEXT CHAPTER</span
+          ><span>PRODUCT. DELIVERY. DISTRIBUTION.</span>
         </div>
+        <div class="raise-grid">
+          <div>
+            <span class="eyebrow">RAISING US$1M</span>
+            <h2 id="raise-title">Build the system.<br />Repeat the outcome.</h2>
+            <p>
+              The next chapter is productising a service that already works: a
+              stronger interface, a repeatable physical system, and channels
+              that turn intent into packages.
+            </p>
+            <button class="button button-accent" data-contact>
+              Start a conversation
+              <span aria-hidden="true"
+                ><img
+                  class="icon"
+                  src="assets/icons/arrow-up-right.svg"
+                  alt=""
+                  width="16"
+                  height="16"
+              /></span></button
+            ><a
+              class="raise-download text-link"
+              href="assets/secha-investor-overview.pdf"
+              download
+              >Download investor brief
+              <span aria-hidden="true"
+                ><img
+                  class="icon"
+                  src="assets/icons/arrow-down.svg"
+                  alt=""
+                  width="16"
+                  height="16" /></span
+            ></a>
+          </div>
+          <div class="allocation">
+            <div class="allocation-heading mono">
+              PLANNED USE OF FUNDS <span>US$1,000,000</span>
+            </div>
+            <div class="allocation-row">
+              <strong>45<span>%</span></strong>
+              <div>
+                <h3>Product</h3>
+                <p>Package interface + job-file control</p>
+              </div>
+              <span class="allocation-value mono">US$450K</span>
+            </div>
+            <div class="allocation-row">
+              <strong>35<span>%</span></strong>
+              <div>
+                <h3>GX-100</h3>
+                <p>Standardised modular delivery</p>
+              </div>
+              <span class="allocation-value mono">US$350K</span>
+            </div>
+            <div class="allocation-row">
+              <strong>20<span>%</span></strong>
+              <div>
+                <h3>Distribution</h3>
+                <p>Agent + bank acquisition channels</p>
+              </div>
+              <span class="allocation-value mono">US$200K</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq container" aria-labelledby="faq-title">
+        <div>
+          <span class="eyebrow">A CLOSER LOOK</span>
+          <h2 id="faq-title">The investor essentials.</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>What is SECHA’s core business?</summary>
+            <p>
+              SECHA earns on renovation delivery. Its interface turns customer
+              choices into a controlled package and job file; GX-100
+              standardises physical fulfilment. Financing helps customers afford
+              a package and supports conversion.
+            </p>
+          </details>
+          <details>
+            <summary>What has already been demonstrated?</summary>
+            <p>
+              The business update reports US$300K in project value served and
+              40% faster modular delivery. The next step is to productise
+              founder-led delivery into measurable package throughput. These
+              figures are company-reported and are not independently verified
+              here.
+            </p>
+          </details>
+          <details>
+            <summary>Is the 30% gross margin already achieved?</summary>
+            <p>
+              No realised package margin is stated in the business update. The
+              30% figure is the target package gross margin: US$1,500 gross
+              profit on an illustrative US$5,000 package.
+            </p>
+          </details>
+          <details>
+            <summary>Is the US$50M scale case a forecast?</summary>
+            <p>
+              No. It is an illustration of 10,000 annual packages at US$5,000
+              each, with US$15M in gross profit if the 30% target margin is
+              achieved. It is not current revenue, a forecast or a committed
+              pipeline.
+            </p>
+          </details>
+        </div>
+      </section>
+    </main>
+    <footer class="container">
+      <div class="footer-top">
+        <a href="#overview" class="wordmark">SECHA<span>HOME</span></a>
+        <p>The renovation interface for Asia.</p>
+        <a href="#overview" class="text-link"
+          >Back to top
+          <span aria-hidden="true"
+            ><img
+              class="icon"
+              src="assets/icons/arrow-up.svg"
+              alt=""
+              width="16"
+              height="16" /></span
+        ></a>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 SECHA HOME</span><span>JAKARTA, INDONESIA</span
+        ><span>INVESTOR OVERVIEW · 2026 BUSINESS UPDATE</span>
+      </div>
     </footer>
-
-    <!-- Scripts -->
-    <script>
-        // Loader Animation
-        window.addEventListener('load', () => {
-            const bar = document.getElementById('loader-bar');
-            const loader = document.getElementById('loader');
-            
-            if (bar) bar.style.width = '100%';
-            
-            setTimeout(() => {
-                if (loader) {
-                    loader.style.opacity = '0';
-                    setTimeout(() => {
-                        loader.style.display = 'none';
-                        initHeroAnimations();
-                    }, 800);
-                } else {
-                    initHeroAnimations();
-                }
-            }, 1000);
-        });
-
-        // Hero Animations using GSAP
-        function initHeroAnimations() {
-            if (typeof gsap === 'undefined') return;
-            const tl = gsap.timeline();
-            
-            tl.to("#hero-tag", { y: 0, opacity: 1, duration: 1, ease: "power3.out" })
-              .to("#hero-title", { y: 0, opacity: 1, duration: 1, ease: "power3.out" }, "-=0.5")
-              .to("#hero-desc", { y: 0, opacity: 1, duration: 1, ease: "power3.out" }, "-=0.7")
-              .to("#hero-btns", { y: 0, opacity: 1, duration: 1, ease: "power3.out" }, "-=0.7");
-        }
-
-        // Scroll Animations
-        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-            gsap.registerPlugin(ScrollTrigger);
-
-            gsap.utils.toArray('.gsap-fade-up').forEach(element => {
-                gsap.from(element, {
-                    scrollTrigger: {
-                        trigger: element,
-                        start: "top 80%",
-                        toggleActions: "play none none reverse"
-                    },
-                    y: 50,
-                    opacity: 0,
-                    duration: 1,
-                    ease: "power3.out"
-                });
-            });
-
-            gsap.utils.toArray('.gsap-scale-up').forEach(element => {
-                gsap.from(element, {
-                    scrollTrigger: {
-                        trigger: element,
-                        start: "top 80%",
-                        toggleActions: "play none none reverse"
-                    },
-                    scale: 0.9,
-                    opacity: 0,
-                    duration: 1.2,
-                    ease: "power2.out"
-                });
-            });
-
-            // Integrated Visual Boxes Animation
-            const visualBoxes = document.querySelectorAll('.visual-box');
-
-            visualBoxes.forEach((box) => {
-                gsap.from(box, {
-                    scrollTrigger: {
-                        trigger: box,
-                        start: "top 85%",
-                        toggleActions: "play none none reverse"
-                    },
-                    y: 50,
-                    opacity: 0,
-                    duration: 1,
-                    ease: "power3.out"
-                });
-            });
-        }
-
-        // SVG Drawing Animation Support
-        const style = document.createElement('style');
-        style.innerHTML = `
-            @keyframes draw {
-                to { stroke-dashoffset: 0; }
-            }
-            .glitch-effect {
-                animation: glitch 1s infinite;
-            }
-            @keyframes glitch {
-                0% { transform: translate(0) }
-                20% { transform: translate(-2px, 2px) }
-                40% { transform: translate(-2px, -2px) }
-                60% { transform: translate(2px, 2px) }
-                80% { transform: translate(2px, -2px) }
-                100% { transform: translate(0) }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Canvas Particle Network
-        const canvas = document.getElementById('canvas-container');
-        if (canvas) {
-            const ctx = canvas.getContext('2d');
-            let width, height;
-            let particles = [];
-
-            function resize() {
-                width = canvas.width = window.innerWidth;
-                height = canvas.height = window.innerHeight;
-            }
-            window.addEventListener('resize', resize);
-            resize();
-
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * width;
-                    this.y = Math.random() * height;
-                    this.vx = (Math.random() - 0.5) * 0.5;
-                    this.vy = (Math.random() - 0.5) * 0.5;
-                    this.size = Math.random() * 2;
-                    this.baseColor = '#CD7F32';
-                }
-
-                update() {
-                    this.x += this.vx;
-                    this.y += this.vy;
-
-                    if (this.x < 0 || this.x > width) this.vx *= -1;
-                    if (this.y < 0 || this.y > height) this.vy *= -1;
-                }
-
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fillStyle = this.baseColor;
-                    ctx.fill();
-                }
-            }
-
-            function initParticles() {
-                particles = [];
-                const particleCount = Math.min(window.innerWidth / 10, 100); 
-                for (let i = 0; i < particleCount; i++) {
-                    particles.push(new Particle());
-                }
-            }
-
-            function animate() {
-                ctx.clearRect(0, 0, width, height);
-                
-                for (let i = 0; i < particles.length; i++) {
-                    particles[i].update();
-                    particles[i].draw();
-                    
-                    for (let j = i; j < particles.length; j++) {
-                        const dx = particles[i].x - particles[j].x;
-                        const dy = particles[i].y - particles[j].y;
-                        const distance = Math.sqrt(dx * dx + dy * dy);
-
-                        if (distance < 150) {
-                            ctx.beginPath();
-                            ctx.strokeStyle = `rgba(205, 127, 50, ${1 - distance / 150})`;
-                            ctx.lineWidth = 0.5;
-                            ctx.moveTo(particles[i].x, particles[i].y);
-                            ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.stroke();
-                        }
-                    }
-                }
-                requestAnimationFrame(animate);
-            }
-
-            initParticles();
-            animate();
-        }
-
-        // Navbar blur on scroll
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('py-2');
-                navbar.classList.remove('py-6');
-            } else {
-                navbar.classList.add('py-6');
-                navbar.classList.remove('py-2');
-            }
-        });
-
-        // 3D Tilt Effect for Cards
-        const card = document.getElementById('hub-tilt');
-        if(card) {
-            document.addEventListener('mousemove', (e) => {
-                const x = (window.innerWidth / 2 - e.pageX) / 50;
-                const y = (window.innerHeight / 2 - e.pageY) / 50;
-                
-                const rect = card.getBoundingClientRect();
-                if(rect.top >= 0 && rect.bottom <= window.innerHeight) {
-                    card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-                }
-            });
-        }
-    </script>
-</body>
+    <dialog id="contact-dialog" aria-labelledby="contact-title">
+      <button class="dialog-close" aria-label="Close investor enquiry">×</button
+      ><span class="eyebrow">LET’S BUILD WHAT COMES NEXT</span>
+      <h2 id="contact-title">A conversation<br />starts here.</h2>
+      <p>
+        Connect with Josephine Lovensa, Founder & CEO, to discuss the US$1M
+        raise and SECHA’s next chapter.
+      </p>
+      <a
+        class="contact-email"
+        href="mailto:jplovensa@sechahome.com?subject=SECHA%20Investor%20Enquiry"
+        >jplovensa@sechahome.com</a
+      >
+      <div class="dialog-actions">
+        <a
+          class="button button-accent"
+          href="mailto:jplovensa@sechahome.com?subject=SECHA%20Investor%20Enquiry"
+          >Open email
+          <span aria-hidden="true"
+            ><img
+              class="icon"
+              src="assets/icons/arrow-up-right.svg"
+              alt=""
+              width="16"
+              height="16" /></span></a
+        ><button id="copy-email" class="button button-outline">
+          Copy address
+        </button>
+      </div>
+      <p class="copy-status" role="status" id="copy-status"></p>
+      <p class="fine-print">
+        Your email app will open. No information is submitted through this
+        website.
+      </p>
+    </dialog>
+  </body>
 </html>
-
